@@ -3,9 +3,9 @@
 # Google Cloud Translation API: Node.js Client
 
 [![release level](https://img.shields.io/badge/release%20level-general%20availability%20%28GA%29-brightgreen.svg?style&#x3D;flat)](https://cloud.google.com/terms/launch-stages)
-[![CircleCI](https://img.shields.io/circleci/project/github/googlecloudplatform/google-cloud-node.svg?style=flat)](https://circleci.com/gh/googlecloudplatform/google-cloud-node)
-[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/googlecloudplatform/google-cloud-node?branch=master&svg=true)](https://ci.appveyor.com/project/googlecloudplatform/google-cloud-node)
-[![codecov](https://img.shields.io/codecov/c/github/googlecloudplatform/google-cloud-node/master.svg?style=flat)](https://codecov.io/gh/googlecloudplatform/google-cloud-node)
+[![CircleCI](https://img.shields.io/circleci/project/github/googleapis/nodejs-translate.svg?style=flat)](https://circleci.com/gh/googleapis/nodejs-translate)
+[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/googleapis/nodejs-translate?branch=master&svg=true)](https://ci.appveyor.com/project/googleapis/nodejs-translate)
+[![codecov](https://img.shields.io/codecov/c/github/googleapis/nodejs-translate/master.svg?style=flat)](https://codecov.io/gh/googleapis/nodejs-translate)
 
 > Node.js idiomatic client for [Cloud Translation API][product-docs].
 
@@ -69,7 +69,7 @@ const projectId = 'YOUR_PROJECT_ID';
 
 // Instantiates a client
 const translateClient = Translate({
-  projectId: projectId
+  projectId: projectId,
 });
 
 // The text to translate
@@ -78,14 +78,15 @@ const text = 'Hello, world!';
 const target = 'ru';
 
 // Translates some text into Russian
-translateClient.translate(text, target)
-  .then((results) => {
+translateClient
+  .translate(text, target)
+  .then(results => {
     const translation = results[0];
 
     console.log(`Text: ${text}`);
     console.log(`Translation: ${translation}`);
   })
-  .catch((err) => {
+  .catch(err => {
     console.error('ERROR:', err);
   });
 ```
@@ -97,7 +98,7 @@ has instructions for running the samples.
 
 | Sample                      | Source Code                       |
 | --------------------------- | --------------------------------- |
-| Translate | [source code](https://github.com/googlecloudplatform/google-cloud-node/blob/master/samples/translate.js) |
+| Translate | [source code](https://github.com/googleapis/nodejs-translate/blob/master/samples/translate.js) |
 
 The [Cloud Translation API Node.js Client API Reference][client-docs] documentation
 also contains samples.
