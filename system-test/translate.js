@@ -21,7 +21,7 @@ var prop = require('propprop');
 
 var Translate = require('../');
 
-var API_KEY = process.env.GCLOUD_TESTS_API_KEY;
+var API_KEY = process.env.TRANSLATE_API_KEY;
 
 describe('translate', function() {
   var translate = new Translate();
