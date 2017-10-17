@@ -57,7 +57,7 @@ var PKG = require('../package.json');
 function Translate(options) {
   if (!(this instanceof Translate)) {
     options = common.util.normalizeArguments(this, options, {
-      projectIdRequired: false
+      projectIdRequired: false,
     });
     return new Translate(options);
   }
@@ -65,8 +65,7 @@ function Translate(options) {
   var baseUrl = 'https://translation.googleapis.com/language/translate/v2';
 
   if (process.env.GOOGLE_CLOUD_TRANSLATE_ENDPOINT) {
-    baseUrl = process.env.GOOGLE_CLOUD_TRANSLATE_ENDPOINT
-      .replace(/\/+$/, '');
+    baseUrl = process.env.GOOGLE_CLOUD_TRANSLATE_ENDPOINT.replace(/\/+$/, '');
   }
 
   if (options.key) {
@@ -78,7 +77,7 @@ function Translate(options) {
     baseUrl: baseUrl,
     scopes: ['https://www.googleapis.com/auth/cloud-platform'],
     packageJson: require('../package.json'),
-    projectIdRequired: false
+    projectIdRequired: false,
   };
 
   common.Service.call(this, config, options);
@@ -154,35 +153,38 @@ Translate.prototype.detect = function(input, callback) {
   var inputIsArray = Array.isArray(input);
   input = arrify(input);
 
-  this.request({
-    method: 'POST',
-    uri: '/detect',
-    json: {
-      q: input
-    }
-  }, function(err, resp) {
-    if (err) {
-      callback(err, null, resp);
-      return;
-    }
+  this.request(
+    {
+      method: 'POST',
+      uri: '/detect',
+      json: {
+        q: input,
+      },
+    },
+    function(err, resp) {
+      if (err) {
+        callback(err, null, resp);
+        return;
+      }
 
-    var results = resp.data.detections.map(function(detection, index) {
-      var result = extend({}, detection[0], {
-        input: input[index]
+      var results = resp.data.detections.map(function(detection, index) {
+        var result = extend({}, detection[0], {
+          input: input[index],
+        });
+
+        // Deprecated.
+        delete result.isReliable;
+
+        return result;
       });
 
-      // Deprecated.
-      delete result.isReliable;
+      if (input.length === 1 && !inputIsArray) {
+        results = results[0];
+      }
 
-      return result;
-    });
-
-    if (input.length === 1 && !inputIsArray) {
-      results = results[0];
+      callback(null, results, resp);
     }
-
-    callback(null, results, resp);
-  });
+  );
 };
 
 /**
@@ -263,7 +265,7 @@ Translate.prototype.getLanguages = function(target, callback) {
   var reqOpts = {
     uri: '/languages',
     useQuerystring: true,
-    qs: {}
+    qs: {},
   };
 
   if (target && is.string(target)) {
@@ -279,7 +281,7 @@ Translate.prototype.getLanguages = function(target, callback) {
     var languages = resp.data.languages.map(function(language) {
       return {
         code: language.language,
-        name: language.name
+        name: language.name,
       };
     });
 
@@ -374,7 +376,7 @@ Translate.prototype.translate = function(input, options, callback) {
 
   var body = {
     q: input,
-    format: options.format || (isHtml(input[0]) ? 'html' : 'text')
+    format: options.format || (isHtml(input[0]) ? 'html' : 'text'),
   };
 
   if (is.string(options)) {
@@ -397,24 +399,27 @@ Translate.prototype.translate = function(input, options, callback) {
     throw new Error('A target language is required to perform a translation.');
   }
 
-  this.request({
-    method: 'POST',
-    uri: '',
-    json: body
-  }, function(err, resp) {
-    if (err) {
-      callback(err, null, resp);
-      return;
+  this.request(
+    {
+      method: 'POST',
+      uri: '',
+      json: body,
+    },
+    function(err, resp) {
+      if (err) {
+        callback(err, null, resp);
+        return;
+      }
+
+      var translations = resp.data.translations.map(prop('translatedText'));
+
+      if (body.q.length === 1 && !inputIsArray) {
+        translations = translations[0];
+      }
+
+      callback(err, translations, resp);
     }
-
-    var translations = resp.data.translations.map(prop('translatedText'));
-
-    if (body.q.length === 1 && !inputIsArray) {
-      translations = translations[0];
-    }
-
-    callback(err, translations, resp);
-  });
+  );
 };
 
 /**
@@ -438,11 +443,11 @@ Translate.prototype.request = function(reqOpts, callback) {
 
   reqOpts = extend(true, {}, reqOpts, {
     qs: {
-      key: this.key
+      key: this.key,
     },
     headers: {
-      'User-Agent': common.util.getUserAgentFromPackageJson(PKG)
-    }
+      'User-Agent': common.util.getUserAgentFromPackageJson(PKG),
+    },
   });
 
   common.util.makeRequest(reqOpts, this.options, callback);
