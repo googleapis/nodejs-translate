@@ -23,7 +23,7 @@ const Translate = require('@google-cloud/translate');
 const projectId = 'YOUR_PROJECT_ID';
 
 // Instantiates a client
-const translateClient = Translate({
+const translate = new Translate({
   projectId: projectId,
 });
 
@@ -33,7 +33,7 @@ const text = 'Hello, world!';
 const target = 'ru';
 
 // Translates some text into Russian
-translateClient
+translate
   .translate(text, target)
   .then(results => {
     const translation = results[0];

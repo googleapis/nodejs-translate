@@ -27,13 +27,16 @@ View the [source code][translate_0_code].
 __Usage:__ `node translate.js --help`
 
 ```
+translate.js <command>
+
 Commands:
-  detect <text..>                                 Detects the language of one or more strings.
-  list [target]                                   Lists available translation languages. To language names in a language
-                                                  other than English, specify a target language.
-  translate <toLang> <text..>                     Translates one or more strings into the target language.
-  translate-with-model <toLang> <model> <text..>  Translates one or more strings into the target language using the
-                                                  specified model.
+  translate.js detect <text..>                                 Detects the language of one or more strings.
+  translate.js list [target]                                   Lists available translation languages. To language names
+                                                               in a language other than English, specify a target
+                                                               language.
+  translate.js translate <toLang> <text..>                     Translates one or more strings into the target language.
+  translate.js translate-with-model <toLang> <model> <text..>  Translates one or more strings into the target language
+                                                               using the specified model.
 
 Options:
   --version  Show version number                                                                               [boolean]

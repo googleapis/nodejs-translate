@@ -68,7 +68,7 @@ const Translate = require('@google-cloud/translate');
 const projectId = 'YOUR_PROJECT_ID';
 
 // Instantiates a client
-const translateClient = Translate({
+const translate = new Translate({
   projectId: projectId,
 });
 
@@ -78,7 +78,7 @@ const text = 'Hello, world!';
 const target = 'ru';
 
 // Translates some text into Russian
-translateClient
+translate
   .translate(text, target)
   .then(results => {
     const translation = results[0];
@@ -93,7 +93,7 @@ translateClient
 
 ## Samples
 
-Samples are in the [`samples/`](https://github.com/blob/master/samples) directory. The samples' `README.md`
+Samples are in the [`samples/`](https://github.com/googleapis/nodejs-translate/blob/master/samples) directory. The samples' `README.md`
 has instructions for running the samples.
 
 | Sample                      | Source Code                       |
@@ -112,10 +112,6 @@ is stable; the code surface will not change in backwards-incompatible ways
 unless absolutely necessary (e.g. because of critical security issues) or with
 an extensive deprecation period. Issues and requests against **GA** libraries
 are addressed with the highest priority.
-
-Please note that the auto-generated portions of the **GA** libraries (the ones
-in modules such as `v1` or `v2`) are considered to be of **Beta** quality, even
-if the libraries that wrap them are **GA**.
 
 More Information: [Google Cloud Platform Launch Stages][launch_stages]
 
