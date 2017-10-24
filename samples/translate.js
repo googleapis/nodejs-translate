@@ -20,11 +20,13 @@ function detectLanguage(text) {
   // Imports the Google Cloud client library
   const Translate = require('@google-cloud/translate');
 
-  // Instantiates a client
-  const translate = Translate();
+  // Creates a client
+  const translate = new Translate();
 
-  // The text for which to detect language, e.g. "Hello, world!"
-  // const text = 'Hello, world!';
+  /**
+   * TODO(developer): Uncomment the following line before running the sample.
+   */
+  // const text = 'The text for which to detect language, e.g. Hello, world!';
 
   // Detects the language. "text" can be a string for detecting the language of
   // a single piece of text, or an array of strings for detecting the languages
@@ -51,8 +53,8 @@ function listLanguages() {
   // Imports the Google Cloud client library
   const Translate = require('@google-cloud/translate');
 
-  // Instantiates a client
-  const translate = Translate();
+  // Creates a client
+  const translate = new Translate();
 
   // Lists available translation language with their names in English (the default).
   translate
@@ -74,11 +76,13 @@ function listLanguagesWithTarget(target) {
   // Imports the Google Cloud client library
   const Translate = require('@google-cloud/translate');
 
-  // Instantiates a client
-  const translate = Translate();
+  // Creates a client
+  const translate = new Translate();
 
-  // The target language for language names, e.g. "ru"
-  // const target = 'ru';
+  /**
+   * TODO(developer): Uncomment the following line before running the sample.
+   */
+  // const target = 'The target language for language names, e.g. ru';
 
   // Lists available translation language with their names in a target language
   translate
@@ -100,14 +104,14 @@ function translateText(text, target) {
   // Imports the Google Cloud client library
   const Translate = require('@google-cloud/translate');
 
-  // Instantiates a client
-  const translate = Translate();
+  // Creates a client
+  const translate = new Translate();
 
-  // The text to translate, e.g. "Hello, world!"
-  // const text = 'Hello, world!';
-
-  // The target language, e.g. "ru"
-  // const target = 'ru';
+  /**
+   * TODO(developer): Uncomment the following lines before running the sample.
+   */
+  // const text = 'The text to translate, e.g. Hello, world!';
+  // const target = 'The target language, e.g. ru';
 
   // Translates the text into the target language. "text" can be a string for
   // translating a single piece of text, or an array of strings for translating
@@ -136,17 +140,15 @@ function translateTextWithModel(text, target, model) {
   // Imports the Google Cloud client library
   const Translate = require('@google-cloud/translate');
 
-  // Instantiates a client
-  const translate = Translate();
+  // Creates a client
+  const translate = new Translate();
 
-  // The text to translate, e.g. "Hello, world!"
-  // const text = 'Hello, world!';
-
-  // The target language, e.g. "ru"
-  // const target = 'ru';
-
-  // The model to use, e.g. "nmt"
-  // const model = 'nmt';
+  /**
+   * TODO(developer): Uncomment the following lines before running the sample.
+   */
+  // const text = 'The text to translate, e.g. Hello, world!';
+  // const target = 'The target language, e.g. ru';
+  // const model = 'The model to use, e.g. nmt';
 
   const options = {
     // The target language, e.g. "ru"
@@ -178,7 +180,7 @@ function translateTextWithModel(text, target, model) {
   // [END translate_text_with_model]
 }
 
-require(`yargs`) // eslint-disable-line
+require(`yargs`)
   .demand(1)
   .command(
     `detect <text..>`,
