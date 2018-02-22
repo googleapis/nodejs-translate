@@ -1,5 +1,5 @@
 unit_tests:
-  steps: &ref_0
+  steps: &unit_tests
     - checkout
     - run:
         name: Install modules and dependencies.
@@ -96,15 +96,15 @@ jobs:
   node6:
     docker:
       - image: 'node:6'
-    steps: *ref_0
+    steps: *unit_tests
   node8:
     docker:
       - image: 'node:8'
-    steps: *ref_0
+    steps: *unit_tests
   node9:
     docker:
       - image: 'node:9'
-    steps: *ref_0
+    steps: *unit_tests
   lint:
     docker:
       - image: 'node:8'
