@@ -16,10 +16,12 @@
 
 'use strict';
 
-var assert = require('assert');
-var extend = require('extend');
-var proxyquire = require('proxyquire');
-var util = require('@google-cloud/common').util;
+import * as assert from 'assert';
+import * as extend from 'extend';
+import * as proxyquire from 'proxyquire';
+import {util} from '@google-cloud/common';
+
+const pkgJson = require('../../package.json');
 
 var makeRequestOverride;
 var promisified = false;
@@ -52,12 +54,12 @@ describe('Translate', function() {
   var translate;
 
   before(function() {
-    Translate = proxyquire('../', {
+    Translate = proxyquire('../src', {
       '@google-cloud/common': {
         util: fakeUtil,
         Service: FakeService,
       },
-    });
+    }).Translate;
   });
 
   beforeEach(function() {
@@ -72,27 +74,6 @@ describe('Translate', function() {
       assert(promisified);
     });
 
-    it('should work without new', function() {
-      assert.doesNotThrow(function() {
-        Translate(OPTIONS);
-      });
-    });
-
-    it('should normalize the arguments', function() {
-      var normalizeArgumentsCalled = false;
-      var options = {};
-
-      fakeUtil.normalizeArguments = function(context, options_, config) {
-        normalizeArgumentsCalled = true;
-        assert.strictEqual(options_, options);
-        assert.strictEqual(config.projectIdRequired, false);
-        return options_;
-      };
-
-      new Translate(options);
-      assert.strictEqual(normalizeArgumentsCalled, true);
-    });
-
     it('should inherit from Service', function() {
       assert(translate instanceof FakeService);
 
@@ -103,7 +84,7 @@ describe('Translate', function() {
       assert.deepEqual(calledWith.scopes, [
         'https://www.googleapis.com/auth/cloud-platform',
       ]);
-      assert.deepEqual(calledWith.packageJson, require('../package.json'));
+      assert.deepEqual(calledWith.packageJson, pkgJson);
       assert.strictEqual(calledWith.projectIdRequired, false);
     });
 
@@ -567,7 +548,7 @@ describe('Translate', function() {
         var getUserAgentFn = fakeUtil.getUserAgentFromPackageJson;
         fakeUtil.getUserAgentFromPackageJson = function(packageJson) {
           fakeUtil.getUserAgentFromPackageJson = getUserAgentFn;
-          assert.deepEqual(packageJson, require('../package.json'));
+          assert.deepEqual(packageJson, pkgJson);
           return userAgent;
         };
 
