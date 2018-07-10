@@ -26,7 +26,7 @@ import { DecorateRequestOptions, BodyResponseCallback } from '@google-cloud/comm
 import * as r from 'request';
 
 
-var PKG = require('../../package.json');
+let PKG = require('../../package.json');
 
 /**
  * @typedef {object} ClientConfig
@@ -85,14 +85,14 @@ export class Translate extends common.Service {
   options;
   key;
   constructor(options?) {
-    var baseUrl = 'https://translation.googleapis.com/language/translate/v2';
+    let baseUrl = 'https://translation.googleapis.com/language/translate/v2';
 
     if (process.env.GOOGLE_CLOUD_TRANSLATE_ENDPOINT) {
       baseUrl = process.env.GOOGLE_CLOUD_TRANSLATE_ENDPOINT.replace(/\/+$/, '');
     }
 
-    var config = {
-      baseUrl: baseUrl,
+    let config = {
+      baseUrl,
       scopes: ['https://www.googleapis.com/auth/cloud-platform'],
       packageJson: require('../../package.json'),
       projectIdRequired: false,
@@ -189,7 +189,7 @@ export class Translate extends common.Service {
    * Here's a full example:
    */
   detect(input, callback) {
-    var inputIsArray = Array.isArray(input);
+    let inputIsArray = Array.isArray(input);
     input = arrify(input);
 
     this.request(
@@ -206,8 +206,8 @@ export class Translate extends common.Service {
           return;
         }
 
-        var results = resp.data.detections.map(function (detection, index) {
-          var result = extend({}, detection[0], {
+        let results = resp.data.detections.map(function (detection, index) {
+          let result = extend({}, detection[0], {
             input: input[index],
           });
 
@@ -224,7 +224,7 @@ export class Translate extends common.Service {
         callback(null, results, resp);
       }
     );
-  };
+  }
 
   /**
    * @typedef {array} GetLanguagesResponse
@@ -269,7 +269,7 @@ export class Translate extends common.Service {
       target = 'en';
     }
 
-    var reqOpts = {
+    let reqOpts = {
       uri: '/languages',
       useQuerystring: true,
       qs: {} as any,
@@ -285,7 +285,7 @@ export class Translate extends common.Service {
         return;
       }
 
-      var languages = resp.data.languages.map(function (language) {
+      let languages = resp.data.languages.map(function (language) {
         return {
           code: language.language,
           name: language.name,
@@ -294,7 +294,7 @@ export class Translate extends common.Service {
 
       callback(null, languages, resp);
     });
-  };
+  }
 
   /**
    * Translate request options.
@@ -400,10 +400,10 @@ export class Translate extends common.Service {
    * Translation using the premium model:
    */
   translate(input, options, callback) {
-    var inputIsArray = Array.isArray(input);
+    let inputIsArray = Array.isArray(input);
     input = arrify(input);
 
-    var body: any = {
+    let body: any = {
       q: input,
       format: options.format || (isHtml(input[0]) ? 'html' : 'text'),
     };
@@ -440,7 +440,7 @@ export class Translate extends common.Service {
           return;
         }
 
-        var translations = resp.data.translations.map(prop('translatedText'));
+        let translations = resp.data.translations.map(prop('translatedText'));
 
         if (body.q.length === 1 && !inputIsArray) {
           translations = translations[0];
@@ -449,7 +449,7 @@ export class Translate extends common.Service {
         callback(err, translations, resp);
       }
     );
-  };
+  }
 
   /**
    * A custom request implementation. Requests to this API may optionally use an
@@ -481,7 +481,7 @@ export class Translate extends common.Service {
     });
 
     common.util.makeRequest(reqOpts, this.options, callback!);
-  };
+  }
 }
 
 /*! Developer Documentation
