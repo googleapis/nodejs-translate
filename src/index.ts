@@ -26,7 +26,7 @@ import { DecorateRequestOptions, BodyResponseCallback } from '@google-cloud/comm
 import * as r from 'request';
 
 
-let PKG = require('../../package.json');
+const PKG = require('../../package.json');
 
 /**
  * @typedef {object} ClientConfig
@@ -91,7 +91,7 @@ export class Translate extends common.Service {
       baseUrl = process.env.GOOGLE_CLOUD_TRANSLATE_ENDPOINT.replace(/\/+$/, '');
     }
 
-    let config = {
+    const config = {
       baseUrl,
       scopes: ['https://www.googleapis.com/auth/cloud-platform'],
       packageJson: require('../../package.json'),
@@ -189,7 +189,7 @@ export class Translate extends common.Service {
    * Here's a full example:
    */
   detect(input, callback) {
-    let inputIsArray = Array.isArray(input);
+    const inputIsArray = Array.isArray(input);
     input = arrify(input);
 
     this.request(
@@ -207,7 +207,7 @@ export class Translate extends common.Service {
         }
 
         let results = resp.data.detections.map(function (detection, index) {
-          let result = extend({}, detection[0], {
+          const result = extend({}, detection[0], {
             input: input[index],
           });
 
@@ -269,7 +269,7 @@ export class Translate extends common.Service {
       target = 'en';
     }
 
-    let reqOpts = {
+    const reqOpts = {
       uri: '/languages',
       useQuerystring: true,
       qs: {} as any,
@@ -285,7 +285,7 @@ export class Translate extends common.Service {
         return;
       }
 
-      let languages = resp.data.languages.map(function (language) {
+      const languages = resp.data.languages.map(function (language) {
         return {
           code: language.language,
           name: language.name,
@@ -400,10 +400,10 @@ export class Translate extends common.Service {
    * Translation using the premium model:
    */
   translate(input, options, callback) {
-    let inputIsArray = Array.isArray(input);
+    const inputIsArray = Array.isArray(input);
     input = arrify(input);
 
-    let body: any = {
+    const body: any = {
       q: input,
       format: options.format || (isHtml(input[0]) ? 'html' : 'text'),
     };
