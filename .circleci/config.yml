@@ -84,10 +84,6 @@ jobs:
     docker:
       - image: 'node:8'
     steps: *unit_tests_steps
-  node9:
-    docker:
-      - image: 'node:9'
-    steps: *unit_tests_steps
   node10:
     docker:
       - image: 'node:10'
