@@ -273,7 +273,7 @@ export class Translate extends common.Service {
       uri: '/languages',
       useQuerystring: true,
       qs: {},
-    };
+    } as DecorateRequestOptions;
 
     if (target && is.string(target)) {
       reqOpts.qs.target = target;
@@ -403,7 +403,7 @@ export class Translate extends common.Service {
     const inputIsArray = Array.isArray(input);
     input = arrify(input);
 
-    const body = {
+    const body: {[index: string]: string} = {
       q: input,
       format: options.format || (isHtml(input[0]) ? 'html' : 'text'),
     };
