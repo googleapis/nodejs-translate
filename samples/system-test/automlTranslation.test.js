@@ -25,9 +25,6 @@ const cmdDataset = `node ./automl/automlTranslationDataset.js`;
 const cmdModel = `node ./automl/automlTranslationModel.js`;
 const cmdPredict = `node ./automl/automlTranslationPredict.js`;
 
-// const flowerTrainData = `gs://`;
-// const cwd = path.join(__dirname, `..`);
-
 const testDataSetName = `testDataSet`;
 const dummyDataSet = `dummyDataSet`;
 const testModelName = 'dummyModel';
@@ -117,7 +114,7 @@ test(`It should run get model (from a prexisting model)`, async t => {
   output = await tools.runAsync(
     `${cmdModel} getModel -a "${donotdeleteModelId}"`
   );
-  t.true(output.includes(`Model deployment state:  DEPLOYED`));
+  t.true(output.includes(`Model deployment state: DEPLOYED`));
 });
 
 test(`It should run Prediction from prexisting model`, async t => {

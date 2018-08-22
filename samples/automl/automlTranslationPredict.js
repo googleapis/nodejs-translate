@@ -21,7 +21,7 @@
  * https://cloud.google.com/translate/automl/docs
  */
 
-'use strict';
+`use strict`;
 
 function predict(
   projectId,
@@ -31,8 +31,8 @@ function predict(
   translationAllowFallback
 ) {
   // [START automl_translation_predict]
-  const automl = require('@google-cloud/automl');
-  const fs = require('fs');
+  const automl = require(`@google-cloud/automl`);
+  const fs = require(`fs`);
 
   // Create client for prediction service.
   const client = new automl.v1beta1.PredictionServiceClient();
@@ -44,13 +44,13 @@ function predict(
   // const computeRegion = `region-name, e.g. "us-central1"`;
   // const modelId = `id of the model, e.g. “ICN12345”`;
   // const filePath = `local text file path of content to be classified, e.g. "./resources/test.txt"`;
-  // const translationAllowFallback = `use Google translation model as fallback, e.g. "False" or "True"';
+  // const translationAllowFallback = `use Google translation model as fallback, e.g. "False" or "True"`;
 
   // Get the full path of the model.
   const modelFullId = client.modelPath(projectId, computeRegion, modelId);
 
   // Read the file content for translation.
-  const content = fs.readFileSync(filePath, 'utf8');
+  const content = fs.readFileSync(filePath, `utf8`);
 
   // Set the payload by giving the content of the file.
   const payload = {
@@ -77,7 +77,7 @@ function predict(
     .then(responses => {
       const response = responses[0];
       console.log(
-        'Translated Content: ',
+        `Translated Content: `,
         response.payload[0].translation.translatedContent.content
       );
     })
