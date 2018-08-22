@@ -69,7 +69,11 @@ function predict(
   }
 
   client
-    .predict({name: modelFullId, payload: payload, params: params})
+    .predict({
+      name: modelFullId,
+      payload: payload,
+      params: params,
+    })
     .then(responses => {
       const response = responses[0];
       console.log(

@@ -21,11 +21,11 @@
  * https://cloud.google.com/translate/automl/docs
  */
 
-'use strict';
+`use strict`;
 
 function createDataset(projectId, computeRegion, datasetName, source, target) {
   // [START automl_translation_createDataset]
-  const automl = require('@google-cloud/automl');
+  const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
 
@@ -60,22 +60,24 @@ function createDataset(projectId, computeRegion, datasetName, source, target) {
       const dataset = responses[0];
 
       // Display the dataset information
-      console.log('Dataset name:', dataset.name);
-      console.log('Dataset id: ', dataset.name.split('/').pop(-1));
-      console.log('Dataset display name: ', dataset.displayName);
-      console.log('Dataset example count: ', dataset.exampleCount);
-      console.log('Translation dataset specification:');
+      console.log(`Dataset name: ${dataset.name}`);
+      console.log(`Dataset id: ${dataset.name.split(`/`).pop(-1)}`);
+      console.log(`Dataset display name: ${dataset.displayName}`);
+      console.log(`Dataset example count: ${dataset.exampleCount}`);
+      console.log(`Translation dataset specification:`);
       console.log(
-        '\tSource language code: ',
-        dataset.translationDatasetMetadata.sourceLanguageCode
+        `\tSource language code: ${
+          dataset.translationDatasetMetadata.sourceLanguageCode
+        }`
       );
       console.log(
-        '\tTarget language code: ',
-        dataset.translationDatasetMetadata.targetLanguageCode
+        `\tTarget language code: ${
+          dataset.translationDatasetMetadata.targetLanguageCode
+        }`
       );
-      console.log('Dataset create time:');
-      console.log('\tseconds: ', dataset.createTime.seconds);
-      console.log('\tnanos: ', dataset.createTime.nanos);
+      console.log(`Dataset create time:`);
+      console.log(`\tseconds: ${dataset.createTime.seconds}`);
+      console.log(`\tnanos: ${dataset.createTime.nanos}`);
     })
     .catch(err => {
       console.error(err);
@@ -85,7 +87,7 @@ function createDataset(projectId, computeRegion, datasetName, source, target) {
 
 function listDatasets(projectId, computeRegion, filter_) {
   // [START automl_translation_listDatasets]
-  const automl = require('@google-cloud/automl');
+  const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
 
@@ -106,24 +108,26 @@ function listDatasets(projectId, computeRegion, filter_) {
       const dataset = responses[0];
 
       // Display the dataset information.
-      console.log('List of datasets:');
-      for (let i = 0; i < dataset.length; i += 1) {
-        console.log('Dataset name:', dataset[i].name);
-        console.log('Dataset id: ', dataset[i].name.split('/').pop(-1));
-        console.log('Dataset display name: ', dataset[i].displayName);
-        console.log('Dataset example count: ', dataset[i].exampleCount);
-        console.log('Translation dataset specification:');
+      console.log(`List of datasets:`);
+      for (let i of dataset) {
+        console.log(`Dataset name: ${i.name}`);
+        console.log(`Dataset id: ${i.name.split(`/`).pop(-1)}`);
+        console.log(`Dataset display name: ${i.displayName}`);
+        console.log(`Dataset example count: ${i.exampleCount}`);
+        console.log(`Translation dataset specification:`);
         console.log(
-          '\tSource language code: ',
-          dataset[i].translationDatasetMetadata.sourceLanguageCode
+          `\tSource language code: ${
+            i.translationDatasetMetadata.sourceLanguageCode
+          }`
         );
         console.log(
-          '\tTarget language code: ',
-          dataset[i].translationDatasetMetadata.targetLanguageCode
+          `\tTarget language code: ${
+            i.translationDatasetMetadata.targetLanguageCode
+          }`
         );
-        console.log('Dataset create time:');
-        console.log('\tseconds: ', dataset[i].createTime.seconds);
-        console.log('\tnanos: ', dataset[i].createTime.nanos);
+        console.log(`Dataset create time:`);
+        console.log(`\tseconds: ${i.createTime.seconds}`);
+        console.log(`\tnanos: ${i.createTime.nanos}`);
       }
     })
     .catch(err => {
@@ -134,7 +138,7 @@ function listDatasets(projectId, computeRegion, filter_) {
 
 function getDataset(projectId, computeRegion, datasetId) {
   // [START automl_translation_getDataset]
-  const automl = require('@google-cloud/automl');
+  const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
 
@@ -155,22 +159,24 @@ function getDataset(projectId, computeRegion, datasetId) {
       const dataset = responses[0];
 
       // Display the dataset information.
-      console.log('Dataset name:', dataset.name);
-      console.log('Dataset id: ', dataset.name.split('/').pop(-1));
-      console.log('Dataset display name: ', dataset.displayName);
-      console.log('Dataset example count: ', dataset.exampleCount);
-      console.log('Translation dataset specification:');
+      console.log(`Dataset name: ${dataset.name}`);
+      console.log(`Dataset id: ${dataset.name.split(`/`).pop(-1)}`);
+      console.log(`Dataset display name: ${dataset.displayName}`);
+      console.log(`Dataset example count: ${dataset.exampleCount}`);
+      console.log(`Translation dataset specification:`);
       console.log(
-        '\tSource language code: ',
-        dataset.translationDatasetMetadata.sourceLanguageCode
+        `\tSource language code: ${
+          dataset.translationDatasetMetadata.sourceLanguageCode
+        }`
       );
       console.log(
-        '\tTarget language code: ',
-        dataset.translationDatasetMetadata.targetLanguageCode
+        `\tTarget language code: ${
+          dataset.translationDatasetMetadata.targetLanguageCode
+        }`
       );
-      console.log('Dataset create time:');
-      console.log('\tseconds: ', dataset.createTime.seconds);
-      console.log('\tnanos: ', dataset.createTime.nanos);
+      console.log(`Dataset create time:`);
+      console.log(`\tseconds: ${dataset.createTime.seconds}`);
+      console.log(`\tnanos: ${dataset.createTime.nanos}`);
     })
     .catch(err => {
       console.error(err);
@@ -180,7 +186,7 @@ function getDataset(projectId, computeRegion, datasetId) {
 
 function importData(projectId, computeRegion, datasetId, path) {
   // [START automl_translation_importData]
-  const automl = require('@google-cloud/automl');
+  const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
 
@@ -196,7 +202,7 @@ function importData(projectId, computeRegion, datasetId, path) {
   const datasetFullId = client.datasetPath(projectId, computeRegion, datasetId);
 
   // Get the multiple Google Cloud Storage URIs.
-  const inputUris = path.split(',');
+  const inputUris = path.split(`,`);
   const inputConfig = {
     gcsSource: {
       inputUris: inputUris,
@@ -208,13 +214,13 @@ function importData(projectId, computeRegion, datasetId, path) {
     .importData({name: datasetFullId, inputConfig: inputConfig})
     .then(responses => {
       const operation = responses[0];
-      console.log('Processing import...');
+      console.log(`Processing import...`);
       return operation.promise();
     })
     .then(responses => {
       // The final result of the operation.
       if (responses[2].done === true) console.log(`Data imported.`);
-      console.log('Dataset imported.');
+      console.log(`Dataset imported.`);
     })
     .catch(err => {
       console.error(err);
@@ -224,7 +230,7 @@ function importData(projectId, computeRegion, datasetId, path) {
 
 function deleteDataset(projectId, computeRegion, datasetId) {
   // [START automl_translation_deleteDataset]
-  const automl = require('@google-cloud/automl');
+  const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
 
@@ -247,7 +253,7 @@ function deleteDataset(projectId, computeRegion, datasetId) {
     })
     .then(responses => {
       // The final result of the operation.
-      if (responses[2].done === true) console.log('Dataset deleted.');
+      if (responses[2].done === true) console.log(`Dataset deleted.`);
     })
     .catch(err => {
       console.error(err);
