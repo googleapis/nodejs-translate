@@ -61,6 +61,6 @@ test.cb(`should translate a string`, t => {
   proxyquire(`../quickstart`, {
     '@google-cloud/translate': {
       Translate: sinon.stub().returns(translateMock),
-    }
+    },
   });
 });
