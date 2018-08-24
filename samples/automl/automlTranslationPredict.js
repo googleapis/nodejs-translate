@@ -59,8 +59,8 @@ function predict(
     },
   };
 
-  // params is additional domain-specific parameters.
-  // translationAllowFallback allows to use Google translation model.
+  // Params is additional domain-specific parameters.
+  // TranslationAllowFallback allows to use Google translation model.
   var params = {};
   if (translationAllowFallback) {
     params = {

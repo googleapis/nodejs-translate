@@ -24,7 +24,7 @@
 `use strict`;
 
 function createModel(projectId, computeRegion, datasetId, modelName) {
-  // [START automl_translation_createModel]
+  // [START automl_translation_create_model]
   const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
@@ -82,11 +82,11 @@ function createModel(projectId, computeRegion, datasetId, modelName) {
     .catch(err => {
       console.error(err);
     });
-  // [END automl_translation_createModel]
+  // [END automl_translation_create_model]
 }
 
 function listModels(projectId, computeRegion, filter_) {
-  // [START automl_translation_listModels]
+  // [START automl_translation_list_models]
   const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
@@ -127,11 +127,11 @@ function listModels(projectId, computeRegion, filter_) {
     .catch(err => {
       console.error(err);
     });
-  // [END automl_translation_listModels]
+  // [END automl_translation_list_models]
 }
 
 function getModel(projectId, computeRegion, modelId) {
-  // [START automl_translation_getModel]
+  // [START automl_translation_get_model]
   const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
@@ -208,11 +208,11 @@ function getModel(projectId, computeRegion, modelId) {
     .catch(err => {
       console.error(err);
     });
-  // [END automl_translation_getModel]
+  // [END automl_translation_get_model]
 }
 
 function listModelEvaluations(projectId, computeRegion, modelId, filter_) {
-  // [START automl_translation_listModelEvaluations]
+  // [START automl_translation_list_model_evaluations]
   const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
@@ -241,7 +241,7 @@ function listModelEvaluations(projectId, computeRegion, modelId, filter_) {
     .catch(err => {
       console.error(err);
     });
-  // [END automl_translation_listModelEvaluations]
+  // [END automl_translation_list_model_evaluations]
 }
 
 function getModelEvaluation(
@@ -250,7 +250,7 @@ function getModelEvaluation(
   modelId,
   modelEvaluationId
 ) {
-  // [START automl_translation_getModelEvaluation]
+  // [START automl_translation_get_model_evaluation]
   const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
@@ -281,11 +281,11 @@ function getModelEvaluation(
     .catch(err => {
       console.error(err);
     });
-  // [END automl_translation_getModelEvaluation]
+  // [END automl_translation_get_model_evaluation]
 }
 
 function deleteModel(projectId, computeRegion, modelId) {
-  // [START automl_translation_deleteModel]
+  // [START automl_translation_delete_model]
   const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
@@ -314,11 +314,11 @@ function deleteModel(projectId, computeRegion, modelId) {
     .catch(err => {
       console.error(err);
     });
-  // [END automl_translation_deleteModel]
+  // [END automl_translation_delete_model]
 }
 
 function getOperationStatus(operationFullId) {
-  // [START automl_translation_getOperationStatus]
+  // [START automl_translation_get_operation_status]
   const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
@@ -333,7 +333,7 @@ function getOperationStatus(operationFullId) {
     const response = responses[0];
     console.log(`Operation status: ${response}`);
   });
-  // [END automl_translation_getOperationStatus]
+  // [END automl_translation_get_operation_status]
 }
 
 require(`yargs`)

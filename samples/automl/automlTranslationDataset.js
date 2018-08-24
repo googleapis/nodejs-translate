@@ -24,7 +24,7 @@
 `use strict`;
 
 function createDataset(projectId, computeRegion, datasetName, source, target) {
-  // [START automl_translation_createDataset]
+  // [START automl_translation_create_dataset]
   const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
@@ -82,11 +82,11 @@ function createDataset(projectId, computeRegion, datasetName, source, target) {
     .catch(err => {
       console.error(err);
     });
-  // [END automl_translation_createDataset]
+  // [END automl_translation_create_dataset]
 }
 
 function listDatasets(projectId, computeRegion, filter_) {
-  // [START automl_translation_listDatasets]
+  // [START automl_translation_list_datasets]
   const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
@@ -133,11 +133,11 @@ function listDatasets(projectId, computeRegion, filter_) {
     .catch(err => {
       console.error(err);
     });
-  // [END automl_translation_listDatasets]
+  // [START automl_translation_list_datasets]
 }
 
 function getDataset(projectId, computeRegion, datasetId) {
-  // [START automl_translation_getDataset]
+  // [START automl_translation_get_dataset]
   const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
@@ -181,11 +181,11 @@ function getDataset(projectId, computeRegion, datasetId) {
     .catch(err => {
       console.error(err);
     });
-  // [END automl_translation_getDataset]
+  // [END automl_translation_get_dataset]
 }
 
 function importData(projectId, computeRegion, datasetId, path) {
-  // [START automl_translation_importData]
+  // [START automl_translation_import_data]
   const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
@@ -219,17 +219,18 @@ function importData(projectId, computeRegion, datasetId, path) {
     })
     .then(responses => {
       // The final result of the operation.
-      if (responses[2].done === true) console.log(`Data imported.`);
-      console.log(`Dataset imported.`);
+      if (responses[2].done === true) {
+        console.log(`Data imported.`);
+      }
     })
     .catch(err => {
       console.error(err);
     });
-  // [END automl_translation_importData]
+  // [END automl_translation_import_data]
 }
 
 function deleteDataset(projectId, computeRegion, datasetId) {
-  // [START automl_translation_deleteDataset]
+  // [START automl_translation_delete_dataset]
   const automl = require(`@google-cloud/automl`);
 
   const client = new automl.v1beta1.AutoMlClient();
@@ -258,7 +259,7 @@ function deleteDataset(projectId, computeRegion, datasetId) {
     .catch(err => {
       console.error(err);
     });
-  // [END automl_translation_deleteDataset]
+  // [END automl_translation_delete_dataset]
 }
 
 require(`yargs`)
