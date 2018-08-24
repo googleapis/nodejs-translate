@@ -21,9 +21,10 @@
 const test = require(`ava`);
 const tools = require(`@google-cloud/nodejs-repo-tools`);
 
-const cmdDataset = `node ./automl/automlTranslationDataset.js`;
-const cmdModel = `node ./automl/automlTranslationModel.js`;
-const cmdPredict = `node ./automl/automlTranslationPredict.js`;
+const automl = `node ./automl`;
+const cmdDataset = `${automl}/automlTranslationDataset.js`;
+const cmdModel = `${automl}/automlTranslationModel.js`;
+const cmdPredict = `${automl}/automlTranslationPredict.js`;
 
 const testDataSetName = `testDataSet`;
 const dummyDataSet = `dummyDataSet`;
