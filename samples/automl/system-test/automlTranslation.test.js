@@ -30,7 +30,7 @@ const sampleText = `./resources/testInput.txt`;
 const donotdeleteModelId = `TRL188026453969732486`;
 
 // Skipped because it's been taking too long to delete datasets
-test.skip(`It should create a create, list, and delete a dataset`, async t => {
+test.skip(`should create a create, list, and delete a dataset`, async t => {
   // Check to see that this dataset does not yet exist
   let output = await tools.runAsync(`${cmdDataset} list-datasets`);
   t.false(output.includes(testDataSetName));
@@ -53,7 +53,7 @@ test.skip(`It should create a create, list, and delete a dataset`, async t => {
 });
 
 // We make two models running this test, see hard-coded workaround below
-test.skip(`It should create a dataset, import data, and start making a model`, async t => {
+test.skip(`should create a dataset, import data, and start making a model`, async t => {
   // Check to see that this dataset does not yet exist
   let output = await tools.runAsync(`${cmdDataset} list-datasets`);
   t.false(output.includes(dummyDataSet));
@@ -95,7 +95,7 @@ test.skip(`It should create a dataset, import data, and start making a model`, a
   t.true(output.includes(`done: false`));
 });
 
-test(`It should run get model (from a prexisting model)`, async t => {
+test(`should run get model (from a prexisting model)`, async t => {
   // Confirm dataset exists
   let output = await tools.runAsync(`${cmdDataset} list-datasets`);
   t.true(output.includes(`me_do_not_delete`));
@@ -113,7 +113,7 @@ test(`It should run get model (from a prexisting model)`, async t => {
   t.true(output.includes(`Model deployment state: DEPLOYED`));
 });
 
-test(`It should run Prediction from prexisting model`, async t => {
+test(`should run Prediction from prexisting model`, async t => {
   // Confirm dataset exists
   let output = await tools.runAsync(`${cmdDataset} list-datasets`);
   t.true(output.includes(`me_do_not_delete`));
