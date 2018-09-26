@@ -1,7 +1,7 @@
 {
   "name": "@google-cloud/translate",
   "description": "Cloud Translation API Client Library for Node.js",
-  "version": "2.0.0",
+  "version": "2.1.2",
   "license": "Apache-2.0",
   "author": "Google Inc.",
   "engines": {
@@ -61,18 +61,19 @@
     "check": "gts check",
     "clean": "gts clean",
     "compile": "tsc -p .",
-    "fix": "gts fix",
+    "fix": "gts fix && eslint --fix 'samples/**/*.js' && npm run prettier",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
     "presystem-test": "npm run compile"
   },
   "dependencies": {
-    "@google-cloud/common": "^0.21.0",
+    "@google-cloud/common": "^0.25.0",
     "@google-cloud/promisify": "^0.3.0",
     "arrify": "^1.0.1",
     "extend": "^3.0.1",
     "is": "^3.2.1",
-    "is-html": "^1.1.0"
+    "is-html": "^1.1.0",
+    "teeny-request": "^3.4.0"
   },
   "devDependencies": {
     "@google-cloud/nodejs-repo-tools": "^2.3.0",
@@ -94,7 +95,7 @@
     "intelli-espower-loader": "^1.0.1",
     "jsdoc": "^3.5.5",
     "mocha": "^5.2.0",
-    "nyc": "^12.0.2",
+    "nyc": "^13.0.0",
     "power-assert": "^1.6.0",
     "prettier": "^1.13.5",
     "proxyquire": "^2.0.1",
