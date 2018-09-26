@@ -4,6 +4,46 @@
 
 [1]: https://www.npmjs.com/package/nodejs-translate?activeTab=versions
 
+## v2.1.2
+
+### Bug fixes
+- fix: Improve typescript types ([#124](https://github.com/googleapis/nodejs-translate/pull/124))
+
+### Dependencies
+- fix(deps): update dependency @google-cloud/common to ^0.25.0 ([#122](https://github.com/googleapis/nodejs-translate/pull/122))
+- fix(deps): update dependency @google-cloud/common to ^0.24.0 ([#117](https://github.com/googleapis/nodejs-translate/pull/117))
+
+### Internal / Testing Changes
+- Enable prefer-const in the eslint config ([#123](https://github.com/googleapis/nodejs-translate/pull/123))
+- Enable no-var in eslint ([#121](https://github.com/googleapis/nodejs-translate/pull/121))
+- Update CI config ([#118](https://github.com/googleapis/nodejs-translate/pull/118))
+- Enable noImplicitThis in tsconfig ([#115](https://github.com/googleapis/nodejs-translate/pull/115))
+
+## v2.1.1
+
+### Internal / Testing Changes
+- Retry npm install in CI (#113)
+- fix: set request module (#112)
+- Re-generate library using /synth.py (#111)
+- fix: run the linter (#110)
+- fix: always run all system-tests (#109)
+
+## v2.1.0
+
+### Implementation Changes
+- feat: Use small request dependency (#98)
+
+### Documentation
+- doc: use new import syntax in samples (#100)
+
+### Internal / Testing Changes
+- Re-generate library using /synth.py (#104)
+- chore(deps): update dependency nyc to v13 (#103)
+- Update the CI config (#102)
+- chore: update CircleCI config
+- chore(deps): update dependency eslint-config-prettier to v3 (#95)
+- chore: run repo tools (#96)
+
 ## v2.0.0
 
 **This release has breaking changes**.
