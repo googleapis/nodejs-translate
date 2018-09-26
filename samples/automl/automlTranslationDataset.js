@@ -25,9 +25,9 @@
 
 function createDataset(projectId, computeRegion, datasetName, source, target) {
   // [START automl_translation_create_dataset]
-  const automl = require(`@google-cloud/automl`);
+  const automl = require(`@google-cloud/automl`).v1beta1;
 
-  const client = new automl.v1beta1.AutoMlClient();
+  const client = new automl.AutoMlClient();
 
   /**
    * TODO(developer): Uncomment the following line before running the sample.
@@ -85,7 +85,7 @@ function createDataset(projectId, computeRegion, datasetName, source, target) {
   // [END automl_translation_create_dataset]
 }
 
-function listDatasets(projectId, computeRegion, filter_) {
+function listDatasets(projectId, computeRegion, filter) {
   // [START automl_translation_list_datasets]
   const automl = require(`@google-cloud/automl`);
 
@@ -96,39 +96,39 @@ function listDatasets(projectId, computeRegion, filter_) {
    */
   // const projectId = `The GCLOUD_PROJECT string, e.g. "my-gcloud-project"`;
   // const computeRegion = `region-name, e.g. "us-central1"`;
-  // const filter_ = `filter expressions, must specify field e.g. “imageClassificationModelMetadata:*”`;
+  // const filter = `filter expressions, must specify field e.g. “imageClassificationModelMetadata:*”`;
 
   // A resource that represents Google Cloud Platform location.
   const projectLocation = client.locationPath(projectId, computeRegion);
 
   // List all the datasets available in the region by applying filter.
   client
-    .listDatasets({parent: projectLocation, filter: filter_})
+    .listDatasets({parent: projectLocation, filter: filter})
     .then(responses => {
-      const dataset = responses[0];
+      const datasets = responses[0];
 
       // Display the dataset information.
       console.log(`List of datasets:`);
-      for (let i of dataset) {
-        console.log(`Dataset name: ${i.name}`);
-        console.log(`Dataset id: ${i.name.split(`/`).pop(-1)}`);
-        console.log(`Dataset display name: ${i.displayName}`);
-        console.log(`Dataset example count: ${i.exampleCount}`);
+      datasets.forEach(dataset => {
+        console.log(`Dataset name: ${dataset.name}`);
+        console.log(`Dataset id: ${dataset.name.split(`/`).pop(-1)}`);
+        console.log(`Dataset display name: ${dataset.displayName}`);
+        console.log(`Dataset example count: ${dataset.exampleCount}`);
         console.log(`Translation dataset specification:`);
         console.log(
           `\tSource language code: ${
-            i.translationDatasetMetadata.sourceLanguageCode
+            dataset.translationDatasetMetadata.sourceLanguageCode
           }`
         );
         console.log(
           `\tTarget language code: ${
-            i.translationDatasetMetadata.targetLanguageCode
+            dataset.translationDatasetMetadata.targetLanguageCode
           }`
         );
         console.log(`Dataset create time:`);
-        console.log(`\tseconds: ${i.createTime.seconds}`);
-        console.log(`\tnanos: ${i.createTime.nanos}`);
-      }
+        console.log(`\tseconds: ${dataset.createTime.seconds}`);
+        console.log(`\tnanos: ${dataset.createTime.nanos}`);
+      });
     })
     .catch(err => {
       console.error(err);
@@ -138,9 +138,9 @@ function listDatasets(projectId, computeRegion, filter_) {
 
 function getDataset(projectId, computeRegion, datasetId) {
   // [START automl_translation_get_dataset]
-  const automl = require(`@google-cloud/automl`);
+  const automl = require(`@google-cloud/automl`).v1beta1;
 
-  const client = new automl.v1beta1.AutoMlClient();
+  const client = new automl.AutoMlClient();
 
   /**
    * TODO(developer): Uncomment the following line before running the sample.
@@ -186,9 +186,9 @@ function getDataset(projectId, computeRegion, datasetId) {
 
 function importData(projectId, computeRegion, datasetId, path) {
   // [START automl_translation_import_data]
-  const automl = require(`@google-cloud/automl`);
+  const automl = require(`@google-cloud/automl`).v1beta1;
 
-  const client = new automl.v1beta1.AutoMlClient();
+  const client = new automl.AutoMlClient();
 
   /**
    * TODO(developer): Uncomment the following line before running the sample.
@@ -231,9 +231,9 @@ function importData(projectId, computeRegion, datasetId, path) {
 
 function deleteDataset(projectId, computeRegion, datasetId) {
   // [START automl_translation_delete_dataset]
-  const automl = require(`@google-cloud/automl`);
+  const automl = require(`@google-cloud/automl`).v1beta1;
 
-  const client = new automl.v1beta1.AutoMlClient();
+  const client = new automl.AutoMlClient();
 
   /**
    * TODO(developer): Uncomment the following line before running the sample.
@@ -285,7 +285,7 @@ require(`yargs`)
       requiresArg: true,
       description: `Id of the dataset`,
     },
-    filter_: {
+    filter: {
       alias: `f`,
       default: `translationDatasetMetadata:*`,
       type: `string`,
@@ -344,24 +344,24 @@ require(`yargs`)
       opts.target
     )
   )
-  .command(`listDatasets`, `list all Datasets`, {}, opts =>
-    listDatasets(opts.projectId, opts.computeRegion, opts.filter_)
+  .command(`list-datasets`, `list all Datasets`, {}, opts =>
+    listDatasets(opts.projectId, opts.computeRegion, opts.filter)
   )
-  .command(`getDataset`, `Get a Dataset`, {}, opts =>
+  .command(`get-dataset`, `Get a Dataset`, {}, opts =>
     getDataset(opts.projectId, opts.computeRegion, opts.datasetId)
   )
-  .command(`deleteDataset`, `Delete a dataset`, {}, opts =>
+  .command(`delete-dataset`, `Delete a dataset`, {}, opts =>
     deleteDataset(opts.projectId, opts.computeRegion, opts.datasetId)
   )
-  .command(`importData`, `Import labeled items into dataset`, {}, opts =>
+  .command(`import-data`, `Import labeled items into dataset`, {}, opts =>
     importData(opts.projectId, opts.computeRegion, opts.datasetId, opts.path)
   )
-  .example(`node $0 createDataset -n "newDataSet" -s "en" -t "ja"`)
-  .example(`node $0 listDatasets -f "translationDatasetMetadata:*"`)
-  .example(`node $0 getDataset -i "DATASETID"`)
-  .example(`node $0 deleteDataset -i "DATASETID"`)
+  .example(`node $0 create-dataset -n "newDataSet" -s "en" -t "ja"`)
+  .example(`node $0 list-datasets -f "translationDatasetMetadata:*"`)
+  .example(`node $0 get-dataset -i "DATASETID"`)
+  .example(`node $0 delete-dataset -i "DATASETID"`)
   .example(
-    `node $0 importData -i "dataSetId" -p "gs://myproject/mytraindata.csv"`
+    `node $0 import-data -i "dataSetId" -p "gs://myproject/mytraindata.csv"`
   )
   .wrap(120)
   .recommendCommands()

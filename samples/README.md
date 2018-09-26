@@ -77,18 +77,18 @@ __Usage:__ `node automlTranslationDataset.js --help`
 automlTranslationDataset.js <command>
 
 Commands:
-  automlTranslationDataset.js createDataset  creates a new Dataset
-  automlTranslationDataset.js listDatasets   list all Datasets
-  automlTranslationDataset.js getDataset     Get a Dataset
-  automlTranslationDataset.js deleteDataset  Delete a dataset
-  automlTranslationDataset.js importData     Import labeled items into dataset
+  automlTranslationDataset.js create-dataset  creates a new Dataset
+  automlTranslationDataset.js list-datasets   list all Datasets
+  automlTranslationDataset.js get-dataset     Get a Dataset
+  automlTranslationDataset.js delete-dataset  Delete a dataset
+  automlTranslationDataset.js import-data     Import labeled items into dataset
 
 Options:
   --version            Show version number                                                                     [boolean]
   --computeRegion, -c  region name e.g. "us-central1"                                  [string] [default: "us-central1"]
   --datasetName, -n    Name of the Dataset                                             [string] [default: "testDataSet"]
   --datasetId, -i      Id of the dataset                                                                        [string]
-  --filter_, -f        Name of the Dataset to search for              [string] [default: "translationDatasetMetadata:*"]
+  --filter, -f        Name of the Dataset to search for              [string] [default: "translationDatasetMetadata:*"]
   --multilabel, -m     Type of the classification problem, False - MULTICLASS, True - MULTILABEL.
                                                                                                [string] [default: false]
   --outputUri, -o      URI (or local path) to export dataset                                                    [string]
@@ -100,11 +100,11 @@ Options:
   --help               Show help                                                                               [boolean]
 
 Examples:
-  node automlTranslationDataset.js createDataset -n "newDataSet" -s "en" -t "ja"
-  node automlTranslationDataset.js listDatasets -f "translationDatasetMetadata:*"
-  node automlTranslationDataset.js getDataset -i "DATASETID"
-  node automlTranslationDataset.js deleteDataset -i "DATASETID"
-  node automlTranslationDataset.js importData -i "dataSetId" -p "gs://myproject/mytraindata.csv"
+  node automlTranslationDataset.js create-dataset -n "newDataSet" -s "en" -t "ja"
+  node automlTranslationDataset.js list-datasets -f "translationDatasetMetadata:*"
+  node automlTranslationDataset.js get-dataset -i "DATASETID"
+  node automlTranslationDataset.js delete-dataset -i "DATASETID"
+  node automlTranslationDataset.js import-data -i "dataSetId" -p "gs://myproject/mytraindata.csv"
 
 For more information, see https://cloud.google.com/translate/docs
 ```
@@ -127,19 +127,19 @@ __Usage:__ `node translate.js --help`
 automlTranslationModel.js <command>
 
 Commands:
-  automlTranslationModel.js createModel           creates a new Model
-  automlTranslationModel.js getOperationStatus    Gets status of current operation
-  automlTranslationModel.js listModels            list all Models
-  automlTranslationModel.js getModel              Get a Model
-  automlTranslationModel.js listModelEvaluations  List model evaluations
-  automlTranslationModel.js getModelEvaluation    Get model evaluation
-  automlTranslationModel.js deleteModel           Delete a Model
+  automlTranslationModel.js create-model           creates a new Model
+  automlTranslationModel.js get-operation-status    Gets status of current operation
+  automlTranslationModel.js list-models            list all Models
+  automlTranslationModel.js get-model              Get a Model
+  automlTranslationModel.js list-model-evaluations  List model evaluations
+  automlTranslationModel.js get-model-evaluation    Get model evaluation
+  automlTranslationModel.js delete-model           Delete a Model
 
 Options:
   --version                Show version number                                                                 [boolean]
   --computeRegion, -c      region name e.g. "us-central1"                              [string] [default: "us-central1"]
   --datasetId, -i          Id of the dataset                                                                    [string]
-  --filter_, -f            Name of the Dataset to search for                                      [string] [default: ""]
+  --filter, -f            Name of the Dataset to search for                                      [string] [default: ""]
   --modelName, -m          Name of the model                                                   [string] [default: false]
   --modelId, -a            Id of the model                                                        [string] [default: ""]
   --modelEvaluationId, -e  Id of the model evaluation                                             [string] [default: ""]
@@ -148,13 +148,13 @@ Options:
   --help                   Show help                                                                           [boolean]
 
 Examples:
-  node automlTranslationModel.js createModel -i "DatasetID" -m "myModelName"
-  node automlTranslationModel.js getOperationStatus -i "datasetId" -o "OperationFullID"
-  node automlTranslationModel.js listModels -f "translationModelMetadata:*"
-  node automlTranslationModel.js getModel -a "ModelID"
-  node automlTranslationModel.js listModelEvaluations -a "ModelID"
-  node automlTranslationModel.js getModelEvaluation -a "ModelId" -e "ModelEvaluationID"
-  node automlTranslationModel.js deleteModel -a "ModelID"
+  node automlTranslationModel.js create-model -i "DatasetID" -m "myModelName"
+  node automlTranslationModel.js get-operation-status -i "datasetId" -o "OperationFullID"
+  node automlTranslationModel.js list-models -f "translationModelMetadata:*"
+  node automlTranslationModel.js get-model -a "ModelID"
+  node automlTranslationModel.js list-model-evaluations -a "ModelID"
+  node automlTranslationModel.js get-model-evaluation -a "ModelId" -e "ModelEvaluationID"
+  node automlTranslationModel.js delete-model -a "ModelID"
 
 For more information, see https://cloud.google.com/translate/docs
 ```
