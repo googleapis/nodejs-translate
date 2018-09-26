@@ -61,7 +61,7 @@ function predict(
 
   // Params is additional domain-specific parameters.
   // TranslationAllowFallback allows to use Google translation model.
-  var params = {};
+  let params = {};
   if (translationAllowFallback) {
     params = {
       translationAllowFallback: true,

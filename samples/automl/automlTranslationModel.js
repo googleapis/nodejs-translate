@@ -63,7 +63,7 @@ function createModel(projectId, computeRegion, datasetId, modelName) {
       const model = responses[0];
       console.log(model);
       // Retrieve deployment state.
-      var deploymentState = ``;
+      let deploymentState = ``;
       if (model.deploymentState === 1) {
         deploymentState = `deployed`;
       } else if (model.deploymentState === 2) {
