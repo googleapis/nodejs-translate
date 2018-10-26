@@ -48,18 +48,15 @@ async function createModel(projectId, computeRegion, datasetId, modelName) {
   };
 
   // Create a model with the model metadata in the region.
-  const responses = await client.createModel({
+  const [operation, response] = await client.createModel({
     parent: projectLocation,
     model: myModel,
   });
-  const operation = responses[0];
-  const initialApiResponse = responses[1];
-
+  const initialApiResponse = response;
   console.log(`Training operation name: `, initialApiResponse.name);
   console.log(`Training started...`);
-  const operationResponses = await operation.promise();
+  const [model] = await operation.promise();
   // The final result of the operation.
-  const model = operationResponses[0];
   console.log(model);
   // Retrieve deployment state.
   let deploymentState = ``;
@@ -98,11 +95,10 @@ async function listModels(projectId, computeRegion, filter) {
   const projectLocation = client.locationPath(projectId, computeRegion);
 
   // List all the models available in the region by applying filter.
-  const responses = await client.listModels({
+  const [models] = await client.listModels({
     parent: projectLocation,
     filter: filter,
   });
-  const models = responses[0];
 
   // Display the model information.
   console.log(`List of models:`);
@@ -141,8 +137,7 @@ async function getModel(projectId, computeRegion, modelId) {
   const modelFullId = client.modelPath(projectId, computeRegion, modelId);
 
   // Get complete detail of the model.
-  const responses = await client.getModel({name: modelFullId});
-  const model = responses[0];
+  const [model] = await client.getModel({name: modelFullId});
 
   // Display the model information.
   console.log(`Model name: ${model.name}`);
@@ -212,11 +207,10 @@ async function listModelEvaluations(projectId, computeRegion, modelId, filter) {
   const modelFullId = await client.modelPath(projectId, computeRegion, modelId);
 
   // List all the model evaluations in the model by applying filter.
-  const responses = client.listModelEvaluations({
+  const [elements] = client.listModelEvaluations({
     parent: modelFullId,
     filter: filter,
   });
-  const elements = responses[0];
   console.log(`List of model evaluations:`);
   elements.forEach(element => {
     console.log(element);
@@ -253,10 +247,9 @@ async function getModelEvaluation(
   );
 
   // Get complete detail of the model evaluation.
-  const responses = await client.getModelEvaluation({
+  const [response] = await client.getModelEvaluation({
     name: modelEvaluationFullId,
   });
-  const response = responses[0];
   console.log(response);
 
   // [END automl_translation_get_model_evaluation]
@@ -279,8 +272,7 @@ async function deleteModel(projectId, computeRegion, modelId) {
   const modelFullId = client.modelPath(projectId, computeRegion, modelId);
 
   // Delete a model.
-  const responses = await client.deleteModel({name: modelFullId});
-  const operation = responses[0];
+  const [operation] = await client.deleteModel({name: modelFullId});
   const operationResponse = await operation.promise();
   // The final result of the operation.
   if (operationResponse[2].done === true) console.log(`Model deleted.`);
@@ -300,8 +292,10 @@ async function getOperationStatus(operationFullId) {
   // const operationFullId = `Full name of an operation, eg. “Projects/<projectId>/locations/us-central1/operations/<operationId>
 
   // Get the latest state of a long-running operation.
-  const responses = await client.operationsClient.getOperation(operationFullId);
-  console.log(`Operation status: ${responses[0]}`);
+  const [responses] = await client.operationsClient.getOperation(
+    operationFullId
+  );
+  console.log(`Operation status: ${responses}`);
   // [END automl_translation_get_operation_status]
 }
 

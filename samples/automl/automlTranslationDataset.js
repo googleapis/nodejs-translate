@@ -60,11 +60,10 @@ async function createDataset(
   };
 
   // Create a dataset with the dataset specification in the region.
-  const responses = await client.createDataset({
+  const [dataset] = await client.createDataset({
     parent: projectLocation,
     dataset: datasetInfo,
   });
-  const dataset = responses[0];
 
   // Display the dataset information
   console.log(`Dataset name: ${dataset.name}`);
@@ -105,11 +104,10 @@ async function listDatasets(projectId, computeRegion, filter) {
   const projectLocation = client.locationPath(projectId, computeRegion);
 
   // List all the datasets available in the region by applying filter.
-  const responses = await client.listDatasets({
+  const [datasets] = await client.listDatasets({
     parent: projectLocation,
     filter: filter,
   });
-  const datasets = responses[0];
 
   // Display the dataset information.
   console.log(`List of datasets:`);
@@ -158,8 +156,7 @@ async function getDataset(projectId, computeRegion, datasetId) {
   );
 
   // Get complete detail of the dataset.
-  const responses = await client.getDataset({name: datasetFullId});
-  const dataset = responses[0];
+  const [dataset] = await client.getDataset({name: datasetFullId});
 
   // Display the dataset information.
   console.log(`Dataset name: ${dataset.name}`);
@@ -210,11 +207,10 @@ async function importData(projectId, computeRegion, datasetId, path) {
   };
 
   // Import data from the input URI.
-  const responses = await client.importData({
+  const [operation] = await client.importData({
     name: datasetFullId,
     inputConfig: inputConfig,
   });
-  const operation = responses[0];
   console.log(`Processing import...`);
   const operationResponses = await operation.promise();
   // The final result of the operation.
@@ -242,9 +238,8 @@ async function deleteDataset(projectId, computeRegion, datasetId) {
   const datasetFullId = client.datasetPath(projectId, computeRegion, datasetId);
 
   // Delete a dataset.
-  const responses = await client.deleteDataset({name: datasetFullId});
-  const operation = responses[0];
-  const operationResponses = await operation.promise();
+  const [operations] = await client.deleteDataset({name: datasetFullId});
+  const operationResponses = await operations.promise();
   // The final result of the operation.
   if (operationResponses[2].done === true) console.log(`Dataset deleted.`);
 

@@ -31,8 +31,7 @@ async function detectLanguage(text) {
   // Detects the language. "text" can be a string for detecting the language of
   // a single piece of text, or an array of strings for detecting the languages
   // of multiple texts.
-  const results = await translate.detect(text);
-  let detections = results[0];
+  let [detections] = await translate.detect(text);
   detections = Array.isArray(detections) ? detections : [detections];
   console.log('Detections:');
   detections.forEach(detection => {
@@ -51,8 +50,7 @@ async function listLanguages() {
   const translate = new Translate();
 
   // Lists available translation language with their names in English (the default).
-  const results = await translate.getLanguages();
-  const languages = results[0];
+  const [languages] = await translate.getLanguages();
 
   console.log('Languages:');
   languages.forEach(language => console.log(language));
@@ -73,8 +71,7 @@ async function listLanguagesWithTarget(target) {
   // const target = 'The target language for language names, e.g. ru';
 
   // Lists available translation language with their names in a target language
-  const results = await translate.getLanguages(target);
-  const languages = results[0];
+  const [languages] = await translate.getLanguages(target);
 
   console.log('Languages:');
   languages.forEach(language => console.log(language));
@@ -99,8 +96,7 @@ async function translateText(text, target) {
   // Translates the text into the target language. "text" can be a string for
   // translating a single piece of text, or an array of strings for translating
   // multiple texts.
-  const results = await translate.translate(text, target);
-  let translations = results[0];
+  let [translations] = await translate.translate(text, target);
   translations = Array.isArray(translations) ? translations : [translations];
   console.log('Translations:');
   translations.forEach((translation, i) => {
@@ -136,8 +132,7 @@ async function translateTextWithModel(text, target, model) {
   // Translates the text into the target language. "text" can be a string for
   // translating a single piece of text, or an array of strings for translating
   // multiple texts.
-  const results = await translate.translate(text, options);
-  let translations = results[0];
+  let [translations] = await translate.translate(text, options);
   translations = Array.isArray(translations) ? translations : [translations];
   console.log('Translations:');
   translations.forEach((translation, i) => {
@@ -160,7 +155,7 @@ require(`yargs`)
     {},
     async opts => {
       if (opts.target) {
-        await listLanguagesWithTarget('opts.target').catch(console.error);
+        await listLanguagesWithTarget(opts.target).catch(console.error);
       } else {
         await listLanguages().catch(console.error);
       }
