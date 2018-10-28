@@ -149,11 +149,7 @@ async function getDataset(projectId, computeRegion, datasetId) {
   // const datasetId = `Id of the dataset`;
 
   // Get the full path of the dataset.
-  const datasetFullId = await client.datasetPath(
-    projectId,
-    computeRegion,
-    datasetId
-  );
+  const datasetFullId = client.datasetPath(projectId, computeRegion, datasetId);
 
   // Get complete detail of the dataset.
   const [dataset] = await client.getDataset({name: datasetFullId});
