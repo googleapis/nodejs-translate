@@ -15,29 +15,29 @@
 
 'use strict';
 
-const path = require(`path`);
-const assert = require(`assert`);
-const tools = require(`@google-cloud/nodejs-repo-tools`);
-const {Translate} = require(`@google-cloud/translate`);
+const path = require('path');
+const assert = require('assert');
+const tools = require('@google-cloud/nodejs-repo-tools');
+const {Translate} = require('@google-cloud/translate');
 const translate = new Translate();
 
-const cwd = path.join(__dirname, `..`);
-const cmd = `node translate.js`;
-const text = `Hello world!`;
-const text2 = `Goodbye!`;
-const model = `nmt`;
-const toLang = `ru`;
+const cwd = path.join(__dirname, '..');
+const cmd = 'node translate.js';
+const text = 'Hello world!';
+const text2 = 'Goodbye!';
+const model = 'nmt';
+const toLang = 'ru';
 
 before(tools.checkCredentials);
 
-it(`should detect language of a single string`, async () => {
+it('should detect language of a single string', async () => {
   const output = await tools.runAsync(`${cmd} detect "${text}"`, cwd);
   const [detection] = await translate.detect(text);
   const expected = `Detections:\n${text} => ${detection.language}`;
   assert.strictEqual(output, expected);
 });
 
-it(`should detect language of multiple strings`, async () => {
+it('should detect language of multiple strings', async () => {
   const output = await tools.runAsync(
     `${cmd} detect "${text}" "${text2}"`,
     cwd
@@ -49,19 +49,19 @@ it(`should detect language of multiple strings`, async () => {
   assert.strictEqual(output, expected);
 });
 
-it(`should list languages`, async () => {
+it('should list languages', async () => {
   const output = await tools.runAsync(`${cmd} list`, cwd);
-  assert.ok(output.includes(`Languages:`));
+  assert.ok(output.includes('Languages:'));
   assert.ok(output.includes(`{ code: 'af', name: 'Afrikaans' }`));
 });
 
-it(`should list languages with a target`, async () => {
+it('should list languages with a target', async () => {
   const output = await tools.runAsync(`${cmd} list es`, cwd);
-  assert.ok(output.includes(`Languages:`));
+  assert.ok(output.includes('Languages:'));
   assert.ok(output.includes(`{ code: 'af', name: 'afrikáans' }`));
 });
 
-it(`should translate a single string`, async () => {
+it('should translate a single string', async () => {
   const output = await tools.runAsync(
     `${cmd} translate ${toLang} "${text}"`,
     cwd
@@ -71,7 +71,7 @@ it(`should translate a single string`, async () => {
   assert.strictEqual(output, expected);
 });
 
-it(`should translate multiple strings`, async () => {
+it('should translate multiple strings', async () => {
   const output = await tools.runAsync(
     `${cmd} translate ${toLang} "${text}" "${text2}"`,
     cwd
@@ -83,7 +83,7 @@ it(`should translate multiple strings`, async () => {
   assert.strictEqual(output, expected);
 });
 
-it(`should translate a single string with a model`, async () => {
+it('should translate a single string with a model', async () => {
   const output = await tools.runAsync(
     `${cmd} translate-with-model ${toLang} ${model} "${text}"`,
     cwd
@@ -93,7 +93,7 @@ it(`should translate a single string with a model`, async () => {
   assert.strictEqual(output, expected);
 });
 
-it(`should translate multiple strings with a model`, async () => {
+it('should translate multiple strings with a model', async () => {
   const output = await tools.runAsync(
     `${cmd} translate-with-model ${toLang} ${model} "${text}" "${text2}"`,
     cwd

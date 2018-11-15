@@ -15,21 +15,21 @@
 
 'use strict';
 
-const proxyquire = require(`proxyquire`).noPreserveCache();
-const sinon = require(`sinon`);
-const assert = require(`assert`);
-const tools = require(`@google-cloud/nodejs-repo-tools`);
-const {Translate} = proxyquire(`@google-cloud/translate`, {});
+const proxyquire = require('proxyquire').noPreserveCache();
+const sinon = require('sinon');
+const assert = require('assert');
+const tools = require('@google-cloud/nodejs-repo-tools');
+const {Translate} = proxyquire('@google-cloud/translate', {});
 const translate = new Translate();
 
 before(tools.checkCredentials);
 before(tools.stubConsole);
 after(tools.restoreConsole);
 
-it(`should translate a string`, () => {
-  const string = `Hello, world!`;
-  const expectedTranslation = `Привет, мир!`;
-  const targetLanguage = `ru`;
+it('should translate a string', () => {
+  const string = 'Hello, world!';
+  const expectedTranslation = 'Привет, мир!';
+  const targetLanguage = 'ru';
   const translateMock = {
     translate: (_string, _targetLanguage) => {
       assert.strictEqual(_string, string);
@@ -53,7 +53,7 @@ it(`should translate a string`, () => {
     },
   };
 
-  proxyquire(`../quickstart`, {
+  proxyquire('../quickstart', {
     '@google-cloud/translate': {
       Translate: sinon.stub().returns(translateMock),
     },
