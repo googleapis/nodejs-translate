@@ -1,0 +1,13 @@
+---
+tsconfig: tsconfig.doc.json
+output: docs
+name: Google Cloud Translate API Node.js Client Library
+disableSourceCode: true
+disableInternal: true
+disablePrivate: true
+disableProtected: true
+# Disable angular related features of compodoc
+disableGraph: true
+disableRoutesGraph: true
+disableLifeCycleHooks: true
+disableCoverage: true

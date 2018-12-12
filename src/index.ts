@@ -21,11 +21,18 @@ import * as extend from 'extend';
 import {GoogleAuthOptions} from 'google-auth-library';
 import * as is from 'is';
 
-const isHtml = require('is-html');
 import {DecorateRequestOptions, BodyResponseCallback} from '@google-cloud/common/build/src/util';
 import * as r from 'request';
 import {teenyRequest} from 'teeny-request';
 
+/**
+ * @internal
+ */
+const isHtml = require('is-html');
+
+/**
+ * @internal
+ */
 const PKG = require('../../package.json');
 
 /**

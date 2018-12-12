@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "cover": "nyc --reporter=lcov mocha build/test && nyc report",
-    "docs": "jsdoc -c .jsdoc.js",
+    "docs": "compodoc -c .compodocrc.yaml",
     "generate-scaffolding": "repo-tools generate all && repo-tools generate lib_samples_readme  -l samples/ --config ../.cloud-repo-tools.json",
     "lint": "npm run check && eslint samples/",
     "samples-test": "cd samples/ && npm link ../ && npm test && cd ../",
