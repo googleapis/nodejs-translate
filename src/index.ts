@@ -155,8 +155,8 @@ export interface TranslateConfig extends GoogleAuthOptions {
  * With [Google Translate](https://cloud.google.com/translate), you can
  * dynamically translate text between thousands of language pairs.
  *
- * The Google Cloud Translation API lets websites and programs integrate with Google
- * Translate programmatically.
+ * The Google Cloud Translation API lets websites and programs integrate with
+ * Google Translate programmatically.
  *
  * @class
  *
