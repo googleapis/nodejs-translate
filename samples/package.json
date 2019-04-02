@@ -8,7 +8,7 @@
     "node": ">=8"
   },
   "scripts": {
-    "test": "mocha system-test"
+    "test": "mocha system-test system-test/v3beta1/"
   },
   "dependencies": {
     "@google-cloud/translate": "^3.0.0",
