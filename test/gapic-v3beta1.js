@@ -216,17 +216,24 @@ describe('TranslationServiceClient', () => {
       };
 
       // Mock Grpc layer
-      client._innerApiCalls.batchTranslateText = mockLongRunningGrpcMethod(request, expectedResponse);
+      client._innerApiCalls.batchTranslateText = mockLongRunningGrpcMethod(
+        request,
+        expectedResponse
+      );
 
-      client.batchTranslateText(request).then(responses => {
-        const operation = responses[0];
-        return operation.promise();
-      }).then(responses => {
-        assert.deepStrictEqual(responses[0], expectedResponse);
-        done();
-      }).catch(err => {
-        done(err);
-      });
+      client
+        .batchTranslateText(request)
+        .then(responses => {
+          const operation = responses[0];
+          return operation.promise();
+        })
+        .then(responses => {
+          assert.deepStrictEqual(responses[0], expectedResponse);
+          done();
+        })
+        .catch(err => {
+          done(err);
+        });
     });
 
     it('invokes batchTranslateText with error', done => {
@@ -248,18 +255,26 @@ describe('TranslationServiceClient', () => {
       };
 
       // Mock Grpc layer
-      client._innerApiCalls.batchTranslateText = mockLongRunningGrpcMethod(request, null, error);
+      client._innerApiCalls.batchTranslateText = mockLongRunningGrpcMethod(
+        request,
+        null,
+        error
+      );
 
-      client.batchTranslateText(request).then(responses => {
-        const operation = responses[0];
-        return operation.promise();
-      }).then(() => {
-        assert.fail();
-      }).catch(err => {
-        assert(err instanceof Error);
-        assert.strictEqual(err.code, FAKE_STATUS_CODE);
-        done();
-      });
+      client
+        .batchTranslateText(request)
+        .then(responses => {
+          const operation = responses[0];
+          return operation.promise();
+        })
+        .then(() => {
+          assert.fail();
+        })
+        .catch(err => {
+          assert(err instanceof Error);
+          assert.strictEqual(err.code, FAKE_STATUS_CODE);
+          done();
+        });
     });
 
     it('has longrunning decoder functions', () => {
@@ -267,8 +282,14 @@ describe('TranslationServiceClient', () => {
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
-      assert(client._descriptors.longrunning.batchTranslateText.responseDecoder instanceof Function);
-      assert(client._descriptors.longrunning.batchTranslateText.metadataDecoder instanceof Function);
+      assert(
+        client._descriptors.longrunning.batchTranslateText
+          .responseDecoder instanceof Function
+      );
+      assert(
+        client._descriptors.longrunning.batchTranslateText
+          .metadataDecoder instanceof Function
+      );
     });
   });
 
@@ -296,17 +317,24 @@ describe('TranslationServiceClient', () => {
       };
 
       // Mock Grpc layer
-      client._innerApiCalls.createGlossary = mockLongRunningGrpcMethod(request, expectedResponse);
+      client._innerApiCalls.createGlossary = mockLongRunningGrpcMethod(
+        request,
+        expectedResponse
+      );
 
-      client.createGlossary(request).then(responses => {
-        const operation = responses[0];
-        return operation.promise();
-      }).then(responses => {
-        assert.deepStrictEqual(responses[0], expectedResponse);
-        done();
-      }).catch(err => {
-        done(err);
-      });
+      client
+        .createGlossary(request)
+        .then(responses => {
+          const operation = responses[0];
+          return operation.promise();
+        })
+        .then(responses => {
+          assert.deepStrictEqual(responses[0], expectedResponse);
+          done();
+        })
+        .catch(err => {
+          done(err);
+        });
     });
 
     it('invokes createGlossary with error', done => {
@@ -324,18 +352,26 @@ describe('TranslationServiceClient', () => {
       };
 
       // Mock Grpc layer
-      client._innerApiCalls.createGlossary = mockLongRunningGrpcMethod(request, null, error);
+      client._innerApiCalls.createGlossary = mockLongRunningGrpcMethod(
+        request,
+        null,
+        error
+      );
 
-      client.createGlossary(request).then(responses => {
-        const operation = responses[0];
-        return operation.promise();
-      }).then(() => {
-        assert.fail();
-      }).catch(err => {
-        assert(err instanceof Error);
-        assert.strictEqual(err.code, FAKE_STATUS_CODE);
-        done();
-      });
+      client
+        .createGlossary(request)
+        .then(responses => {
+          const operation = responses[0];
+          return operation.promise();
+        })
+        .then(() => {
+          assert.fail();
+        })
+        .catch(err => {
+          assert(err instanceof Error);
+          assert.strictEqual(err.code, FAKE_STATUS_CODE);
+          done();
+        });
     });
 
     it('has longrunning decoder functions', () => {
@@ -343,8 +379,14 @@ describe('TranslationServiceClient', () => {
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
-      assert(client._descriptors.longrunning.createGlossary.responseDecoder instanceof Function);
-      assert(client._descriptors.longrunning.createGlossary.metadataDecoder instanceof Function);
+      assert(
+        client._descriptors.longrunning.createGlossary
+          .responseDecoder instanceof Function
+      );
+      assert(
+        client._descriptors.longrunning.createGlossary
+          .metadataDecoder instanceof Function
+      );
     });
   });
 
@@ -368,7 +410,11 @@ describe('TranslationServiceClient', () => {
       };
 
       // Mock Grpc layer
-      client._innerApiCalls.listGlossaries = (actualRequest, options, callback) => {
+      client._innerApiCalls.listGlossaries = (
+        actualRequest,
+        options,
+        callback
+      ) => {
         assert.deepStrictEqual(actualRequest, request);
         callback(null, expectedResponse.glossaries);
       };
@@ -413,7 +459,11 @@ describe('TranslationServiceClient', () => {
       });
 
       // Mock request
-      const formattedName = client.glossaryPath('[PROJECT]', '[LOCATION]', '[GLOSSARY]');
+      const formattedName = client.glossaryPath(
+        '[PROJECT]',
+        '[LOCATION]',
+        '[GLOSSARY]'
+      );
       const request = {
         name: formattedName,
       };
@@ -446,7 +496,11 @@ describe('TranslationServiceClient', () => {
       });
 
       // Mock request
-      const formattedName = client.glossaryPath('[PROJECT]', '[LOCATION]', '[GLOSSARY]');
+      const formattedName = client.glossaryPath(
+        '[PROJECT]',
+        '[LOCATION]',
+        '[GLOSSARY]'
+      );
       const request = {
         name: formattedName,
       };
@@ -475,7 +529,11 @@ describe('TranslationServiceClient', () => {
       });
 
       // Mock request
-      const formattedName = client.glossaryPath('[PROJECT]', '[LOCATION]', '[GLOSSARY]');
+      const formattedName = client.glossaryPath(
+        '[PROJECT]',
+        '[LOCATION]',
+        '[GLOSSARY]'
+      );
       const request = {
         name: formattedName,
       };
@@ -487,17 +545,24 @@ describe('TranslationServiceClient', () => {
       };
 
       // Mock Grpc layer
-      client._innerApiCalls.deleteGlossary = mockLongRunningGrpcMethod(request, expectedResponse);
+      client._innerApiCalls.deleteGlossary = mockLongRunningGrpcMethod(
+        request,
+        expectedResponse
+      );
 
-      client.deleteGlossary(request).then(responses => {
-        const operation = responses[0];
-        return operation.promise();
-      }).then(responses => {
-        assert.deepStrictEqual(responses[0], expectedResponse);
-        done();
-      }).catch(err => {
-        done(err);
-      });
+      client
+        .deleteGlossary(request)
+        .then(responses => {
+          const operation = responses[0];
+          return operation.promise();
+        })
+        .then(responses => {
+          assert.deepStrictEqual(responses[0], expectedResponse);
+          done();
+        })
+        .catch(err => {
+          done(err);
+        });
     });
 
     it('invokes deleteGlossary with error', done => {
@@ -507,24 +572,36 @@ describe('TranslationServiceClient', () => {
       });
 
       // Mock request
-      const formattedName = client.glossaryPath('[PROJECT]', '[LOCATION]', '[GLOSSARY]');
+      const formattedName = client.glossaryPath(
+        '[PROJECT]',
+        '[LOCATION]',
+        '[GLOSSARY]'
+      );
       const request = {
         name: formattedName,
       };
 
       // Mock Grpc layer
-      client._innerApiCalls.deleteGlossary = mockLongRunningGrpcMethod(request, null, error);
+      client._innerApiCalls.deleteGlossary = mockLongRunningGrpcMethod(
+        request,
+        null,
+        error
+      );
 
-      client.deleteGlossary(request).then(responses => {
-        const operation = responses[0];
-        return operation.promise();
-      }).then(() => {
-        assert.fail();
-      }).catch(err => {
-        assert(err instanceof Error);
-        assert.strictEqual(err.code, FAKE_STATUS_CODE);
-        done();
-      });
+      client
+        .deleteGlossary(request)
+        .then(responses => {
+          const operation = responses[0];
+          return operation.promise();
+        })
+        .then(() => {
+          assert.fail();
+        })
+        .catch(err => {
+          assert(err instanceof Error);
+          assert.strictEqual(err.code, FAKE_STATUS_CODE);
+          done();
+        });
     });
 
     it('has longrunning decoder functions', () => {
@@ -532,11 +609,16 @@ describe('TranslationServiceClient', () => {
         credentials: {client_email: 'bogus', private_key: 'bogus'},
         projectId: 'bogus',
       });
-      assert(client._descriptors.longrunning.deleteGlossary.responseDecoder instanceof Function);
-      assert(client._descriptors.longrunning.deleteGlossary.metadataDecoder instanceof Function);
+      assert(
+        client._descriptors.longrunning.deleteGlossary
+          .responseDecoder instanceof Function
+      );
+      assert(
+        client._descriptors.longrunning.deleteGlossary
+          .metadataDecoder instanceof Function
+      );
     });
   });
-
 });
 
 function mockSimpleGrpcMethod(expectedRequest, response, error) {
@@ -560,12 +642,11 @@ function mockLongRunningGrpcMethod(expectedRequest, response, error) {
         return new Promise((resolve, reject) => {
           if (error) {
             reject(error);
-          }
-          else {
+          } else {
             resolve([response]);
           }
         });
-      }
+      },
     };
     return Promise.resolve([mockOperation]);
   };
