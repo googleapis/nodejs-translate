@@ -36,7 +36,8 @@
     "test": "nyc mocha build/test",
     "check": "gts check",
     "clean": "gts clean",
-    "compile": "tsc -p .",
+    "compile": "tsc -p . && npm run copy-js",
+    "copy-js": "cp -r src/v3beta1 build/src/ && cp -r protos build/ && cp test/*.js build/test",
     "fix": "gts fix && eslint --fix '**/*.js'",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
@@ -49,8 +50,11 @@
     "@google-cloud/promisify": "^0.4.0",
     "arrify": "^1.0.1",
     "extend": "^3.0.1",
+    "google-gax": "^0.25.4",
     "is": "^3.2.1",
     "is-html": "^1.1.0",
+    "lodash.merge": "^4.6.1",
+    "protobufjs": "^6.8.8",
     "teeny-request": "^3.4.0"
   },
   "devDependencies": {
