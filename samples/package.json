@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@google-cloud/translate": "^3.0.0",
+    "@google-cloud/storage": "^2.4.3",
     "@google-cloud/automl": "^0.1.2",
     "yargs": "^13.0.0"
   },
