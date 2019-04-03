@@ -26,6 +26,7 @@ describe(REGION_TAG, () => {
   const translationClient = new TranslationServiceClient();
   const location = 'us-central1';
   const glossaryId = 'test-glossary';
+
   before(async function() {
     this.timeout(10000);
     // Add a glossary to be translate with
@@ -56,6 +57,7 @@ describe(REGION_TAG, () => {
     // Wait for operation to complete.
     await operation.promise();
   });
+
   it('should translate text with a glossary in project', async () => {
     const projectId = await translationClient.getProjectId();
     const input = 'directions';
@@ -64,6 +66,7 @@ describe(REGION_TAG, () => {
     );
     assert.match(output, /direcciones/);
   }).timeout(10000);
+  
   after(async function() {
     this.timeout(10000);
     const projectId = await translationClient.getProjectId();

@@ -26,6 +26,7 @@ describe(REGION_TAG, () => {
   const translationClient = new TranslationServiceClient();
   const location = 'us-central1';
   const glossaryId = 'test-glossary';
+
   before(async function() {
     this.timeout(10000);
     // Add a glossary to get
@@ -55,6 +56,7 @@ describe(REGION_TAG, () => {
     // Wait for operation to complete.
     await operation.promise();
   });
+  
   it('should get a glossary', async () => {
     const projectId = await translationClient.getProjectId();
 

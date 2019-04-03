@@ -26,8 +26,9 @@ const REGION_TAG = 'translate_batch_translate_text_beta';
 
 describe(REGION_TAG, () => {
   const translationClient = new TranslationServiceClient();
-  const location = `us-central1`;
+  const location = 'us-central1';
   const bucketUuid = uuid.v4();
+
   it('should batch translate the input text', async () => {
     const projectId = await translationClient.getProjectId();
     const inputUri = `gs://cloud-samples-data/translation/text.txt`;
@@ -48,11 +49,8 @@ describe(REGION_TAG, () => {
       prefix: `translation-${bucketUuid}`,
     };
     const storage = new Storage();
-    const bucket = await storage.bucket(`${projectId}`);
+    const bucket = await storage.bucket(projectId);
     const [files] = await bucket.getFiles(options);
-
-    for (const file of files) {
-      await file.delete();
-    }
+    await Promise.all(files.map(file => file.delete()));
   });
 });

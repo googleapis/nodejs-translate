@@ -26,6 +26,7 @@ describe(REGION_TAG, () => {
   const translationClient = new TranslationServiceClient();
   const location = 'us-central1';
   const glossaryId = 'test-glossary';
+
   before(async function() {
     this.timeout(10000);
     // Add a glossary to be deleted
@@ -56,6 +57,7 @@ describe(REGION_TAG, () => {
     // Wait for operation to complete.
     await operation.promise();
   });
+
   it('should list glossaries in project', async () => {
     const projectId = await translationClient.getProjectId();
     const output = await exec(
@@ -66,6 +68,7 @@ describe(REGION_TAG, () => {
       /gs:\/\/cloud-samples-data\/translation\/glossary.csv/
     );
   }).timeout(10000);
+  
   after(async function() {
     this.timeout(10000);
     const projectId = await translationClient.getProjectId();
