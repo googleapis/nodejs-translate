@@ -65,7 +65,7 @@ describe(REGION_TAG, () => {
     );
     assert.match(output, /direcciones/);
   });
-  
+
   after(async function() {
     const projectId = await translationClient.getProjectId();
     const name = translationClient.glossaryPath(

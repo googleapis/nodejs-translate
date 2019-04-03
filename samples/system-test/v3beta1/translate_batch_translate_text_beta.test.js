@@ -28,18 +28,37 @@ describe(REGION_TAG, () => {
   const translationClient = new TranslationServiceClient();
   const location = 'us-central1';
   const bucketUuid = uuid.v4();
+  const bucketName = `translation-${bucketUuid}/BATCH_TRANSLATION_OUTPUT/`;
+  const storage = new Storage();
+
+  before(async () => {
+    const projectId = await translationClient.getProjectId();
+
+    //Create bucket if needed
+    await storage
+      .createBucket(projectId, {
+        location: 'US',
+        storageClass: 'COLDLINE',
+      })
+      .catch(error => {
+        if (error.code !== 409) {
+          //if it's not a duplicate bucket error, let the user know
+          console.error(error);
+        }
+      });
+  });
 
   it('should batch translate the input text', async () => {
     const projectId = await translationClient.getProjectId();
     const inputUri = `gs://cloud-samples-data/translation/text.txt`;
-    const bucketName = `translation-${bucketUuid}/BATCH_TRANSLATION_OUTPUT/`;
+
     const outputUri = `gs://${projectId}/${bucketName}`;
     const output = await exec(
       `node v3beta1/${REGION_TAG}.js ${projectId} ${location} ${inputUri} ${outputUri}`
     );
     assert.match(output, /Total Characters: 13/);
     assert.match(output, /Translated Characters: 13/);
-    });
+  });
 
   // Delete the folder from GCS for cleanup
   after(async function() {
@@ -47,7 +66,7 @@ describe(REGION_TAG, () => {
     const options = {
       prefix: `translation-${bucketUuid}`,
     };
-    const storage = new Storage();
+
     const bucket = await storage.bucket(projectId);
     const [files] = await bucket.getFiles(options);
     const length = files.length;

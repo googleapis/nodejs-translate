@@ -67,7 +67,7 @@ describe(REGION_TAG, () => {
       /gs:\/\/cloud-samples-data\/translation\/glossary.csv/
     );
   });
-  
+
   after(async function() {
     const projectId = await translationClient.getProjectId();
     const name = translationClient.glossaryPath(

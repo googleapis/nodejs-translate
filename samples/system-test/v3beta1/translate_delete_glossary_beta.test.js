@@ -56,7 +56,7 @@ describe(REGION_TAG, () => {
     // Wait for operation to complete.
     await operation.promise();
   });
-  
+
   it('should delete a glossary', async () => {
     const projectId = await translationClient.getProjectId();
 
