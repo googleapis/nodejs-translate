@@ -36,10 +36,9 @@ describe(REGION_TAG, () => {
       output,
       /gs:\/\/cloud-samples-data\/translation\/glossary.csv/
     );
-  }).timeout(10000);
+  })
 
   after('cleanup for glossary create', async function() {
-    this.timeout(10000);
     const projectId = await translationClient.getProjectId();
     const location = 'us-central1';
     const glossaryId = 'test-glossary';

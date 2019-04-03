@@ -28,7 +28,6 @@ describe(REGION_TAG, () => {
   const glossaryId = 'glossary';
 
   before(async function() {
-    this.timeout(10000);
     // Add a glossary to be deleted
     // const translationClient = new TranslationServiceClient();
     const projectId = await translationClient.getProjectId();
@@ -65,5 +64,5 @@ describe(REGION_TAG, () => {
       `node v3beta1/${REGION_TAG}.js ${projectId} ${location} ${glossaryId}`
     );
     assert.match(output, /glossary/);
-  }).timeout(10000);
+  })
 });

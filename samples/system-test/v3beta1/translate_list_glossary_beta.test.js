@@ -28,7 +28,6 @@ describe(REGION_TAG, () => {
   const glossaryId = 'test-glossary';
 
   before(async function() {
-    this.timeout(10000);
     // Add a glossary to be deleted
     const projectId = await translationClient.getProjectId();
 
@@ -67,10 +66,9 @@ describe(REGION_TAG, () => {
       output,
       /gs:\/\/cloud-samples-data\/translation\/glossary.csv/
     );
-  }).timeout(10000);
+  })
   
   after(async function() {
-    this.timeout(10000);
     const projectId = await translationClient.getProjectId();
     const name = translationClient.glossaryPath(
       projectId,

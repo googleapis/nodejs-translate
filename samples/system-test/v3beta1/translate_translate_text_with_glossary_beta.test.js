@@ -28,7 +28,6 @@ describe(REGION_TAG, () => {
   const glossaryId = 'test-glossary';
 
   before(async function() {
-    this.timeout(10000);
     // Add a glossary to be translate with
     const projectId = await translationClient.getProjectId();
 
@@ -65,10 +64,9 @@ describe(REGION_TAG, () => {
       `node v3beta1/${REGION_TAG}.js ${projectId} ${location} ${glossaryId} ${input}`
     );
     assert.match(output, /direcciones/);
-  }).timeout(10000);
+  })
   
   after(async function() {
-    this.timeout(10000);
     const projectId = await translationClient.getProjectId();
     const name = translationClient.glossaryPath(
       projectId,

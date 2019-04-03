@@ -39,11 +39,10 @@ describe(REGION_TAG, () => {
     );
     assert.match(output, /Total Characters: 13/);
     assert.match(output, /Translated Characters: 13/);
-  }).timeout(90000);
+    })
 
   // Delete the folder from GCS for cleanup
   after(async function() {
-    this.timeout(10000);
     const projectId = await translationClient.getProjectId();
     const options = {
       prefix: `translation-${bucketUuid}`,

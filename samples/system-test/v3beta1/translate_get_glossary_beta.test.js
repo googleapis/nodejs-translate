@@ -28,7 +28,6 @@ describe(REGION_TAG, () => {
   const glossaryId = 'test-glossary';
 
   before(async function() {
-    this.timeout(10000);
     // Add a glossary to get
     const projectId = await translationClient.getProjectId();
     const glossary = {
@@ -68,7 +67,6 @@ describe(REGION_TAG, () => {
 
   after(async function() {
     //delete the glossary we created
-    this.timeout(10000);
     const projectId = await translationClient.getProjectId();
     const name = translationClient.glossaryPath(
       projectId,
