@@ -64,5 +64,5 @@ describe(REGION_TAG, () => {
       `node v3beta1/${REGION_TAG}.js ${projectId} ${location} ${glossaryId}`
     );
     assert.match(output, /glossary/);
-  })
+  });
 });
