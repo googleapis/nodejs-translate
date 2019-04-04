@@ -17,8 +17,7 @@
 
 const {assert} = require('chai');
 const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
-const execa = require('execa');
-const exec = async cmd => (await execa.shell(cmd)).stdout;
+const {execSync} = require('child_process');
 
 const REGION_TAG = 'translate_translate_text_beta';
 
@@ -28,7 +27,7 @@ describe(REGION_TAG, () => {
     const projectId = await translationClient.getProjectId();
     const location = `global`;
     const text = `"Hello world"`;
-    const output = await exec(
+    const output = execSync(
       `node v3beta1/${REGION_TAG}.js ${projectId} ${location} ${text}`
     );
     assert.match(output, /Translation: Zdravo svet/);

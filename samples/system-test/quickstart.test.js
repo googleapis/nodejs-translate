@@ -16,7 +16,7 @@
 'use strict';
 
 const {assert} = require('chai');
-const execa = require('execa');
+const {execSync} = require('child_process');
 const path = require('path');
 
 const cwd = path.join(__dirname, '..');
@@ -24,7 +24,7 @@ const projectId = process.env.GCLOUD_PROJECT;
 
 describe('quickstart sample tests', () => {
   it('should translate a string', async () => {
-    const {stdout} = await execa.shell(`node quickstart ${projectId}`, {cwd});
+    const stdout = execSync(`node quickstart ${projectId}`, {cwd});
     assert.match(stdout, new RegExp('Translation: Привет, мир!'));
   });
 });

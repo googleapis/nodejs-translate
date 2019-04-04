@@ -17,8 +17,7 @@
 
 const {assert} = require('chai');
 const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
-const execa = require('execa');
-const exec = async cmd => (await execa.shell(cmd)).stdout;
+const {execSync} = require('child_process');
 
 const REGION_TAG = 'translate_list_codes_beta';
 
@@ -26,7 +25,7 @@ describe(REGION_TAG, () => {
   it('should list available language codes', async () => {
     const translationClient = new TranslationServiceClient();
     const projectId = await translationClient.getProjectId();
-    const output = await exec(`node v3beta1/${REGION_TAG}.js ${projectId}`);
+    const output = execSync(`node v3beta1/${REGION_TAG}.js ${projectId}`);
     assert.match(output, /Language Code: en/);
     assert.match(output, /Language Code: fr/);
   });

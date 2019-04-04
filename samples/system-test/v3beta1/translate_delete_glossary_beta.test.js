@@ -17,8 +17,7 @@
 
 const {assert} = require('chai');
 const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
-const execa = require('execa');
-const exec = async cmd => (await execa.shell(cmd)).stdout;
+const {execSync} = require('child_process');
 
 const REGION_TAG = 'translate_delete_glossary_beta';
 
@@ -60,7 +59,7 @@ describe(REGION_TAG, () => {
   it('should delete a glossary', async () => {
     const projectId = await translationClient.getProjectId();
 
-    const output = await exec(
+    const output = execSync(
       `node v3beta1/${REGION_TAG}.js ${projectId} ${location} ${glossaryId}`
     );
     assert.match(output, /glossary/);
