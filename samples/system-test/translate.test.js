@@ -66,9 +66,7 @@ describe('translate sample tests', () => {
   });
 
   it('should translate multiple strings', async () => {
-    const output = execSync(
-      `${cmd} translate ${toLang} "${text}" "${text2}"`
-    );
+    const output = execSync(`${cmd} translate ${toLang} "${text}" "${text2}"`);
     const [translations] = await translate.translate([text, text2], toLang);
     const expected = `Translations:\n${text} => (${toLang}) ${
       translations[0]
