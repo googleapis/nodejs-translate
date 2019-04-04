@@ -17,7 +17,9 @@
 
 const {assert} = require('chai');
 const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
-const {execSync} = require('child_process');
+const cp = require('child_process');
+
+const execSync = (cmd) => cp.execSync(cmd, {encoding: 'utf-8'});
 
 const REGION_TAG = 'translate_delete_glossary_beta';
 
