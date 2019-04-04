@@ -33,6 +33,6 @@ describe(REGION_TAG, () => {
     const output = await exec(
       `node v3beta1/${REGION_TAG}.js ${projectId} ${location} ${modelId} ${input}`
     );
-    assert.match(output, /Translated Conent: これがどのように終わるか教えて/);
+    assert.match(output, /Translated Content: これがどのように終わるか教えて/);
   });
 });
