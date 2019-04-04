@@ -44,7 +44,7 @@ function main(
       contents: [text],
       mimeType: 'text/plain', // mime types: text/plain, text/html
       sourceLanguageCode: 'en-US',
-      targetLanguageCode: 'es',
+      targetLanguageCode: 'ja',
       model: model,
     };
 

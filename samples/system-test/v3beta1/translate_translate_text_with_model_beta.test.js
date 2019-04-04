@@ -26,7 +26,7 @@ describe(REGION_TAG, () => {
   const translationClient = new TranslationServiceClient();
   const location = 'us-central1';
   const modelId = 'TRL188026453969732486';
-  const input = './resources/testInput.txt';
+  const input = 'Tell me how this ends';
 
   it('should translate text with an automl model in project', async () => {
     const projectId = await translationClient.getProjectId();
