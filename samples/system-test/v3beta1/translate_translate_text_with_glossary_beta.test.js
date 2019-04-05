@@ -19,7 +19,7 @@ const {assert} = require('chai');
 const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
 const cp = require('child_process');
 
-const execSync = (cmd) => cp.execSync(cmd, {encoding: 'utf-8'});
+const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
 
 const REGION_TAG = 'translate_translate_text_with_glossary_beta';
 

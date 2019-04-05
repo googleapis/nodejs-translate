@@ -20,7 +20,7 @@ const {assert} = require('chai');
 const {Translate} = require('@google-cloud/translate');
 const cp = require('child_process');
 
-const execSync = (cmd) => cp.execSync(cmd, {encoding: 'utf-8'});
+const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
 
 const translate = new Translate();
 
