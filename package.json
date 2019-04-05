@@ -59,7 +59,6 @@
   },
   "devDependencies": {
     "@google-cloud/nodejs-repo-tools": "^3.2.0",
-    "@types/arrify": "^1.0.4",
     "@types/extend": "^3.0.0",
     "@types/is": "0.0.21",
     "@types/mocha": "^5.2.4",
