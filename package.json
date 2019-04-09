@@ -11,7 +11,8 @@
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",
   "files": [
-    "build",
+    "build/src",
+    "build/protos",
     "!build/src/**/*.map"
   ],
   "keywords": [
