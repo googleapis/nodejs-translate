@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "@google-cloud/common": "^0.32.0",
-    "@google-cloud/promisify": "^0.4.0",
+    "@google-cloud/promisify": "^1.0.0",
     "arrify": "^2.0.0",
     "extend": "^3.0.1",
     "google-gax": "^0.26.0",
@@ -69,7 +69,7 @@
     "codecov": "^3.0.2",
     "eslint": "^5.0.0",
     "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-node": "^9.0.0",
     "eslint-plugin-prettier": "^3.0.0",
     "gts": "^0.9.0",
     "intelli-espower-loader": "^1.0.1",
