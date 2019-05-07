@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "author": "Google Inc.",
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=8.10.0"
   },
   "repository": "googleapis/nodejs-translate",
   "main": "build/src/index.js",
@@ -48,10 +48,10 @@
   },
   "dependencies": {
     "@google-cloud/common": "^0.32.0",
-    "@google-cloud/promisify": "^0.4.0",
+    "@google-cloud/promisify": "^1.0.0",
     "arrify": "^2.0.0",
     "extend": "^3.0.1",
-    "google-gax": "^0.25.4",
+    "google-gax": "^0.26.0",
     "is": "^3.2.1",
     "is-html": "^1.1.0",
     "lodash.merge": "^4.6.1",
@@ -69,11 +69,11 @@
     "codecov": "^3.0.2",
     "eslint": "^5.0.0",
     "eslint-config-prettier": "^4.0.0",
-    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-node": "^9.0.0",
     "eslint-plugin-prettier": "^3.0.0",
-    "gts": "^0.9.0",
+    "gts": "^1.0.0",
     "intelli-espower-loader": "^1.0.1",
-    "jsdoc": "^3.5.5",
+    "jsdoc": "3.5.5",
     "jsdoc-baseline": "git+https://github.com/hegemonic/jsdoc-baseline.git",
     "linkinator": "^1.1.2",
     "mocha": "^6.0.0",
