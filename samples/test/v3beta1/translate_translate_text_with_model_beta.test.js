@@ -22,10 +22,10 @@ const cp = require('child_process');
 const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
 const REGION_TAG = 'translate_translate_text_with_model_beta';
 
-describe(REGION_TAG, () => {
+describe.skip(REGION_TAG, () => {
   const translationClient = new TranslationServiceClient();
   const location = 'us-central1';
-  const modelId = 'TRL188026453969732486';
+  const modelId = 'TRL123456789'; //TODO: Create model that can be used for testing
   const input = 'Tell me how this ends';
 
   it('should translate text with an automl model in project', async () => {
