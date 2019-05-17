@@ -60,7 +60,7 @@ npm install @google-cloud/translate
 ### Using the client library
 
 ```javascript
-async function quickstart(
+async function main(
   projectId = 'YOUR_PROJECT_ID' // Your GCP Project Id
 ) {
   // Imports the Google Cloud client library

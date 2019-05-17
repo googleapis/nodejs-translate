@@ -29,7 +29,7 @@ Before running the samples, make sure you've followed the steps outlined in
 
 #### Install Dependencies
 
-From the [root directory](https://github.com/googleapis/nodejs-translate) of the client library, install the dependencies and link them as a package:
+From the [root directory](https://github.com/googleapis/nodejs-translate) of the client library install the dependencies:
 
 ```
 npm install
