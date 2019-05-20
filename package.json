@@ -1,7 +1,7 @@
 {
   "name": "@google-cloud/translate",
   "description": "Cloud Translation API Client Library for Node.js",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "license": "Apache-2.0",
   "author": "Google Inc.",
   "engines": {
@@ -30,7 +30,6 @@
   "scripts": {
     "docs": "jsdoc -c .jsdoc.js",
     "predocs": "npm run compile",
-    "generate-scaffolding": "repo-tools generate all && repo-tools generate lib_samples_readme  -l samples/ --config ../.cloud-repo-tools.json",
     "lint": "npm run check && eslint '**/*.js'",
     "samples-test": "cd samples/ && npm link ../ && npm test && cd ../",
     "system-test": "mocha build/system-test --timeout 600000",
@@ -47,11 +46,11 @@
     "predocs-test": "npm run docs"
   },
   "dependencies": {
-    "@google-cloud/common": "^0.32.0",
+    "@google-cloud/common": "^1.0.0",
     "@google-cloud/promisify": "^1.0.0",
     "arrify": "^2.0.0",
     "extend": "^3.0.1",
-    "google-gax": "^0.26.0",
+    "google-gax": "^1.0.0",
     "is": "^3.2.1",
     "is-html": "^1.1.0",
     "lodash.merge": "^4.6.1",
@@ -59,7 +58,6 @@
     "teeny-request": "^3.4.0"
   },
   "devDependencies": {
-    "@google-cloud/nodejs-repo-tools": "^3.2.0",
     "@types/extend": "^3.0.0",
     "@types/is": "0.0.21",
     "@types/mocha": "^5.2.4",
@@ -73,7 +71,7 @@
     "eslint-plugin-prettier": "^3.0.0",
     "gts": "^1.0.0",
     "intelli-espower-loader": "^1.0.1",
-    "jsdoc": "3.5.5",
+    "jsdoc": "^3.6.2",
     "jsdoc-baseline": "git+https://github.com/hegemonic/jsdoc-baseline.git",
     "linkinator": "^1.1.2",
     "mocha": "^6.0.0",

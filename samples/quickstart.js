@@ -16,7 +16,7 @@
 'use strict';
 
 // [START translate_quickstart]
-async function quickstart(
+async function main(
   projectId = 'YOUR_PROJECT_ID' // Your GCP Project Id
 ) {
   // Imports the Google Cloud client library
@@ -39,4 +39,4 @@ async function quickstart(
 // [END translate_quickstart]
 
 const args = process.argv.slice(2);
-quickstart(...args).catch(console.error);
+main(...args).catch(console.error);

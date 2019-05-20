@@ -8,11 +8,12 @@
     "node": ">=8"
   },
   "scripts": {
-    "test": "mocha --recursive --timeout 90000"
+    "test": "mocha --recursive --timeout 90000",
+    "test-v3": "mocha ./test/v3beta1/*.js"
   },
   "dependencies": {
-    "@google-cloud/translate": "^3.0.1",
-    "@google-cloud/automl": "^0.2.0",
+    "@google-cloud/automl": "^1.0.0",
+    "@google-cloud/translate": "^4.0.0",
     "yargs": "^13.0.0"
   },
   "devDependencies": {
