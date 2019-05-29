@@ -4,6 +4,13 @@
 
 [1]: https://www.npmjs.com/package/nodejs-translate?activeTab=versions
 
+### [4.0.2](https://www.github.com/googleapis/nodejs-translate/compare/v4.0.1...v4.0.2) (2019-05-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency is-html to v2 ([#280](https://www.github.com/googleapis/nodejs-translate/issues/280)) ([00187c9](https://www.github.com/googleapis/nodejs-translate/commit/00187c9))
+
 ### [4.0.1](https://www.github.com/googleapis/nodejs-translate/compare/v4.0.0...v4.0.1) (2019-05-20)
 
 
