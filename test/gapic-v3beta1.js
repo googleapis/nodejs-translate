@@ -23,6 +23,24 @@ const error = new Error();
 error.code = FAKE_STATUS_CODE;
 
 describe('TranslationServiceClient', () => {
+  it('has servicePath', () => {
+    const servicePath =
+      translateModule.v3beta1.TranslationServiceClient.servicePath;
+    assert(servicePath);
+  });
+
+  it('has apiEndpoint', () => {
+    const apiEndpoint =
+      translateModule.v3beta1.TranslationServiceClient.apiEndpoint;
+    assert(apiEndpoint);
+  });
+
+  it('has port', () => {
+    const port = translateModule.v3beta1.TranslationServiceClient.port;
+    assert(port);
+    assert(typeof port === 'number');
+  });
+
   describe('translateText', () => {
     it('invokes translateText without error', done => {
       const client = new translateModule.v3beta1.TranslationServiceClient({
