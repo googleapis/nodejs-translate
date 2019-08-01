@@ -54,7 +54,7 @@
     "is": "^3.2.1",
     "is-html": "^2.0.0",
     "protobufjs": "^6.8.8",
-    "teeny-request": "^4.0.0"
+    "teeny-request": "^5.0.0"
   },
   "devDependencies": {
     "@types/extend": "^3.0.0",
