@@ -26,7 +26,7 @@ function main(
    * TODO(developer): Uncomment these variables before running the sample.
    */
   // const projectId = 'YOUR_PROJECT_ID';
-  // const location = 'global';
+  // const location = 'us-central1';
   // const text = 'text to translate';
 
   // Imports the Google Cloud Translation library
