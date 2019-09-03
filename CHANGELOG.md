@@ -4,6 +4,17 @@
 
 [1]: https://www.npmjs.com/package/nodejs-translate?activeTab=versions
 
+### [4.1.4](https://www.github.com/googleapis/nodejs-translate/compare/v4.1.3...v4.1.4) (2019-09-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency yargs to v14 ([3d6b18d](https://www.github.com/googleapis/nodejs-translate/commit/3d6b18d))
+* **deps:** use the latest extend ([#316](https://www.github.com/googleapis/nodejs-translate/issues/316)) ([f7ca873](https://www.github.com/googleapis/nodejs-translate/commit/f7ca873))
+* use correct version for x-goog-api-client header ([50950c9](https://www.github.com/googleapis/nodejs-translate/commit/50950c9))
+* **docs:** stop linking reference documents to anchor ([f935f91](https://www.github.com/googleapis/nodejs-translate/commit/f935f91))
+* **samples:** use us-central1 region (not global) ([#322](https://www.github.com/googleapis/nodejs-translate/issues/322)) ([8500423](https://www.github.com/googleapis/nodejs-translate/commit/8500423))
+
 ### [4.1.3](https://www.github.com/googleapis/nodejs-translate/compare/v4.1.2...v4.1.3) (2019-08-05)
 
 
