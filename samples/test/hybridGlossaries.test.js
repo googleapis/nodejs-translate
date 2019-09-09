@@ -1,4 +1,3 @@
-
 /**
  * Copyright 2019, Google LLC
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,8 +31,6 @@ describe(REGION_TAG, () => {
   const outputFile = 'resources/example.mp3';
 
   before(async function() {
-    // get projectId
-    const projectId = await translationClient.getProjectId();
     try {
       fs.unlinkSync(outputFile);
     } catch (e) {
@@ -43,19 +40,18 @@ describe(REGION_TAG, () => {
 
   it('should create a glossary', async () => {
     const projectId = await translationClient.getProjectId();
-    const input = 'directions';
-    const output = execSync(
-      `node hybridGlossaries.js ${projectId}`
-    );
+    const output = execSync(`node hybridGlossaries.js ${projectId}`);
     assert(output.includes(glossaryId));
-    assert(output.includes('Audio content written to file resources/example.mp3'));
+    assert(
+      output.includes('Audio content written to file resources/example.mp3')
+    );
     assert.strictEqual(fs.existsSync(outputFile), true);
   });
 
   after(async function() {
     fs.unlinkSync(outputFile);
     assert.strictEqual(fs.existsSync(outputFile), false);
-
+    // get projectId
     const projectId = await translationClient.getProjectId();
     const name = translationClient.glossaryPath(
       projectId,
@@ -73,6 +69,5 @@ describe(REGION_TAG, () => {
 
     // Wait for operation to complete.
     await operation.promise();
-
   });
 });
