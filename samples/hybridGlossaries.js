@@ -16,7 +16,7 @@
 'use strict';
 
 async function main(
-  projectId, // Your GCP Project Id
+  projectId = process.env.GCLOUD_PROJECT, // Your GCP Project Id
   inFile = 'resources/example.png',
   outFile = 'resources/example.mp3',
   glossaryLangs = ['fr', 'en'],
@@ -162,7 +162,7 @@ async function main(
   }
   // [END translate_hybrid_translate]
 
-  // [START translate_hybrid_text_to_speech]
+  // [START translate_hybrid_tts]
   /**
    * Generates synthetic audio from plaintext tagged with SSML.
    *
@@ -213,7 +213,7 @@ async function main(
     await writeFile(outFile, response.audioContent, 'binary');
     console.log('Audio content written to file ' + outFile);
   }
-  // [END translate_hybrid_text_to_speech]
+  // [END translate_hybrid_tts]
 
   // [START translate_hybrid_integration]
   await createGlossary(glossaryLangs, projectId, glossaryName, glossaryUri);
