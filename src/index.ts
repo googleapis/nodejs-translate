@@ -18,6 +18,9 @@
  * @namespace v2
  */
 /**
+ * @namespace v3
+ */
+/**
  * @namespace google.cloud.translation.v3beta1
  */
 /**
@@ -30,6 +33,7 @@
  * @namespace google.protobuf
  */
 const v3beta1 = require('./v3beta1');
+const v3 = require('./v3');
 
 /**
  * The `@google-cloud/translate` package has the following named exports:
@@ -81,3 +85,10 @@ export * from './v2';
  *   Reference to {@link v3beta1.TranslationServiceClient}
  */
 export {v3beta1};
+
+/**
+ * @type {object}
+ * @property {constructor} TranslationServiceClient
+ *   Reference to {@link v3.TranslationServiceClient}
+ */
+export {v3};

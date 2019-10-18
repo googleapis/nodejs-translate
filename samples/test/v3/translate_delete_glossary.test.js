@@ -16,22 +16,22 @@
 'use strict';
 
 const {assert} = require('chai');
-const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
+const {TranslationServiceClient} = require('@google-cloud/translate').v3;
 const cp = require('child_process');
 
 const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
 
-const REGION_TAG = 'translate_list_glossary_beta';
+const REGION_TAG = 'translate_delete_glossary';
 
 describe(REGION_TAG, () => {
   const translationClient = new TranslationServiceClient();
   const location = 'us-central1';
-  const glossaryId = 'test-glossary';
+  const glossaryId = 'glossary';
 
   before(async function() {
     // Add a glossary to be deleted
+    // const translationClient = new TranslationServiceClient();
     const projectId = await translationClient.getProjectId();
-
     const glossary = {
       languageCodesSet: {
         languageCodes: ['en', 'es'],
@@ -58,34 +58,12 @@ describe(REGION_TAG, () => {
     await operation.promise();
   });
 
-  it('should list glossaries in project', async () => {
+  it('should delete a glossary', async () => {
     const projectId = await translationClient.getProjectId();
+
     const output = execSync(
-      `node v3beta1/${REGION_TAG}.js ${projectId} ${location}`
+      `node v3/${REGION_TAG}.js ${projectId} ${location} ${glossaryId}`
     );
-    assert.match(
-      output,
-      /gs:\/\/cloud-samples-data\/translation\/glossary.csv/
-    );
-  });
-
-  after(async function() {
-    const projectId = await translationClient.getProjectId();
-    const name = translationClient.glossaryPath(
-      projectId,
-      location,
-      glossaryId
-    );
-    const request = {
-      parent: translationClient.locationPath(projectId, location),
-      name: name,
-    };
-
-    // Delete glossary using a long-running operation.
-    // You can wait for now, or get results later.
-    const [operation] = await translationClient.deleteGlossary(request);
-
-    // Wait for operation to complete.
-    await operation.promise();
+    assert.match(output, /glossary/);
   });
 });

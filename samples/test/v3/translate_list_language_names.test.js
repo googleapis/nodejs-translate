@@ -16,22 +16,21 @@
 'use strict';
 
 const {assert} = require('chai');
-const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
+const {TranslationServiceClient} = require('@google-cloud/translate').v3;
 const cp = require('child_process');
 
 const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
 
-const REGION_TAG = 'translate_translate_text_beta';
+const REGION_TAG = 'translate_list_language_names';
 
 describe(REGION_TAG, () => {
-  it('should translate the input text', async () => {
+  it('should list available language names', async () => {
     const translationClient = new TranslationServiceClient();
     const projectId = await translationClient.getProjectId();
-    const location = `global`;
-    const text = `"Hello world"`;
-    const output = execSync(
-      `node v3beta1/${REGION_TAG}.js ${projectId} ${location} ${text}`
-    );
-    assert.match(output, /Translation: Pozdrav svijetu/);
+    const output = execSync(`node v3/${REGION_TAG}.js ${projectId}`);
+    assert.match(output, /Language Code: en/);
+    assert.match(output, /Display Name: Anglais/);
+    assert.match(output, /Language Code: fr/);
+    assert.match(output, /Display Name: Français/);
   });
 });

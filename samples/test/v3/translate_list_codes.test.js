@@ -16,23 +16,19 @@
 'use strict';
 
 const {assert} = require('chai');
-const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
+const {TranslationServiceClient} = require('@google-cloud/translate').v3;
 const cp = require('child_process');
 
 const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
-const REGION_TAG = 'translate_translate_text_with_model_beta';
 
-describe.skip(REGION_TAG, () => {
-  const translationClient = new TranslationServiceClient();
-  const location = 'us-central1';
-  const modelId = 'TRL123456789'; //TODO: Create model that can be used for testing
-  const input = 'Tell me how this ends';
+const REGION_TAG = 'translate_list_codes';
 
-  it('should translate text with an automl model in project', async () => {
+describe(REGION_TAG, () => {
+  it('should list available language codes', async () => {
+    const translationClient = new TranslationServiceClient();
     const projectId = await translationClient.getProjectId();
-    const output = await execSync(
-      `node v3beta1/${REGION_TAG}.js ${projectId} ${location} ${modelId} ${input}`
-    );
-    assert.match(output, /Translated Content: これがどのように終わるか教えて/);
+    const output = execSync(`node v3/${REGION_TAG}.js ${projectId}`);
+    assert.match(output, /Language Code: en/);
+    assert.match(output, /Language Code: fr/);
   });
 });

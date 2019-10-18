@@ -16,34 +16,59 @@
 'use strict';
 
 const {assert} = require('chai');
-const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
+const {TranslationServiceClient} = require('@google-cloud/translate').v3;
 const cp = require('child_process');
 
 const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
 
-const REGION_TAG = 'translate_create_glossary_beta';
+const REGION_TAG = 'translate_translate_text_with_glossary';
 
 describe(REGION_TAG, () => {
   const translationClient = new TranslationServiceClient();
+  const location = 'us-central1';
+  const glossaryId = 'test-glossary';
 
-  it('should create a glossary', async function() {
+  before(async function() {
+    // Add a glossary to be translate with
     const projectId = await translationClient.getProjectId();
-    const location = 'us-central1';
-    const glossaryId = 'test-glossary';
-    const output = execSync(
-      `node v3beta1/${REGION_TAG}.js ${projectId} ${location} ${glossaryId}`
-    );
-    assert.match(
-      output,
-      /gs:\/\/cloud-samples-data\/translation\/glossary.csv/
-    );
+
+    const glossary = {
+      languageCodesSet: {
+        languageCodes: ['en', 'es'],
+      },
+      inputConfig: {
+        gcsSource: {
+          inputUri: 'gs://cloud-samples-data/translation/glossary.csv',
+        },
+      },
+      name: translationClient.glossaryPath(projectId, location, glossaryId),
+    };
+
+    // Construct request
+    const request = {
+      parent: translationClient.locationPath(projectId, location),
+      glossary: glossary,
+    };
+
+    // Create glossary using a long-running operation.
+    // You can wait for now, or get results later.
+    const [operation] = await translationClient.createGlossary(request);
+
+    // Wait for operation to complete.
+    await operation.promise();
   });
 
-  after('cleanup for glossary create', async function() {
+  it('should translate text with a glossary in project', async () => {
     const projectId = await translationClient.getProjectId();
-    const location = 'us-central1';
-    const glossaryId = 'test-glossary';
-    // Delete the glossary to clean up
+    const input = 'directions';
+    const output = execSync(
+      `node v3/${REGION_TAG}.js ${projectId} ${location} ${glossaryId} ${input}`
+    );
+    assert.match(output, /indicaciones/);
+  });
+
+  after(async function() {
+    const projectId = await translationClient.getProjectId();
     const name = translationClient.glossaryPath(
       projectId,
       location,

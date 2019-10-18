@@ -15,23 +15,26 @@
 
 'use strict';
 
-const {assert} = require('chai');
-const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
-const cp = require('child_process');
+function main(
+  projectId = 'YOUR_PROJECT_ID',
+  location = 'us-central1',
+  glossaryId = 'glossary-id'
+) {
+  // [START translate_create_glossary]
+  /**
+   * TODO(developer): Uncomment these variables before running the sample.
+   */
+  // const projectId = 'YOUR_PROJECT_ID';
+  // const location = 'global';
 
-const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
+  // Imports the Google Cloud Translation library
+  const {TranslationServiceClient} = require('@google-cloud/translate').v3;
 
-const REGION_TAG = 'translate_delete_glossary_beta';
-
-describe(REGION_TAG, () => {
+  // Instantiates a client
   const translationClient = new TranslationServiceClient();
-  const location = 'us-central1';
-  const glossaryId = 'glossary';
 
-  before(async function() {
-    // Add a glossary to be deleted
-    // const translationClient = new TranslationServiceClient();
-    const projectId = await translationClient.getProjectId();
+  async function createGlossary() {
+    // Construct glossary
     const glossary = {
       languageCodesSet: {
         languageCodes: ['en', 'es'],
@@ -56,14 +59,13 @@ describe(REGION_TAG, () => {
 
     // Wait for operation to complete.
     await operation.promise();
-  });
 
-  it('should delete a glossary', async () => {
-    const projectId = await translationClient.getProjectId();
+    console.log(`Created glossary:`);
+    console.log(`InputUri ${request.glossary.inputConfig.gcsSource.inputUri}`);
+  }
 
-    const output = execSync(
-      `node v3beta1/${REGION_TAG}.js ${projectId} ${location} ${glossaryId}`
-    );
-    assert.match(output, /glossary/);
-  });
-});
+  createGlossary();
+  // [END translate_create_glossary]
+}
+
+main(...process.argv.slice(2));
