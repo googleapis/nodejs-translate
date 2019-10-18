@@ -24,6 +24,9 @@
  * @namespace google.cloud.translation.v3beta1
  */
 /**
+ * @namespace google.cloud.translation.v3
+ */
+/**
  * @namespace google.longrunning
  */
 /**
