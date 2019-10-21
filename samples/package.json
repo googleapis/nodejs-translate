@@ -4,12 +4,14 @@
   "license": "Apache-2.0",
   "author": "Google Inc.",
   "repository": "googleapis/nodejs-translate",
+  "files": [
+    "!test/"
+  ],
   "engines": {
     "node": ">=8"
   },
   "scripts": {
-    "test": "mocha --recursive --timeout 90000",
-    "test-v3": "mocha ./test/v3/*.js"
+    "test": "mocha --recursive --timeout 90000"
   },
   "dependencies": {
     "@google-cloud/automl": "^1.0.0",
@@ -19,7 +21,7 @@
     "yargs": "^14.0.0"
   },
   "devDependencies": {
-    "@google-cloud/storage": "^3.2.1",
+    "@google-cloud/storage": "^4.0.0",
     "chai": "^4.2.0",
     "mocha": "^6.0.0",
     "uuid": "^3.3.2"
