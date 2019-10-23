@@ -38,8 +38,8 @@ function main(
       parent: translationClient.locationPath(projectId, location),
       contents: [text],
       mimeType: 'text/plain', // mime types: text/plain, text/html
-      sourceLanguageCode: 'en-US',
-      targetLanguageCode: 'sr-Latn',
+      sourceLanguageCode: 'en',
+      targetLanguageCode: 'ja',
     };
 
     // Run request

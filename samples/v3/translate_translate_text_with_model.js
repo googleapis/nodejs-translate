@@ -27,6 +27,7 @@ function main(
   // const projectId = 'YOUR_PROJECT_ID';
   // const location = 'global';
   // const modelId = 'YOUR_MODEL_ID';
+  // const text = 'text to translate';
 
   // Imports the Google Cloud Translation library
   const {TranslationServiceClient} = require('@google-cloud/translate').v3;
@@ -42,9 +43,9 @@ function main(
       parent: translationClient.locationPath(projectId, location),
       contents: [text],
       mimeType: 'text/plain', // mime types: text/plain, text/html
-      sourceLanguageCode: 'en-US',
+      sourceLanguageCode: 'en',
       targetLanguageCode: 'ja',
-      model: model,
+      model: `projects/${projectId}/locations/${location}/models/${modelId}`,
     };
 
     // Run request

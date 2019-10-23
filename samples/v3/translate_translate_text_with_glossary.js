@@ -26,6 +26,8 @@ function main(
    */
   // const projectId = 'YOUR_PROJECT_ID';
   // const location = 'global';
+  // const glossaryId = 'YOUR_GLOSSARY_ID';
+  // const text = 'text to translate';
 
   // Imports the Google Cloud Translation library
   const {TranslationServiceClient} = require('@google-cloud/translate').v3;
@@ -46,8 +48,8 @@ function main(
       parent: translationClient.locationPath(projectId, location),
       contents: [text],
       mimeType: 'text/plain', // mime types: text/plain, text/html
-      sourceLanguageCode: 'en-US',
-      targetLanguageCode: 'es',
+      sourceLanguageCode: 'en',
+      targetLanguageCode: 'ja',
       glossaryConfig: glossaryConfig,
     };
 

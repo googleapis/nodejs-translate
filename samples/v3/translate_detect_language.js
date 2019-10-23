@@ -25,6 +25,7 @@ function main(
    */
   // const projectId = 'YOUR_PROJECT_ID';
   // const location = 'global';
+  // const text = 'text to translate';
 
   // Imports the Google Cloud Translation library
   const {TranslationServiceClient} = require('@google-cloud/translate').v3;

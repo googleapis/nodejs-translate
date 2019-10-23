@@ -18,9 +18,10 @@ function main(
   projectId = 'YOUR_PROJECT_ID',
   location = 'us-central1',
   inputUri = 'gs://cloud-samples-data/translation/text.txt',
-  outputUri = 'gs://YOUR_PROJECT_ID/translation/BATCH_TRANSLATION_OUTPUT/'
+  outputUri = 'gs://YOUR_PROJECT_ID/translation/BATCH_TRANSLATION_OUTPUT/',
+  glossaryPath = 'projects/[PROJECT_ID]/locations/[LOCATION]/glossaries/[YOUR_GLOSSARY_ID]'
 ) {
-  // [START translate_batch_translate_text]
+  // [START translate_batch_translate_text_with_glossary]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -28,16 +29,17 @@ function main(
   // const location = 'us-central1';
   // const inputUri = 'gs://cloud-samples-data/text.txt';
   // const outputUri = 'gs://YOUR_BUCKET_ID/path_to_store_results/';
-
+  // const glossaryPath = 'projects/[PROJECT_ID]/locations/[LOCATION]/glossaries/[YOUR_GLOSSARY_ID]';
+  
   // Imports the Google Cloud Translation library
-  const {TranslationServiceClient} = require('@google-cloud/translate').v3;
+  const {TranslationServiceClient} = require('@google-cloud/translate');
 
   // Instantiates a client
-  const translationClient = new TranslationServiceClient();
-  async function batchTranslateText() {
+  const client = new TranslationServiceClient();
+  async function batchTranslateTextWithGlossary() {
     // Construct request
     const request = {
-      parent: translationClient.locationPath(projectId, location),
+      parent: client.locationPath(projectId, location),
       sourceLanguageCode: 'en',
       targetLanguageCodes: ['ja'],
       inputConfigs: [
@@ -48,26 +50,29 @@ function main(
           },
         },
       ],
-      outputConfig: {
-        gcsDestination: {
-          outputUriPrefix: outputUri,
+      outputConfig:  {
+        gcsDestination: gcsDestination,
+      },
+      glossaries: {
+        'ja' : {
+          glossary: glossaryPath,
         },
       },
     };
 
-    // Batch translate text using a long-running operation.
-    // You can wait for now, or get results later.
-    const [operation] = await translationClient.batchTranslateText(request);
+    // Create a job whose results you can either wait for now, or get later
+    const [operation] = await client.batchTranslateText(request);
 
-    // Wait for operation to complete.
+    // Get a Promise representation of the final result of the job
     const [response] = await operation.promise();
 
+    // Display the translation for each input text provided
     console.log(`Total Characters: ${response.totalCharacters}`);
     console.log(`Translated Characters: ${response.translatedCharacters}`);
   }
 
-  batchTranslateText();
-  // [END translate_batch_translate_text]
+  batchTranslateTextWithGlossary();
+  // [END translate_batch_translate_text_with_glossary]
 }
 
 main(...process.argv.slice(2));
