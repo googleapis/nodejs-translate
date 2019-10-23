@@ -25,7 +25,7 @@ function main(
    * TODO(developer): Uncomment these variables before running the sample.
    */
   // const projectId = 'YOUR_PROJECT_ID';
-  // const location = 'global';
+  // const location = 'us-central1';
   // const modelId = 'YOUR_MODEL_ID';
   // const text = 'text to translate';
 

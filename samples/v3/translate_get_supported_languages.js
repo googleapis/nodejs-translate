@@ -37,7 +37,7 @@ function main(projectId = 'YOUR_PROJECT_ID', location='global') {
     // Get supported languages
     const [response] = await translationClient.getSupportedLanguages(request);
 
-    for (const language of response[0].languages) {
+    for (const language of response.languages) {
         // Supported language code, generally consisting of its ISO 639-1 identifier, for
         // example, 'en', 'ja'. In certain cases, BCP-47 codes including language and
         // region identifiers are returned (for example, 'zh-TW' and 'zh-CN')

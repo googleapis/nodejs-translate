@@ -32,7 +32,7 @@ function main(
   // const modelId = 'YOUR_MODEL_ID';
   
   // Imports the Google Cloud Translation library
-  const {TranslationServiceClient} = require('@google-cloud/translate');
+  const {TranslationServiceClient} = require('@google-cloud/translate').v3;
 
   // Instantiates a client
   const client = new TranslationServiceClient();
@@ -51,7 +51,9 @@ function main(
         },
       ],
       outputConfig:  {
-        gcsDestination: gcsDestination,
+        gcsDestination: {
+          outputUriPrefix: outputUri,
+        },
       },
       models: {
         'ja': `projects/${projectId}/locations/${location}/models/${modelId}`

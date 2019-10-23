@@ -19,7 +19,7 @@ function main(
   location = 'us-central1',
   inputUri = 'gs://cloud-samples-data/translation/text.txt',
   outputUri = 'gs://YOUR_PROJECT_ID/translation/BATCH_TRANSLATION_OUTPUT/',
-  glossaryPath = 'projects/[PROJECT_ID]/locations/[LOCATION]/glossaries/[YOUR_GLOSSARY_ID]'
+  glossaryId = 'YOUR_GLOSSARY_ID'
 ) {
   // [START translate_batch_translate_text_with_glossary]
   /**
@@ -29,10 +29,10 @@ function main(
   // const location = 'us-central1';
   // const inputUri = 'gs://cloud-samples-data/text.txt';
   // const outputUri = 'gs://YOUR_BUCKET_ID/path_to_store_results/';
-  // const glossaryPath = 'projects/[PROJECT_ID]/locations/[LOCATION]/glossaries/[YOUR_GLOSSARY_ID]';
+  // const glossaryId = 'YOUR_GLOSSARY_ID';
   
   // Imports the Google Cloud Translation library
-  const {TranslationServiceClient} = require('@google-cloud/translate');
+  const {TranslationServiceClient} = require('@google-cloud/translate').v3;
 
   // Instantiates a client
   const client = new TranslationServiceClient();
@@ -41,7 +41,7 @@ function main(
     const request = {
       parent: client.locationPath(projectId, location),
       sourceLanguageCode: 'en',
-      targetLanguageCodes: ['ja'],
+      targetLanguageCodes: ['es'],
       inputConfigs: [
         {
           mimeType: 'text/plain', // mime types: text/plain, text/html
@@ -51,11 +51,13 @@ function main(
         },
       ],
       outputConfig:  {
-        gcsDestination: gcsDestination,
+        gcsDestination: {
+          outputUriPrefix: outputUri,
+        },
       },
       glossaries: {
-        'ja' : {
-          glossary: glossaryPath,
+        'es' : {
+          glossary: client.glossaryPath(projectId, location, glossaryId),
         },
       },
     };

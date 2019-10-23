@@ -49,7 +49,7 @@ function main(
       contents: [text],
       mimeType: 'text/plain', // mime types: text/plain, text/html
       sourceLanguageCode: 'en',
-      targetLanguageCode: 'ja',
+      targetLanguageCode: 'es',
       glossaryConfig: glossaryConfig,
     };
 
