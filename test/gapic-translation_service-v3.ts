@@ -30,7 +30,7 @@ class FakeError {
 }
 const error = new FakeError(FAKE_STATUS_CODE);
 export interface Callback {
-  (err: FakeError|null, response?: {}|null): {};
+  (err: FakeError | null, response?: {} | null): {};
 }
 
 export class Operation {
@@ -39,7 +39,10 @@ export class Operation {
 }
 
 function mockSimpleGrpcMethod(
-    expectedRequest: {}, response: {}|null, error: FakeError|null) {
+  expectedRequest: {},
+  response: {} | null,
+  error: FakeError | null
+) {
   return (actualRequest: {}, options: {}, callback: Callback) => {
     assert.deepStrictEqual(actualRequest, expectedRequest);
     if (error) {
@@ -52,7 +55,10 @@ function mockSimpleGrpcMethod(
   };
 }
 function mockLongRunningGrpcMethod(
-    expectedRequest: {}, response: {}|null, error?: {}|null) {
+  expectedRequest: {},
+  response: {} | null,
+  error?: {} | null
+) {
   return (request: {}) => {
     assert.deepStrictEqual(request, expectedRequest);
     const mockOperation = {
@@ -64,7 +70,7 @@ function mockLongRunningGrpcMethod(
             resolve([response]);
           }
         });
-      }
+      },
     };
     return Promise.resolve([mockOperation]);
   };
@@ -72,12 +78,12 @@ function mockLongRunningGrpcMethod(
 describe('TranslationServiceClient', () => {
   it('has servicePath', () => {
     const servicePath =
-        translationServiceModule.v3.TranslationServiceClient.servicePath;
+      translationServiceModule.v3.TranslationServiceClient.servicePath;
     assert(servicePath);
   });
   it('has apiEndpoint', () => {
     const apiEndpoint =
-        translationServiceModule.v3.TranslationServiceClient.apiEndpoint;
+      translationServiceModule.v3.TranslationServiceClient.apiEndpoint;
     assert(apiEndpoint);
   });
   it('has port', () => {
@@ -106,8 +112,11 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
-      client._innerApiCalls.translateText =
-          mockSimpleGrpcMethod(request, expectedResponse, null);
+      client._innerApiCalls.translateText = mockSimpleGrpcMethod(
+        request,
+        expectedResponse,
+        null
+      );
       client.translateText(request, (err: {}, response: {}) => {
         assert.ifError(err);
         assert.deepStrictEqual(response, expectedResponse);
@@ -125,8 +134,11 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
-      client._innerApiCalls.translateText =
-          mockSimpleGrpcMethod(request, null, error);
+      client._innerApiCalls.translateText = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
       client.translateText(request, (err: FakeError, response: {}) => {
         assert(err instanceof FakeError);
         assert.strictEqual(err.code, FAKE_STATUS_CODE);
@@ -146,8 +158,11 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
-      client._innerApiCalls.detectLanguage =
-          mockSimpleGrpcMethod(request, expectedResponse, null);
+      client._innerApiCalls.detectLanguage = mockSimpleGrpcMethod(
+        request,
+        expectedResponse,
+        null
+      );
       client.detectLanguage(request, (err: {}, response: {}) => {
         assert.ifError(err);
         assert.deepStrictEqual(response, expectedResponse);
@@ -165,8 +180,11 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
-      client._innerApiCalls.detectLanguage =
-          mockSimpleGrpcMethod(request, null, error);
+      client._innerApiCalls.detectLanguage = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
       client.detectLanguage(request, (err: FakeError, response: {}) => {
         assert(err instanceof FakeError);
         assert.strictEqual(err.code, FAKE_STATUS_CODE);
@@ -186,8 +204,11 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
-      client._innerApiCalls.getSupportedLanguages =
-          mockSimpleGrpcMethod(request, expectedResponse, null);
+      client._innerApiCalls.getSupportedLanguages = mockSimpleGrpcMethod(
+        request,
+        expectedResponse,
+        null
+      );
       client.getSupportedLanguages(request, (err: {}, response: {}) => {
         assert.ifError(err);
         assert.deepStrictEqual(response, expectedResponse);
@@ -205,8 +226,11 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
-      client._innerApiCalls.getSupportedLanguages =
-          mockSimpleGrpcMethod(request, null, error);
+      client._innerApiCalls.getSupportedLanguages = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
       client.getSupportedLanguages(request, (err: FakeError, response: {}) => {
         assert(err instanceof FakeError);
         assert.strictEqual(err.code, FAKE_STATUS_CODE);
@@ -226,8 +250,11 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
-      client._innerApiCalls.getGlossary =
-          mockSimpleGrpcMethod(request, expectedResponse, null);
+      client._innerApiCalls.getGlossary = mockSimpleGrpcMethod(
+        request,
+        expectedResponse,
+        null
+      );
       client.getGlossary(request, (err: {}, response: {}) => {
         assert.ifError(err);
         assert.deepStrictEqual(response, expectedResponse);
@@ -245,8 +272,11 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
-      client._innerApiCalls.getGlossary =
-          mockSimpleGrpcMethod(request, null, error);
+      client._innerApiCalls.getGlossary = mockSimpleGrpcMethod(
+        request,
+        null,
+        error
+      );
       client.getGlossary(request, (err: FakeError, response: {}) => {
         assert(err instanceof FakeError);
         assert.strictEqual(err.code, FAKE_STATUS_CODE);
@@ -266,20 +296,23 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
-      client._innerApiCalls.batchTranslateText =
-          mockLongRunningGrpcMethod(request, expectedResponse);
-      client.batchTranslateText(request)
-          .then((responses: [Operation]) => {
-            const operation = responses[0];
-            return operation ? operation.promise() : {};
-          })
-          .then((responses: [Operation]) => {
-            assert.deepStrictEqual(responses[0], expectedResponse);
-            done();
-          })
-          .catch((err: {}) => {
-            done(err);
-          });
+      client._innerApiCalls.batchTranslateText = mockLongRunningGrpcMethod(
+        request,
+        expectedResponse
+      );
+      client
+        .batchTranslateText(request)
+        .then((responses: [Operation]) => {
+          const operation = responses[0];
+          return operation ? operation.promise() : {};
+        })
+        .then((responses: [Operation]) => {
+          assert.deepStrictEqual(responses[0], expectedResponse);
+          done();
+        })
+        .catch((err: {}) => {
+          done(err);
+        });
     });
 
     it('invokes batchTranslateText with error', done => {
@@ -292,21 +325,25 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
-      client._innerApiCalls.batchTranslateText =
-          mockLongRunningGrpcMethod(request, null, error);
-      client.batchTranslateText(request)
-          .then((responses: [Operation]) => {
-            const operation = responses[0];
-            return operation ? operation.promise() : {};
-          })
-          .then(() => {
-            assert.fail();
-          })
-          .catch((err: FakeError) => {
-            assert(err instanceof FakeError);
-            assert.strictEqual(err.code, FAKE_STATUS_CODE);
-            done();
-          });
+      client._innerApiCalls.batchTranslateText = mockLongRunningGrpcMethod(
+        request,
+        null,
+        error
+      );
+      client
+        .batchTranslateText(request)
+        .then((responses: [Operation]) => {
+          const operation = responses[0];
+          return operation ? operation.promise() : {};
+        })
+        .then(() => {
+          assert.fail();
+        })
+        .catch((err: FakeError) => {
+          assert(err instanceof FakeError);
+          assert.strictEqual(err.code, FAKE_STATUS_CODE);
+          done();
+        });
     });
   });
   describe('createGlossary', () => {
@@ -320,20 +357,23 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
-      client._innerApiCalls.createGlossary =
-          mockLongRunningGrpcMethod(request, expectedResponse);
-      client.createGlossary(request)
-          .then((responses: [Operation]) => {
-            const operation = responses[0];
-            return operation ? operation.promise() : {};
-          })
-          .then((responses: [Operation]) => {
-            assert.deepStrictEqual(responses[0], expectedResponse);
-            done();
-          })
-          .catch((err: {}) => {
-            done(err);
-          });
+      client._innerApiCalls.createGlossary = mockLongRunningGrpcMethod(
+        request,
+        expectedResponse
+      );
+      client
+        .createGlossary(request)
+        .then((responses: [Operation]) => {
+          const operation = responses[0];
+          return operation ? operation.promise() : {};
+        })
+        .then((responses: [Operation]) => {
+          assert.deepStrictEqual(responses[0], expectedResponse);
+          done();
+        })
+        .catch((err: {}) => {
+          done(err);
+        });
     });
 
     it('invokes createGlossary with error', done => {
@@ -346,21 +386,25 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
-      client._innerApiCalls.createGlossary =
-          mockLongRunningGrpcMethod(request, null, error);
-      client.createGlossary(request)
-          .then((responses: [Operation]) => {
-            const operation = responses[0];
-            return operation ? operation.promise() : {};
-          })
-          .then(() => {
-            assert.fail();
-          })
-          .catch((err: FakeError) => {
-            assert(err instanceof FakeError);
-            assert.strictEqual(err.code, FAKE_STATUS_CODE);
-            done();
-          });
+      client._innerApiCalls.createGlossary = mockLongRunningGrpcMethod(
+        request,
+        null,
+        error
+      );
+      client
+        .createGlossary(request)
+        .then((responses: [Operation]) => {
+          const operation = responses[0];
+          return operation ? operation.promise() : {};
+        })
+        .then(() => {
+          assert.fail();
+        })
+        .catch((err: FakeError) => {
+          assert(err instanceof FakeError);
+          assert.strictEqual(err.code, FAKE_STATUS_CODE);
+          done();
+        });
     });
   });
   describe('deleteGlossary', () => {
@@ -374,20 +418,23 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
-      client._innerApiCalls.deleteGlossary =
-          mockLongRunningGrpcMethod(request, expectedResponse);
-      client.deleteGlossary(request)
-          .then((responses: [Operation]) => {
-            const operation = responses[0];
-            return operation ? operation.promise() : {};
-          })
-          .then((responses: [Operation]) => {
-            assert.deepStrictEqual(responses[0], expectedResponse);
-            done();
-          })
-          .catch((err: {}) => {
-            done(err);
-          });
+      client._innerApiCalls.deleteGlossary = mockLongRunningGrpcMethod(
+        request,
+        expectedResponse
+      );
+      client
+        .deleteGlossary(request)
+        .then((responses: [Operation]) => {
+          const operation = responses[0];
+          return operation ? operation.promise() : {};
+        })
+        .then((responses: [Operation]) => {
+          assert.deepStrictEqual(responses[0], expectedResponse);
+          done();
+        })
+        .catch((err: {}) => {
+          done(err);
+        });
     });
 
     it('invokes deleteGlossary with error', done => {
@@ -400,21 +447,25 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock gRPC layer
-      client._innerApiCalls.deleteGlossary =
-          mockLongRunningGrpcMethod(request, null, error);
-      client.deleteGlossary(request)
-          .then((responses: [Operation]) => {
-            const operation = responses[0];
-            return operation ? operation.promise() : {};
-          })
-          .then(() => {
-            assert.fail();
-          })
-          .catch((err: FakeError) => {
-            assert(err instanceof FakeError);
-            assert.strictEqual(err.code, FAKE_STATUS_CODE);
-            done();
-          });
+      client._innerApiCalls.deleteGlossary = mockLongRunningGrpcMethod(
+        request,
+        null,
+        error
+      );
+      client
+        .deleteGlossary(request)
+        .then((responses: [Operation]) => {
+          const operation = responses[0];
+          return operation ? operation.promise() : {};
+        })
+        .then(() => {
+          assert.fail();
+        })
+        .catch((err: FakeError) => {
+          assert(err instanceof FakeError);
+          assert.strictEqual(err.code, FAKE_STATUS_CODE);
+          done();
+        });
     });
   });
   describe('listGlossaries', () => {
@@ -428,11 +479,14 @@ describe('TranslationServiceClient', () => {
       // Mock response
       const expectedResponse = {};
       // Mock Grpc layer
-      client._innerApiCalls.listGlossaries =
-          (actualRequest: {}, options: {}, callback: Callback) => {
-            assert.deepStrictEqual(actualRequest, request);
-            callback(null, expectedResponse);
-          };
+      client._innerApiCalls.listGlossaries = (
+        actualRequest: {},
+        options: {},
+        callback: Callback
+      ) => {
+        assert.deepStrictEqual(actualRequest, request);
+        callback(null, expectedResponse);
+      };
       client.listGlossaries(request, (err: FakeError, response: {}) => {
         assert.ifError(err);
         assert.deepStrictEqual(response, expectedResponse);
