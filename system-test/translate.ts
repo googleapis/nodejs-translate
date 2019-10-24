@@ -99,6 +99,7 @@ describe('translate', () => {
   describe('supported languages', () => {
     it('should get a list of supported languages', async () => {
       const [languages] = await translate.getLanguages();
+      // @ts-ignore next
       const englishResult = languages.filter(l => l.code === 'en')[0];
       assert.deepStrictEqual(englishResult, {
         code: 'en',
@@ -107,7 +108,9 @@ describe('translate', () => {
     });
 
     it('should accept a target language', async () => {
+      // @ts-ignore next
       const [languages] = await translate.getLanguages('es');
+      // @ts-ignore next
       const englishResult = languages.filter(language => {
         return language.code === 'en';
       })[0];
@@ -129,6 +132,7 @@ describe('translate', () => {
     });
 
     it('should use an API key to authenticate', done => {
+      // @ts-ignore next
       translate.getLanguages(done);
     });
   });

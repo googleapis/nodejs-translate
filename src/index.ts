@@ -80,7 +80,15 @@ const v3 = require('./v3');
  * const {TranslationServiceClient} =
  * require('@google-cloud/translate').v3beta1;
  */
-export * from './v2';
+export * from './v3';
+
+import * as v2 from './v2';
+/**
+ * @type {object}
+ * @property {constructor} TranslationServiceClient
+ *   Reference to {@link v2.TranslationServiceClient}
+ */
+export {v2};
 
 /**
  * @type {object}

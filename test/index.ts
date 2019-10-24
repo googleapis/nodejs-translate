@@ -132,6 +132,7 @@ describe('Translate v2', () => {
       it('should localize the options', () => {
         const options = {key: '...'};
         const translate = new Translate(options);
+        // @ts-ignore next
         assert.strictEqual(translate.options.key, options.key);
       });
 
