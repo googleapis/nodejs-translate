@@ -15,7 +15,7 @@
 'use strict';
 
 function main(projectId = 'YOUR_PROJECT_ID', location = 'us-central1') {
-  // [START translate_list_glossary]
+  // [START translate_v3_list_glossary]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -48,7 +48,7 @@ function main(projectId = 'YOUR_PROJECT_ID', location = 'us-central1') {
   }
 
   listGlossaries();
-  // [END translate_list_glossary]
+  // [END translate_v3_list_glossary]
 }
 
 main(...process.argv.slice(2));

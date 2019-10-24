@@ -20,7 +20,7 @@ function main(
   inputUri = 'gs://cloud-samples-data/translation/text.txt',
   outputUri = 'gs://YOUR_PROJECT_ID/translation/BATCH_TRANSLATION_OUTPUT/'
 ) {
-  // [START translate_batch_translate_text]
+  // [START translate_v3_batch_translate_text]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -67,7 +67,7 @@ function main(
   }
 
   batchTranslateText();
-  // [END translate_batch_translate_text]
+  // [END translate_v3_batch_translate_text]
 }
 
 main(...process.argv.slice(2));

@@ -19,7 +19,7 @@ function main(
   location = 'us-central1',
   glossaryId = 'glossary-id'
 ) {
-  // [START translate_delete_glossary]
+  // [START translate_v3_delete_glossary]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -56,7 +56,7 @@ function main(
   }
 
   deleteGlossary();
-  // [END translate_delete_glossary]
+  // [END translate_v3_delete_glossary]
 }
 
 main(...process.argv.slice(2));

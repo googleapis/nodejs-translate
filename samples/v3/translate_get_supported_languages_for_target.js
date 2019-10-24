@@ -15,7 +15,7 @@
 'use strict';
 
 function main(projectId = 'YOUR_PROJECT_ID', location='global') {
-  // [START translate_get_supported_languages_for_target]
+  // [START translate_v3_get_supported_languages_for_target]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -54,7 +54,7 @@ function main(projectId = 'YOUR_PROJECT_ID', location='global') {
   }
 
   getSupportedLanguages();
-  // [END translate_get_supported_languages_for_target]
+  // [END translate_v3_get_supported_languages_for_target]
 }
 
 main(...process.argv.slice(2));

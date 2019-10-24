@@ -21,7 +21,7 @@ function main(
   outputUri = 'gs://YOUR_PROJECT_ID/translation/BATCH_TRANSLATION_OUTPUT/',
   modelId = 'YOUR_MODEL_ID'
 ) {
-  // [START translate_batch_translate_text_with_model]
+  // [START translate_v3_batch_translate_text_with_model]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -72,7 +72,7 @@ function main(
   }
 
   batchTranslateTextWithModel();
-  // [END translate_batch_translate_text_with_model]
+  // [END translate_v3_batch_translate_text_with_model]
 }
 
 main(...process.argv.slice(2));

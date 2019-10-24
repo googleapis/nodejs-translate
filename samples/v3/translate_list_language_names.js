@@ -15,7 +15,7 @@
 'use strict';
 
 function main(projectId = 'YOUR_PROJECT_ID', location = 'global') {
-  // [START translate_list_language_names]
+  // [START translate_v3_list_language_names]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -46,7 +46,7 @@ function main(projectId = 'YOUR_PROJECT_ID', location = 'global') {
   }
 
   listLanguages();
-  // [END translate_list_language_names]
+  // [END translate_v3_list_language_names]
 }
 
 main(...process.argv.slice(2));

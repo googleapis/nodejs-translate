@@ -22,7 +22,7 @@ function main(
   glossaryId = 'YOUR_GLOSSARY_ID',
   modelId = 'YOUR_MODEL_ID'
 ) {
-  // [START translate_batch_translate_text_with_glossary_and_model]
+  // [START translate_v3_batch_translate_text_with_glossary_and_model]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -79,7 +79,7 @@ function main(
   }
 
   batchTranslateTextWithGlossaryAndModel();
-  // [END translate_batch_translate_text_with_glossary_and_model]
+  // [END translate_v3_batch_translate_text_with_glossary_and_model]
 }
 
 main(...process.argv.slice(2));

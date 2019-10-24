@@ -19,7 +19,7 @@ function main(
   location = 'global',
   text = 'text to translate'
 ) {
-  // [START translate_translate_text]
+  // [START translate_v3_translate_text]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -51,7 +51,7 @@ function main(
   }
 
   translateText();
-  // [END translate_translate_text]
+  // [END translate_v3_translate_text]
 }
 
 main(...process.argv.slice(2));

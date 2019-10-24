@@ -20,7 +20,7 @@ function main(
   glossaryId = 'glossary',
   text = 'text to translate'
 ) {
-  // [START translate_translate_text_with_glossary]
+  // [START translate_v3_translate_text_with_glossary]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -62,7 +62,7 @@ function main(
   }
 
   translateTextWithGlossary();
-  // [END translate_translate_text_with_glossary]
+  // [END translate_v3_translate_text_with_glossary]
 }
 
 main(...process.argv.slice(2));

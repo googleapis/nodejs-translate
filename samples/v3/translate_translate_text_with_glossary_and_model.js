@@ -21,7 +21,7 @@ function main(
   modelId = 'YOUR_MODEL_ID',
   text = 'text to translate'
 ) {
-  // [START translate_translate_text_with_glossary_and_model]
+  // [START translate_v3_translate_text_with_glossary_and_model]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -65,7 +65,7 @@ function main(
   }
 
   translateTextWithGlossaryAndModel();
-  // [END translate_translate_text_with_glossary_and_model]
+  // [END translate_v3_translate_text_with_glossary_and_model]
 }
 
 main(...process.argv.slice(2));

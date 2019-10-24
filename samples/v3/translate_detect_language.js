@@ -19,7 +19,7 @@ function main(
   location = 'global',
   text = 'text to translate'
 ) {
-  // [START translate_detect_language]
+  // [START translate_v3_detect_language]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -51,7 +51,7 @@ function main(
   }
 
   detectLanguage();
-  // [END translate_detect_language]
+  // [END translate_v3_detect_language]
 }
 
 main(...process.argv.slice(2));

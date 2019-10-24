@@ -19,7 +19,7 @@ function main(
   location = 'us-central1',
   glossaryId = 'glossary-id'
 ) {
-  // [START translate_get_glossary]
+  // [START translate_v3_get_glossary]
   /**
    * TODO(developer): Uncomment these variables before running the sample.
    */
@@ -52,7 +52,7 @@ function main(
   }
 
   getGlossary();
-  // [END translate_get_glossary]
+  // [END translate_v3_get_glossary]
 }
 
 main(...process.argv.slice(2));
