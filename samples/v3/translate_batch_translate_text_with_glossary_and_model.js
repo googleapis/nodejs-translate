@@ -32,7 +32,7 @@ function main(
   // const outputUri = 'gs://YOUR_BUCKET_ID/path_to_store_results/';
   // const glossaryId = 'YOUR_GLOSSARY_ID';
   // const modelId = 'YOUR_MODEL_ID';
-  
+
   // Imports the Google Cloud Translation library
   const {TranslationServiceClient} = require('@google-cloud/translate');
 
@@ -52,18 +52,18 @@ function main(
           },
         },
       ],
-      outputConfig:  {
+      outputConfig: {
         gcsDestination: {
           outputUriPrefix: outputUri,
         },
       },
       glossaries: {
-        'ja' : {
+        ja: {
           glossary: `projects/${projectId}/locations/${location}/glossaries/${glossaryId}`,
         },
       },
       models: {
-        'ja': `projects/${projectId}/locations/${location}/models/${modelId}`
+        ja: `projects/${projectId}/locations/${location}/models/${modelId}`,
       },
     };
 

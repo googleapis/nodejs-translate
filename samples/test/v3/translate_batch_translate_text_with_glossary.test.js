@@ -105,6 +105,6 @@ describe(REGION_TAG, () => {
     // Delete glossary using a long-running operation.
     const [operation] = await translationClient.deleteGlossary(request);
     // Wait for operation to complete.
-    const [response] = await operation.promise();
+    await operation.promise();
   });
 });

@@ -31,13 +31,10 @@ function main(
 
   // Imports the Google Cloud Translation library
   const {TranslationServiceClient} = require('@google-cloud/translate');
-  const automl = require('@google-cloud/automl');
 
   // Instantiates a client
   const translationClient = new TranslationServiceClient();
-  const autoMLClient = new automl.AutoMlClient();
   async function translateTextWithModel() {
-    const model = autoMLClient.modelPath(projectId, location, modelId);
     // Construct request
     const request = {
       parent: `projects/${projectId}/locations/${location}`,

@@ -48,7 +48,7 @@ function main(
       sourceLanguageCode: 'en',
       targetLanguageCode: 'ja',
       glossaryConfig: glossaryConfig,
-      model: `projects/${projectId}/locations/${location}/models/${modelId}`
+      model: `projects/${projectId}/locations/${location}/models/${modelId}`,
     };
 
     // Run request
