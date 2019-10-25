@@ -4,6 +4,13 @@
 
 [1]: https://www.npmjs.com/package/nodejs-translate?activeTab=versions
 
+### [4.2.2](https://www.github.com/googleapis/nodejs-translate/compare/v4.2.1...v4.2.2) (2019-10-25)
+
+
+### Bug Fixes
+
+* remove extra brace in snippet ([#347](https://www.github.com/googleapis/nodejs-translate/issues/347)) ([6c1e95b](https://www.github.com/googleapis/nodejs-translate/commit/6c1e95bd99ec84c48e73b85203562b5f1cfa46d9))
+
 ### [4.2.1](https://www.github.com/googleapis/nodejs-translate/compare/v4.2.0...v4.2.1) (2019-10-22)
 
 
