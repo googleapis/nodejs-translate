@@ -32,11 +32,9 @@ async function main(
   const target = 'ru';
 
   // Translates some text into Russian
-  (async () => {
-    const [translation] = await translate.translate(text, target);
-    console.log(`Text: ${text}`);
-    console.log(`Translation: ${translation}`);
-  })()
+  const [translation] = await translate.translate(text, target);
+  console.log(`Text: ${text}`);
+  console.log(`Translation: ${translation}`);
   // [END translate_quickstart]
 }
 
