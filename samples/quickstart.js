@@ -1,16 +1,17 @@
-// Copyright 2017 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     https://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+/**
+ * Copyright 2017, Google, Inc.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
 'use strict';
 
@@ -19,10 +20,10 @@ async function main(
 ) {
   // [START translate_quickstart]
   // Imports the Google Cloud client library
-  const {TranslationServiceClient} = require('@google-cloud/translate');
+  const {Translate} = require('@google-cloud/translate').v2;
 
   // Instantiates a client
-  const translate = new TranslationServiceClient({projectId});
+  const translate = new Translate({projectId});
 
   // The text to translate
   const text = 'Hello, world!';
@@ -31,14 +32,9 @@ async function main(
   const target = 'ru';
 
   // Translates some text into Russian
-  const [result] = await translate.translateText({
-    contents: [text],
-    sourceLanguageCode: 'en',
-    targetLanguageCode: target,
-    parent: `projects/${projectId}`,
-  });
+  const [translation] = await translate.translate(text, target);
   console.log(`Text: ${text}`);
-  console.log(`Translation: ${result.translations[0].translatedText}`);
+  console.log(`Translation: ${translation}`);
   // [END translate_quickstart]
 }
 
