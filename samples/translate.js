@@ -15,101 +15,122 @@
 
 'use strict';
 
-async function detectLanguage(text) {
+async function detectLanguage(texts) {
   // [START translate_detect_language]
   // Imports the Google Cloud client library
-  const {Translate} = require('@google-cloud/translate');
+  const {TranslationServiceClient} = require('@google-cloud/translate');
 
   // Creates a client
-  const translate = new Translate();
+  const translate = new TranslationServiceClient();
 
   /**
    * TODO(developer): Uncomment the following line before running the sample.
    */
-  // const text = 'The text for which to detect language, e.g. Hello, world!';
+  // const texts = ['The text for which to detect language, e.g. Hello, world!'];
 
-  // Detects the language. "text" can be a string for detecting the language of
-  // a single piece of text, or an array of strings for detecting the languages
-  // of multiple texts.
-  let [detections] = await translate.detect(text);
-  detections = Array.isArray(detections) ? detections : [detections];
+  // Detects the language. "content" represents the string that the language
+  // should be detected for.
   console.log('Detections:');
-  detections.forEach(detection => {
-    console.log(`${detection.input} => ${detection.language}`);
-  });
-
+  const projectId = await translate.getProjectId();
+  for (const text of texts) {
+    const [result] = await translate.detectLanguage({
+      content: text,
+      parent: `projects/${projectId}`,
+    });
+    result.languages.forEach(detection => {
+      console.log(`\t${text} => ${detection.languageCode}`);
+    });
+  }
   // [END translate_detect_language]
 }
 
 async function listLanguages() {
   // [START translate_list_codes]
   // Imports the Google Cloud client library
-  const {Translate} = require('@google-cloud/translate');
+  const {TranslationServiceClient} = require('@google-cloud/translate');
 
   // Creates a client
-  const translate = new Translate();
+  const translate = new TranslationServiceClient();
 
-  // Lists available translation language with their names in English (the default).
-  const [languages] = await translate.getLanguages();
+  // Lists available translations (language codes only).
+  const projectId = await translate.getProjectId();
+  const [result] = await translate.getSupportedLanguages({
+    parent: `projects/${projectId}`,
+  });
 
   console.log('Languages:');
-  languages.forEach(language => console.log(language));
+  result.languages.forEach(language => {
+    console.log(
+      `\tlanguageCode = ${language.languageCode}\tdisplayName = ${language.displayName}`
+    );
+  });
   // [END translate_list_codes]
 }
 
 async function listLanguagesWithTarget(target) {
   // [START translate_list_language_names]
   // Imports the Google Cloud client library
-  const {Translate} = require('@google-cloud/translate');
+  const {TranslationServiceClient} = require('@google-cloud/translate');
 
   // Creates a client
-  const translate = new Translate();
+  const translate = new TranslationServiceClient();
 
   /**
    * TODO(developer): Uncomment the following line before running the sample.
    */
   // const target = 'The target language for language names, e.g. ru';
 
-  // Lists available translation language with their names in a target language
-  const [languages] = await translate.getLanguages(target);
+  // Lists available translation language with their names in a target language.
+  const projectId = await translate.getProjectId();
+  const [result] = await translate.getSupportedLanguages({
+    parent: `projects/${projectId}`,
+    displayLanguageCode: target,
+  });
 
   console.log('Languages:');
-  languages.forEach(language => console.log(language));
-
+  result.languages.forEach(language => {
+    console.log(
+      `\tlanguageCode = ${language.languageCode}\tdisplayName = ${language.displayName}`
+    );
+  });
   // [END translate_list_language_names]
 }
 
-async function translateText(text, target) {
+async function translateText(texts, target) {
   // [START translate_translate_text]
   // Imports the Google Cloud client library
-  const {Translate} = require('@google-cloud/translate');
+  const {TranslationServiceClient} = require('@google-cloud/translate');
 
   // Creates a client
-  const translate = new Translate();
+  const translate = new TranslationServiceClient();
 
   /**
    * TODO(developer): Uncomment the following lines before running the sample.
    */
-  // const text = 'The text to translate, e.g. Hello, world!';
+  // const texts = ['The text to translate, e.g. Hello, world!'];
   // const target = 'The target language, e.g. ru';
 
-  // Translates the text into the target language. "text" can be a string for
-  // translating a single piece of text, or an array of strings for translating
-  // multiple texts.
-  let [translations] = await translate.translate(text, target);
-  translations = Array.isArray(translations) ? translations : [translations];
-  console.log('Translations:');
-  translations.forEach((translation, i) => {
-    console.log(`${text[i]} => (${target}) ${translation}`);
+  // Translates the text into the target language. "contents" is an array of
+  // one or more strings for translating.
+  const projectId = await translate.getProjectId();
+  const [result] = await translate.translateText({
+    contents: texts,
+    sourceLanguageCode: 'en',
+    targetLanguageCode: target,
+    parent: `projects/${projectId}`,
   });
 
+  console.log('Translations:');
+  result.translations.forEach((translation, i) => {
+    console.log(`\t${texts[i]} => (${target}) ${translation.translatedText}`);
+  });
   // [END translate_translate_text]
 }
 
 async function translateTextWithModel(text, target, model) {
   // [START translate_text_with_model]
   // Imports the Google Cloud client library
-  const {Translate} = require('@google-cloud/translate');
+  const {Translate} = require('@google-cloud/translate').v2;
 
   // Creates a client
   const translate = new Translate();
@@ -136,7 +157,7 @@ async function translateTextWithModel(text, target, model) {
   translations = Array.isArray(translations) ? translations : [translations];
   console.log('Translations:');
   translations.forEach((translation, i) => {
-    console.log(`${text[i]} => (${target}) ${translation}`);
+    console.log(`\t${text[i]} => (${target}) ${translation}`);
   });
   // [END translate_text_with_model]
 }

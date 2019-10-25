@@ -26,13 +26,15 @@ import * as gapicConfig from './translation_service_client_config.json';
 const version = packageJson.version;
 
 export interface ClientOptions extends gax.GrpcClientOptions,
-                                       gax.GoogleAuthOptions,
-                                       gax.ClientStubOptions {
+                                       gax.GoogleAuthOptions {
   libName?: string;
   libVersion?: string;
   clientConfig?: gax.ClientConfig;
   fallback?: boolean;
   apiEndpoint?: string;
+  port?: number;
+  servicePath?: string;
+  sslCreds?: object;
 }
 
 interface Descriptors {
@@ -225,7 +227,7 @@ export class TranslationServiceClient {
                     'google.cloud.translation.v3.TranslationService') :
                 // @ts-ignore Do not check types for loaded protos
                 protos.google.cloud.translation.v3.TranslationService,
-            opts) as Promise<{[method: string]: Function}>;
+            opts as gax.ClientStubOptions) as Promise<{[method: string]: Function}>;
 
     const translationServiceStubMethods = [
       'translateText', 'detectLanguage', 'getSupportedLanguages',

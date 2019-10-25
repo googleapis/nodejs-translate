@@ -16,11 +16,9 @@
 'use strict';
 
 const {assert} = require('chai');
-const {Translate} = require('@google-cloud/translate');
 const cp = require('child_process');
 
 const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'}).trim();
-const translate = new Translate();
 const cmd = 'node translate.js';
 const text = 'Hello world!';
 const text2 = 'Goodbye!';
@@ -30,18 +28,14 @@ const toLang = 'ru';
 describe('translate sample tests', () => {
   it('should detect language of a single string', async () => {
     const output = execSync(`${cmd} detect "${text}"`);
-    const [detection] = await translate.detect(text);
-    const expected = new RegExp(
-      `Detections:\n${text} => ${detection.language}`
-    );
+    const expected = new RegExp(`Detections:\n\t${text} => en`);
     assert.match(output, expected);
   });
 
   it('should detect language of multiple strings', async () => {
     const output = execSync(`${cmd} detect "${text}" "${text2}"`);
-    const [detections] = await translate.detect([text, text2]);
     const expected = new RegExp(
-      `Detections:\n${text} => ${detections[0].language}\n${text2} => ${detections[1].language}`
+      `Detections:\n\t${text} => en\n\t${text2} => en`
     );
     assert.match(output, expected);
   });
@@ -49,28 +43,24 @@ describe('translate sample tests', () => {
   it('should list languages', () => {
     const output = execSync(`${cmd} list`);
     assert.match(output, /Languages:/);
-    assert.match(output, new RegExp(`{ code: 'af', name: 'Afrikaans' }`));
+    assert.match(output, new RegExp('languageCode = af'));
   });
 
   it('should list languages with a target', () => {
     const output = execSync(`${cmd} list es`);
     assert.match(output, /Languages:/);
-    assert.match(output, new RegExp(`{ code: 'af', name: 'afrikáans' }`));
+    assert.include(output, 'languageCode = af\tdisplayName = afrikáans');
   });
 
   it('should translate a single string', async () => {
     const output = execSync(`${cmd} translate ${toLang} "${text}"`);
-    const [translation] = await translate.translate(text, toLang);
-    const expected = `Translations:\n${text} => (${toLang}) ${translation}`;
+    const expected = `Translations:\n\t${text} => (${toLang}) Привет, мир!`;
     assert.strictEqual(output, expected);
   });
 
   it('should translate multiple strings', async () => {
     const output = execSync(`${cmd} translate ${toLang} "${text}" "${text2}"`);
-    const [translations] = await translate.translate([text, text2], toLang);
-    const expected = `Translations:\n${text} => (${toLang}) ${
-      translations[0]
-    }\n${text2} => (${toLang}) ${translations[1]}`;
+    const expected = `Translations:\n\t${text} => (${toLang}) Привет, мир!\n\t${text2} => (${toLang}) До свидания!`;
     assert.strictEqual(output, expected);
   });
 
@@ -78,8 +68,7 @@ describe('translate sample tests', () => {
     const output = execSync(
       `${cmd} translate-with-model ${toLang} ${model} "${text}"`
     );
-    const [translation] = await translate.translate(text, toLang);
-    const expected = `Translations:\n${text} => (${toLang}) ${translation}`;
+    const expected = `Translations:\n\t${text} => (${toLang}) Привет, мир!`;
     assert.strictEqual(output, expected);
   });
 
@@ -87,10 +76,7 @@ describe('translate sample tests', () => {
     const output = execSync(
       `${cmd} translate-with-model ${toLang} ${model} "${text}" "${text2}"`
     );
-    const [translations] = await translate.translate([text, text2], toLang);
-    const expected = `Translations:\n${text} => (${toLang}) ${
-      translations[0]
-    }\n${text2} => (${toLang}) ${translations[1]}`;
+    const expected = `Translations:\n\t${text} => (${toLang}) Привет, мир!\n\t${text2} => (${toLang}) До свидания!`;
     assert.strictEqual(output, expected);
   });
 });

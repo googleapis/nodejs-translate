@@ -30,7 +30,7 @@
  * @namespace google.protobuf
  */
 const v3beta1 = require('./v3beta1');
-import * as v3 from './v3';
+import * as v2 from './v2';
 
 /**
  * The `@google-cloud/translate` package has the following named exports:
@@ -74,11 +74,12 @@ import * as v3 from './v3';
  * const {TranslationServiceClient} =
  * require('@google-cloud/translate').v3beta1;
  */
-export * from './v2';
+import * as v3 from './v3';
+export * from './v3';
 
 /**
  * @type {object}
  * @property {constructor} TranslationServiceClient
  *   Reference to {@link v3beta1.TranslationServiceClient}
  */
-export {v3beta1, v3};
+export {v2, v3beta1, v3};

@@ -20,10 +20,10 @@ async function main(
 ) {
   // [START translate_quickstart]
   // Imports the Google Cloud client library
-  const {Translate} = require('@google-cloud/translate');
+  const {TranslationServiceClient} = require('@google-cloud/translate');
 
   // Instantiates a client
-  const translate = new Translate({projectId});
+  const translate = new TranslationServiceClient({projectId});
 
   // The text to translate
   const text = 'Hello, world!';
@@ -32,9 +32,14 @@ async function main(
   const target = 'ru';
 
   // Translates some text into Russian
-  const [translation] = await translate.translate(text, target);
+  const [result] = await translate.translateText({
+    contents: [text],
+    sourceLanguageCode: 'en',
+    targetLanguageCode: target,
+    parent: `projects/${projectId}`,
+  });
   console.log(`Text: ${text}`);
-  console.log(`Translation: ${translation}`);
+  console.log(`Translation: ${result.translations[0].translatedText}`);
   // [END translate_quickstart]
 }
 
