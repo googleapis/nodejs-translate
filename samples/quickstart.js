@@ -21,7 +21,7 @@ async function main(
   // [START translate_quickstart]
   // Imports the Google Cloud client library
   const {Translate} = require('@google-cloud/translate').v2;
-    
+
   /**
    * TODO(developer): Uncomment the following line before running the sample.
    */
