@@ -41,7 +41,7 @@ function main(
     const [translation] = await translate.translate(text, target);
     console.log(`Text: ${text}`);
     console.log(`Translation: ${translation}`);
-  };
+  }
 
   quickStart();
   // [END translate_quickstart]

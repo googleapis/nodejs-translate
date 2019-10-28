@@ -38,7 +38,7 @@ function detectLanguageSample(text) {
     detections.forEach(detection => {
       console.log(`${detection.input} => ${detection.language}`);
     });
-  };
+  }
 
   detectLanguage();
   // [END translate_detect_language]
@@ -58,7 +58,7 @@ function listLanguagesSample() {
 
     console.log('Languages:');
     languages.forEach(language => console.log(language));
-  };
+  }
 
   listLanguages();
   // [END translate_list_codes]
@@ -83,7 +83,7 @@ function listLanguagesWithTargetSample(target) {
 
     console.log('Languages:');
     languages.forEach(language => console.log(language));
-  };
+  }
 
   listLanguagesWithTarget();
   // [END translate_list_language_names]
@@ -113,7 +113,7 @@ function translateTextSample(text, target) {
     translations.forEach((translation, i) => {
       console.log(`${text[i]} => (${target}) ${translation}`);
     });
-  };
+  }
 
   translateText();
   // [END translate_translate_text]
@@ -152,7 +152,7 @@ function translateTextWithModelSample(text, target, model) {
     translations.forEach((translation, i) => {
       console.log(`${text[i]} => (${target}) ${translation}`);
     });
-  };
+  }
 
   translateTextWithModel();
   // [END translate_text_with_model]
@@ -182,8 +182,7 @@ require(`yargs`)
     `translate <toLang> <text..>`,
     `Translates one or more strings into the target language.`,
     {},
-    async opts =>
-      await translateTextSample(opts.text, opts.toLang)
+    async opts => await translateTextSample(opts.text, opts.toLang)
   )
   .command(
     `translate-with-model <toLang> <model> <text..>`,
