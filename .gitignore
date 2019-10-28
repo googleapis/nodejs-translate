@@ -7,6 +7,5 @@ out/
 system-test/secrets.js
 system-test/*key.json
 *.lock
-build
 package-lock.json
 __pycache__
