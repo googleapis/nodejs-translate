@@ -15,33 +15,36 @@
 
 'use strict';
 
-async function main(
+function main(
   projectId = 'YOUR_PROJECT_ID' // Your GCP Project Id
 ) {
   // [START translate_quickstart]
-  // Imports the Google Cloud client library
-  const {Translate} = require('@google-cloud/translate').v2;
-
   /**
    * TODO(developer): Uncomment the following line before running the sample.
    */
   // const projectId = 'YOUR_PROJECT_ID';
 
+  // Imports the Google Cloud client library
+  const {Translate} = require('@google-cloud/translate').v2;
+
   // Instantiates a client
   const translate = new Translate({projectId});
 
-  // The text to translate
-  const text = 'Hello, world!';
+  async function quickStart() {
+    // The text to translate
+    const text = 'Hello, world!';
 
-  // The target language
-  const target = 'ru';
+    // The target language
+    const target = 'ru';
 
-  // Translates some text into Russian
-  const [translation] = await translate.translate(text, target);
-  console.log(`Text: ${text}`);
-  console.log(`Translation: ${translation}`);
+    // Translates some text into Russian
+    const [translation] = await translate.translate(text, target);
+    console.log(`Text: ${text}`);
+    console.log(`Translation: ${translation}`);
+  };
+
+  quickStart();
   // [END translate_quickstart]
 }
 
-const args = process.argv.slice(2);
-main(...args).catch(console.error);
+main(...process.argv.slice(2));
