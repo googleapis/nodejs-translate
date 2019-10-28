@@ -16,7 +16,7 @@
 
 const {assert} = require('chai');
 const {TranslationServiceClient} = require('@google-cloud/translate');
-const uuid = require('uuid')
+const uuid = require('uuid');
 const cp = require('child_process');
 
 const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
