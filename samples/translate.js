@@ -64,7 +64,7 @@ function listLanguagesSample() {
   // [END translate_list_codes]
 }
 
-async function listLanguagesWithTargetSample(target) {
+function listLanguagesWithTargetSample(target) {
   // [START translate_list_language_names]
   // Imports the Google Cloud client library
   const {Translate} = require('@google-cloud/translate').v2;
@@ -89,7 +89,7 @@ async function listLanguagesWithTargetSample(target) {
   // [END translate_list_language_names]
 }
 
-async function translateTextSample(text, target) {
+function translateTextSample(text, target) {
   // [START translate_translate_text]
   // Imports the Google Cloud client library
   const {Translate} = require('@google-cloud/translate').v2;
@@ -119,7 +119,7 @@ async function translateTextSample(text, target) {
   // [END translate_translate_text]
 }
 
-async function translateTextWithModelSample(text, target, model) {
+function translateTextWithModelSample(text, target, model) {
   // [START translate_text_with_model]
   // Imports the Google Cloud client library
   const {Translate} = require('@google-cloud/translate').v2;
