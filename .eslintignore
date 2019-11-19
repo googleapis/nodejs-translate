@@ -3,4 +3,3 @@ src/**/doc/*
 build/
 docs/
 protos/
-system-test/fixtures

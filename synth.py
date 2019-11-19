@@ -29,7 +29,7 @@ for version in versions:
       "grpc-service-config": "google/cloud/translate/v3/translate_grpc_service_config.json"
     },
     version=version)
-s.copy(library, excludes=['README.md', 'package.json', 'src/index.ts', 'webpack.config.js'])
+s.copy(library, excludes=['README.md', 'package.json', 'src/index.ts'])
 
 # Update path discovery due to build/ dir and TypeScript conversion.
 s.replace("test/gapic-*.js", "../../package.json", "../../../package.json")
@@ -50,7 +50,7 @@ s.replace("system-test/fixtures/sample/src/index.ts", "'translation'", "'@google
 logging.basicConfig(level=logging.DEBUG)
 common_templates = gcp.CommonTemplates()
 templates = common_templates.node_library(source_location='build/src')
-s.copy(templates, excludes=[".eslintignore"])
+s.copy(templates, excludes=[])
 
 # Node.js specific cleanup
 subprocess.run(["npm", "install"])

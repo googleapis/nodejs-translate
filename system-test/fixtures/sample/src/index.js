@@ -16,11 +16,12 @@
 // ** https://github.com/googleapis/gapic-generator-typescript **
 // ** All changes to this file may be overwritten. **
 
+/* eslint-disable node/no-missing-require, no-unused-vars */
 const translation = require('@google-cloud/translate');
 
 function main() {
   const translationServiceClient = new translation.TranslationServiceClient();
-  console.log("translationServiceClient was created!");
+  console.log('translationServiceClient was created!');
 }
 
 main();
