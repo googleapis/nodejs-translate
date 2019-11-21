@@ -30,7 +30,7 @@
   "scripts": {
     "docs": "jsdoc -c .jsdoc.js",
     "predocs": "npm run compile",
-    "lint": "npx gts check && eslint '**/*.js'",
+    "lint": "gts check && eslint '**/*.js'",
     "samples-test": "cd samples/ && npm link ../ && npm test && cd ../",
     "system-test": "mocha build/system-test --timeout 600000",
     "test": "c8 mocha build/test",
