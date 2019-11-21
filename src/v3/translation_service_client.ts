@@ -1226,6 +1226,15 @@ export class TranslationServiceClient {
   // --------------------
   // -- Path templates --
   // --------------------
+
+  /**
+   * Return a fully-qualified glossary resource name string.
+   *
+   * @param {string} project
+   * @param {string} location
+   * @param {string} glossary
+   * @returns {string} Resource name string.
+   */
   glossaryPath(project: string, location: string, glossary: string) {
     return this._pathTemplates.glossaryPathTemplate.render({
       project,
@@ -1233,13 +1242,37 @@ export class TranslationServiceClient {
       glossary,
     });
   }
+
+  /**
+   * Parse the project from Glossary resource.
+   *
+   * @param {string} glossaryName
+   *   A fully-qualified path representing Glossary resource.
+   * @returns {string} A string representing the project.
+   */
   matchProjectFromGlossaryName(glossaryName: string) {
     return this._pathTemplates.glossaryPathTemplate.match(glossaryName).project;
   }
+
+  /**
+   * Parse the location from Glossary resource.
+   *
+   * @param {string} glossaryName
+   *   A fully-qualified path representing Glossary resource.
+   * @returns {string} A string representing the location.
+   */
   matchLocationFromGlossaryName(glossaryName: string) {
     return this._pathTemplates.glossaryPathTemplate.match(glossaryName)
       .location;
   }
+
+  /**
+   * Parse the glossary from Glossary resource.
+   *
+   * @param {string} glossaryName
+   *   A fully-qualified path representing Glossary resource.
+   * @returns {string} A string representing the glossary.
+   */
   matchGlossaryFromGlossaryName(glossaryName: string) {
     return this._pathTemplates.glossaryPathTemplate.match(glossaryName)
       .glossary;
