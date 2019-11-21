@@ -20,7 +20,7 @@ import * as v2 from './v2';
  * The `@google-cloud/translate` package has the following named exports:
  *
  * - `{@link TranslationServiceClient}` class - constructor for v3 of the Translation API.
- * See {@link v3.TranslationServiceClient} for client methods. 
+ * See {@link v3.TranslationServiceClient} for client methods.
  * - `v3` - client for the v3 backend service version. It exports:
  *    - `TranslationServiceClient` - Reference to {@link v3.TranslationServiceClient}
  * - `v3beta1` - client for the v3beta1 backend service version. It exports:
