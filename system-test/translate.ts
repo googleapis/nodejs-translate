@@ -156,11 +156,9 @@ describe('translate', () => {
       const [result] = await translate.getSupportedLanguages({
         parent: `projects/${projectId}`,
       });
-      const englishResult = result.languages!.filter(
-        (l: string) => {
+      const englishResult = result.languages!.filter((l: {[key: string]: string}) => {
           l.languageCode === 'en'
-        }
-      )[0];
+      })[0];
       assert.deepStrictEqual(englishResult, {
         languageCode: 'en',
         displayName: '',
