@@ -143,21 +143,24 @@ describe('translate', () => {
         credentials: Object.assign(
           require(process.env.GOOGLE_APPLICATION_CREDENTIALS || ''),
           {
-            quota_project_id: 'my-fake-billing-project',
+            quota_project_id: process.env.GCLOUD_PROJECT,
           }
         ),
       });
-      const {Translate} = http2spy.require(require.resolve('../src'));
-      const translate = new Translate({
+      const {TranslationServiceClient} = http2spy.require(require.resolve('../src'));
+      const translate = new TranslationServiceClient({
         auth: auth
       })
 
+      // We run the same test as "list of supported languages", but with an
+      // alternate "quota_project_id" set; Given that GCLOUD_PROJECT
+      // references a valid project, we expect success:
       const projectId = await translate.getProjectId();
       const [result] = await translate.getSupportedLanguages({
         parent: `projects/${projectId}`,
       });
       const englishResult = result.languages!.filter((l: {[key: string]: string}) => {
-          l.languageCode === 'en'
+        return l.languageCode === 'en'
       })[0];
       assert.deepStrictEqual(englishResult, {
         languageCode: 'en',
@@ -165,29 +168,6 @@ describe('translate', () => {
         supportSource: true,
         supportTarget: true,
       });
-
-      /*const {log, logEntries} = getTestLog(
-        new Logging({
-          auth,
-        })
-      );
-      let err: Error | null = null;
-      try {
-        await log.write(logEntries, options);
-      } catch (_err) {
-        err = _err;
-      }
-      assert(err);
-      assert(
-        err!.message.includes(
-          "Project 'project:my-fake-billing-project' not found or deleted"
-        ),
-        err!.message
-      );
-      assert.strictEqual(
-        'my-fake-billing-project',
-        http2spy.requests[0]['x-goog-user-project'][0]
-      );*/
     });
   });
 });
