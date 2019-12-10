@@ -147,10 +147,12 @@ describe('translate', () => {
           }
         ),
       });
-      const {TranslationServiceClient} = http2spy.require(require.resolve('../src'));
+      const {TranslationServiceClient} = http2spy.require(
+        require.resolve('../src')
+      );
       const translate = new TranslationServiceClient({
-        auth: auth
-      })
+        auth,
+      });
 
       // We run the same test as "list of supported languages", but with an
       // alternate "quota_project_id" set; Given that GCLOUD_PROJECT
@@ -159,15 +161,23 @@ describe('translate', () => {
       const [result] = await translate.getSupportedLanguages({
         parent: `projects/${projectId}`,
       });
-      const englishResult = result.languages!.filter((l: {[key: string]: string}) => {
-        return l.languageCode === 'en'
-      })[0];
+      const englishResult = result.languages!.filter(
+        (l: {[key: string]: string}) => {
+          return l.languageCode === 'en';
+        }
+      )[0];
       assert.deepStrictEqual(englishResult, {
         languageCode: 'en',
         displayName: '',
         supportSource: true,
         supportTarget: true,
       });
+
+      // Ensure we actually populated the header:
+      assert.strictEqual(
+        'long-door-651',
+        http2spy.requests[0]['x-goog-user-project'][0]
+      );
     });
   });
 });
