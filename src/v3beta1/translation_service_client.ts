@@ -143,9 +143,6 @@ export class TranslationServiceClient {
     // identifiers to uniquely identify resources within the API.
     // Create useful helper objects for these.
     this._pathTemplates = {
-      locationPathTemplate: new gaxModule.PathTemplate(
-        'projects/{project}/locations/{location}'
-      ),
       glossaryPathTemplate: new gaxModule.PathTemplate(
         'projects/{project}/locations/{location}/glossaries/{glossary}'
       ),
@@ -1245,43 +1242,6 @@ export class TranslationServiceClient {
   // --------------------
   // -- Path templates --
   // --------------------
-
-  /**
-   * Return a fully-qualified location resource name string.
-   *
-   * @param {string} project
-   * @param {string} location
-   * @returns {string} Resource name string.
-   */
-  locationPath(project: string, location: string) {
-    return this._pathTemplates.locationPathTemplate.render({
-      project,
-      location,
-    });
-  }
-
-  /**
-   * Parse the project from Location resource.
-   *
-   * @param {string} locationName
-   *   A fully-qualified path representing Location resource.
-   * @returns {string} A string representing the project.
-   */
-  matchProjectFromLocationName(locationName: string) {
-    return this._pathTemplates.locationPathTemplate.match(locationName).project;
-  }
-
-  /**
-   * Parse the location from Location resource.
-   *
-   * @param {string} locationName
-   *   A fully-qualified path representing Location resource.
-   * @returns {string} A string representing the location.
-   */
-  matchLocationFromLocationName(locationName: string) {
-    return this._pathTemplates.locationPathTemplate.match(locationName)
-      .location;
-  }
 
   /**
    * Return a fully-qualified glossary resource name string.
