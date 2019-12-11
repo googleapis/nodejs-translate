@@ -137,7 +137,7 @@ describe('translate', () => {
       });
     });
 
-    it('should populate x-goog-user-project header, if quota_project_id provided in credentials', async () => {
+    it('should populate x-goog-user-project header, and succeed if valid project', async () => {
       const {GoogleAuth} = require('google-auth-library');
       const auth = new GoogleAuth({
         credentials: Object.assign(
@@ -176,7 +176,54 @@ describe('translate', () => {
       // Ensure we actually populated the header:
       assert.strictEqual(
         'long-door-651',
-        http2spy.requests[0]['x-goog-user-project'][0]
+        http2spy.requests[http2spy.requests.length - 1][
+          'x-goog-user-project'
+        ][0]
+      );
+    });
+
+    it('should populate x-goog-user-project header, and fail if invalid project', async () => {
+      const {GoogleAuth} = require('google-auth-library');
+      const auth = new GoogleAuth({
+        credentials: Object.assign(
+          require(process.env.GOOGLE_APPLICATION_CREDENTIALS || ''),
+          {
+            quota_project_id: 'my-fake-billing-project',
+          }
+        ),
+      });
+      const {TranslationServiceClient} = http2spy.require(
+        require.resolve('../src')
+      );
+      const translate = new TranslationServiceClient({
+        auth,
+      });
+
+      // We set a quota project "my-fake-billing-project" that does not exist,
+      // this should result in an error.
+      let err: Error | null = null;
+      try {
+        const projectId = await translate.getProjectId();
+        const [result] = await translate.getSupportedLanguages({
+          parent: `projects/${projectId}`,
+        });
+      } catch (_err) {
+        err = _err;
+      }
+      assert(err);
+      assert(
+        err!.message.includes(
+          // make sure the error included our fake project name, we shouldn't
+          // be too specific about the error incase it changes upstream.
+          'my-fake-billing-project'
+        ),
+        err!.message
+      );
+      assert.strictEqual(
+        'my-fake-billing-project',
+        http2spy.requests[http2spy.requests.length - 1][
+          'x-goog-user-project'
+        ][0]
       );
     });
   });
