@@ -53,15 +53,22 @@ function main(
       glossary: glossary,
     };
 
-    // Create glossary using a long-running operation.
-    // You can wait for now, or get results later.
-    const [operation] = await translationClient.createGlossary(request);
-
-    // Wait for operation to complete.
-    await operation.promise();
-
-    console.log(`Created glossary:`);
-    console.log(`InputUri ${request.glossary.inputConfig.gcsSource.inputUri}`);
+    // Create glossary using a long-running operation
+    // and wait for its completion
+    return await translationClient
+      .createGlossary(request)
+      .then(responses => {
+        const operation = responses[0];
+        return operation.promise();
+      })
+      .then(response => {
+        const glossary = response[0];
+        console.log('Created glossary:');
+        console.log(`InputUri ${glossary.inputConfig.gcsSource.inputUri}`);
+      })
+      .catch(error => {
+        console.error('Error: ' + error.details);
+      });
   }
 
   createGlossary();
