@@ -158,24 +158,13 @@ describe('translate', () => {
       // alternate "quota_project_id" set; Given that GCLOUD_PROJECT
       // references a valid project, we expect success:
       const projectId = await translate.getProjectId();
-      const [result] = await translate.getSupportedLanguages({
+      // This should not hrow an exception:
+      await translate.getSupportedLanguages({
         parent: `projects/${projectId}`,
       });
-      const englishResult = result.languages!.filter(
-        (l: {[key: string]: string}) => {
-          return l.languageCode === 'en';
-        }
-      )[0];
-      assert.deepStrictEqual(englishResult, {
-        languageCode: 'en',
-        displayName: '',
-        supportSource: true,
-        supportTarget: true,
-      });
-
       // Ensure we actually populated the header:
       assert.strictEqual(
-        'long-door-651',
+        process.env.GCLOUD_PROJECT,
         http2spy.requests[http2spy.requests.length - 1][
           'x-goog-user-project'
         ][0]
