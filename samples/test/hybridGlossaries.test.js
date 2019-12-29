@@ -16,6 +16,7 @@
 
 const fs = require('fs');
 const {assert} = require('chai');
+const {describe, it} = require('mocha');
 const {TranslationServiceClient} = require('@google-cloud/translate').v3beta1;
 const cp = require('child_process');
 
