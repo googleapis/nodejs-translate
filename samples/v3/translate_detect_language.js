@@ -39,6 +39,7 @@ function main(
       parent: `projects/${projectId}/locations/${location}`,
       content: text,
     };
+
     try {
       // Run request
       const [response] = await translationClient.detectLanguage(request);
