@@ -69,7 +69,10 @@ npm install @google-cloud/translate
   const {Translate} = require('@google-cloud/translate').v2;
 
   // Instantiates a client
-  const translate = new Translate({projectId});
+  const translate = new Translate({
+   projectId: // Project ID
+   key: // GOOGLE_API_KEY HERE
+  });
 
   async function quickStart() {
     // The text to translate
