@@ -60,31 +60,31 @@ npm install @google-cloud/translate
 ### Using the client library
 
 ```javascript
-  /**
-   * TODO(developer): Uncomment the following line before running the sample.
-   */
-  // const projectId = 'YOUR_PROJECT_ID';
+/**
+ * TODO(developer): Uncomment the following line before running the sample.
+ */
+// const projectId = 'YOUR_PROJECT_ID';
 
-  // Imports the Google Cloud client library
-  const {Translate} = require('@google-cloud/translate').v2;
+// Imports the Google Cloud client library
+const {Translate} = require('@google-cloud/translate').v2;
 
-  // Instantiates a client
-  const translate = new Translate({projectId});
+// Instantiates a client
+const translate = new Translate({projectId});
 
-  async function quickStart() {
-    // The text to translate
-    const text = 'Hello, world!';
+async function quickStart() {
+  // The text to translate
+  const text = 'Hello, world!';
 
-    // The target language
-    const target = 'ru';
+  // The target language
+  const target = 'ru';
 
-    // Translates some text into Russian
-    const [translation] = await translate.translate(text, target);
-    console.log(`Text: ${text}`);
-    console.log(`Translation: ${translation}`);
-  }
+  // Translates some text into Russian
+  const [translation] = await translate.translate(text, target);
+  console.log(`Text: ${text}`);
+  console.log(`Translation: ${translation}`);
+}
 
-  quickStart();
+quickStart();
 
 ```
 
@@ -129,11 +129,13 @@ More Information: [Google Cloud Platform Launch Stages][launch_stages]
 
 Contributions welcome! See the [Contributing Guide](https://github.com/googleapis/nodejs-translate/blob/master/CONTRIBUTING.md).
 
-Please note that this `README.md`, the `samples/README.md`,
+Please note that this [README.md](README.md), the [samples/README.md](samples/README.md),
 and a variety of configuration files in this repository (including `.nycrc` and `tsconfig.json`)
-are generated from a central template. To edit one of these files, make an edit
-to its template in this
-[directory](https://github.com/googleapis/synthtool/tree/master/synthtool/gcp/templates/node_library).
+are generated from a central template.
+
+If you would like to make edits to one of those files
+(or if you aren't certain if the file you're changing is one, check in the template repository before making changes),
+look for the file in the [template](https://github.com/googleapis/synthtool/tree/master/synthtool/gcp/templates/node_library).
 
 ## License
 
