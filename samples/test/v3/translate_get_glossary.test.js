@@ -15,6 +15,7 @@
 'use strict';
 
 const {assert} = require('chai');
+const {describe, it, before, after} = require('mocha');
 const {TranslationServiceClient} = require('@google-cloud/translate');
 const cp = require('child_process');
 const uuid = require('uuid');
@@ -28,7 +29,7 @@ describe(REGION_TAG, () => {
   const location = 'us-central1';
   const glossaryId = `my_test_glossary_${uuid.v4()}`;
 
-  before(async function() {
+  before(async () => {
     // Add a glossary to get
     const projectId = await translationClient.getProjectId();
     const glossary = {
@@ -66,7 +67,7 @@ describe(REGION_TAG, () => {
     assert.match(output, /my_test_glossary_/);
   });
 
-  after(async function() {
+  after(async () => {
     //delete the glossary we created
     const projectId = await translationClient.getProjectId();
     const request = {

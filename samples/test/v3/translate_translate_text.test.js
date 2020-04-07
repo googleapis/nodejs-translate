@@ -15,6 +15,7 @@
 'use strict';
 
 const {assert} = require('chai');
+const {describe, it} = require('mocha');
 const {TranslationServiceClient} = require('@google-cloud/translate');
 const cp = require('child_process');
 
@@ -26,11 +27,11 @@ describe(REGION_TAG, () => {
   it('should translate the input text', async () => {
     const translationClient = new TranslationServiceClient();
     const projectId = await translationClient.getProjectId();
-    const location = `global`;
-    const text = `"Hello world"`;
+    const location = 'global';
+    const text = '"Hello world"';
     const output = execSync(
       `node v3/${REGION_TAG}.js ${projectId} ${location} ${text}`
     );
-    assert.match(output, /Translation: Pozdrav svijetu/);
+    assert.match(output, /Translation: Zdravo svijete/);
   });
 });

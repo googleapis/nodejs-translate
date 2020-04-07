@@ -17,7 +17,7 @@
 function main(
   projectId = 'YOUR_PROJECT_ID',
   location = 'us-central1',
-  glossaryId = 'glossary-id'
+  glossaryId = 'your-glossary-display-name'
 ) {
   // [START translate_v3_create_glossary]
   /**
@@ -25,7 +25,7 @@ function main(
    */
   // const projectId = 'YOUR_PROJECT_ID';
   // const location = 'global';
-  // const glossaryId = 'YOUR_GLOSSARY_ID';
+  // const glossaryId = 'your-glossary-display-name';
 
   // Imports the Google Cloud Translation library
   const {TranslationServiceClient} = require('@google-cloud/translate');
@@ -53,15 +53,20 @@ function main(
       glossary: glossary,
     };
 
-    // Create glossary using a long-running operation.
-    // You can wait for now, or get results later.
-    const [operation] = await translationClient.createGlossary(request);
+    try {
+      // Create glossary using a long-running operation
+      const [operation] = await translationClient.createGlossary(request);
 
-    // Wait for operation to complete.
-    await operation.promise();
+      // Wait for the operation to complete
+      await operation.promise();
 
-    console.log(`Created glossary:`);
-    console.log(`InputUri ${request.glossary.inputConfig.gcsSource.inputUri}`);
+      console.log('Created glossary:');
+      console.log(
+        `InputUri ${request.glossary.inputConfig.gcsSource.inputUri}`
+      );
+    } catch (error) {
+      console.error(error.details);
+    }
   }
 
   createGlossary();

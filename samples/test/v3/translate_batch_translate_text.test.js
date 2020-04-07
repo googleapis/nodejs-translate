@@ -15,6 +15,7 @@
 'use strict';
 
 const {assert} = require('chai');
+const {describe, it, before, after} = require('mocha');
 const {TranslationServiceClient} = require('@google-cloud/translate');
 const {Storage} = require('@google-cloud/storage');
 const cp = require('child_process');
@@ -50,7 +51,7 @@ describe(REGION_TAG, () => {
 
   it('should batch translate the input text', async () => {
     const projectId = await translationClient.getProjectId();
-    const inputUri = `gs://cloud-samples-data/translation/text.txt`;
+    const inputUri = 'gs://cloud-samples-data/translation/text.txt';
 
     const outputUri = `gs://${projectId}/${bucketName}`;
     const output = execSync(
@@ -61,7 +62,7 @@ describe(REGION_TAG, () => {
   });
 
   // Delete the folder from GCS for cleanup
-  after(async function() {
+  after(async () => {
     const projectId = await translationClient.getProjectId();
     const options = {
       prefix: `translation-${bucketUuid}`,

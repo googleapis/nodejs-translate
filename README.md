@@ -60,12 +60,18 @@ npm install @google-cloud/translate
 ### Using the client library
 
 ```javascript
-  // Imports the Google Cloud client library
-  const {Translate} = require('@google-cloud/translate');
+/**
+ * TODO(developer): Uncomment the following line before running the sample.
+ */
+// const projectId = 'YOUR_PROJECT_ID';
 
-  // Instantiates a client
-  const translate = new Translate({projectId});
+// Imports the Google Cloud client library
+const {Translate} = require('@google-cloud/translate').v2;
 
+// Instantiates a client
+const translate = new Translate({projectId});
+
+async function quickStart() {
   // The text to translate
   const text = 'Hello, world!';
 
@@ -76,6 +82,9 @@ npm install @google-cloud/translate
   const [translation] = await translate.translate(text, target);
   console.log(`Text: ${text}`);
   console.log(`Translation: ${translation}`);
+}
+
+quickStart();
 
 ```
 
@@ -96,6 +105,27 @@ has instructions for running the samples.
 
 The [Cloud Translation Node.js Client API Reference][client-docs] documentation
 also contains samples.
+
+## Supported Node.js Versions
+
+Our client libraries follow the [Node.js release schedule](https://nodejs.org/en/about/releases/).
+Libraries are compatible with all current _active_ and _maintenance_ versions of
+Node.js.
+
+Client libraries targetting some end-of-life versions of Node.js are available, and
+can be installed via npm [dist-tags](https://docs.npmjs.com/cli/dist-tag).
+The dist-tags follow the naming convention `legacy-(version)`.
+
+_Legacy Node.js versions are supported as a best effort:_
+
+* Legacy versions will not be tested in continuous integration.
+* Some security patches may not be able to be backported.
+* Dependencies will not be kept up-to-date, and features will not be backported.
+
+#### Legacy tags available
+
+* `legacy-8`: install client libraries from this dist-tag for versions
+  compatible with Node.js 8.
 
 ## Versioning
 
@@ -119,6 +149,12 @@ More Information: [Google Cloud Platform Launch Stages][launch_stages]
 ## Contributing
 
 Contributions welcome! See the [Contributing Guide](https://github.com/googleapis/nodejs-translate/blob/master/CONTRIBUTING.md).
+
+Please note that this `README.md`, the `samples/README.md`,
+and a variety of configuration files in this repository (including `.nycrc` and `tsconfig.json`)
+are generated from a central template. To edit one of these files, make an edit
+to its template in this
+[directory](https://github.com/googleapis/synthtool/tree/master/synthtool/gcp/templates/node_library).
 
 ## License
 

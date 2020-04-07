@@ -4,6 +4,80 @@
 
 [1]: https://www.npmjs.com/package/nodejs-translate?activeTab=versions
 
+## [5.3.0](https://www.github.com/googleapis/nodejs-translate/compare/v5.2.0...v5.3.0) (2020-03-06)
+
+
+### Features
+
+* deferred client initialization ([#460](https://www.github.com/googleapis/nodejs-translate/issues/460)) ([0ed76f4](https://www.github.com/googleapis/nodejs-translate/commit/0ed76f4e83528c2d087a26598535f5daf5a08444))
+
+## [5.2.0](https://www.github.com/googleapis/nodejs-translate/compare/v5.1.6...v5.2.0) (2020-02-27)
+
+
+### Features
+
+* export protos in src/index.ts ([#451](https://www.github.com/googleapis/nodejs-translate/issues/451)) ([a70079e](https://www.github.com/googleapis/nodejs-translate/commit/a70079ea24fe36d7efdd7d028a55fd6acbd6b3e1))
+
+### [5.1.6](https://www.github.com/googleapis/nodejs-translate/compare/v5.1.5...v5.1.6) (2020-02-07)
+
+
+### Bug Fixes
+
+* pass x-goog-request-params header for streaming calls ([40c90fa](https://www.github.com/googleapis/nodejs-translate/commit/40c90fa099ef0bd995b5923cd35ba4ac0f9344e1))
+
+### [5.1.5](https://www.github.com/googleapis/nodejs-translate/compare/v5.1.4...v5.1.5) (2020-02-04)
+
+
+### Bug Fixes
+
+* enum, bytes, and Long types now accept strings ([19891e0](https://www.github.com/googleapis/nodejs-translate/commit/19891e07b2f1aaad5552999f1701dc81b5447754))
+
+### [5.1.4](https://www.github.com/googleapis/nodejs-translate/compare/v5.1.3...v5.1.4) (2020-01-04)
+
+
+### Bug Fixes
+
+* better client close(), update .nycrc ([f476326](https://www.github.com/googleapis/nodejs-translate/commit/f476326b19e41253ba054cdfa5b7fcdfcb8dc1b2))
+* increase timeout from 20s to 60s ([#411](https://www.github.com/googleapis/nodejs-translate/issues/411)) ([40241fe](https://www.github.com/googleapis/nodejs-translate/commit/40241fea93a2315eae8344c58a9ffed87392eda4))
+* suppress unhandled promise rejection errors ([#417](https://www.github.com/googleapis/nodejs-translate/issues/417)) ([8eb6558](https://www.github.com/googleapis/nodejs-translate/commit/8eb655862b2d9c92f28f5b96eb1158dce3af704c))
+
+### [5.1.3](https://www.github.com/googleapis/nodejs-translate/compare/v5.1.2...v5.1.3) (2019-12-16)
+
+
+### Bug Fixes
+
+* refactored request call to supress unhandled promise rejection ([#406](https://www.github.com/googleapis/nodejs-translate/issues/406)) ([19fc9c7](https://www.github.com/googleapis/nodejs-translate/commit/19fc9c7d24e5b8d16f32d80023b81294e02d34d6))
+* removed display_name from sample ([f518b1a](https://www.github.com/googleapis/nodejs-translate/commit/f518b1a9b405626e058f9f143d3e8929af1401db))
+* update translate_create_glossary.js ([#403](https://www.github.com/googleapis/nodejs-translate/issues/403)) ([aa10fc7](https://www.github.com/googleapis/nodejs-translate/commit/aa10fc7ac9299895b7e87ebec574e27871e0bd1d))
+
+### [5.1.2](https://www.github.com/googleapis/nodejs-translate/compare/v5.1.1...v5.1.2) (2019-12-11)
+
+
+### Bug Fixes
+
+* make operationsClient and service stub public ([7ac1252](https://www.github.com/googleapis/nodejs-translate/commit/7ac12522ef96d6a37c15ca7847e6e872316c8a9d))
+
+### [5.1.1](https://www.github.com/googleapis/nodejs-translate/compare/v5.1.0...v5.1.1) (2019-12-05)
+
+
+### Bug Fixes
+
+* **deps:** pin TypeScript below 3.7.0 ([53f3cff](https://www.github.com/googleapis/nodejs-translate/commit/53f3cff821869347a8d34f3b0561d3b8158d171d))
+
+## [5.1.0](https://www.github.com/googleapis/nodejs-translate/compare/v5.0.2...v5.1.0) (2019-11-22)
+
+
+### Features
+
+* convert v3beta1 to TypeScript ([#389](https://www.github.com/googleapis/nodejs-translate/issues/389)) ([0a88c63](https://www.github.com/googleapis/nodejs-translate/commit/0a88c63a1cb0564958f8b2f9d9d11d504284a229))
+
+
+### Bug Fixes
+
+* get autosynth working again ([#387](https://www.github.com/googleapis/nodejs-translate/issues/387)) ([c226e58](https://www.github.com/googleapis/nodejs-translate/commit/c226e5811f898ad424a6bf85af197559bf668b25))
+* **deps:** update dependency yargs to v15 ([#386](https://www.github.com/googleapis/nodejs-translate/issues/386)) ([e87a80f](https://www.github.com/googleapis/nodejs-translate/commit/e87a80f201588b779728dd29c5dae96fb7055dbf))
+* **docs:** snippets are now replaced in jsdoc comments ([#381](https://www.github.com/googleapis/nodejs-translate/issues/381)) ([b14f7d4](https://www.github.com/googleapis/nodejs-translate/commit/b14f7d42b961400dfe9dec7bc3fff3a7688c0baa))
+
 ### [5.0.2](https://www.github.com/googleapis/nodejs-translate/compare/v5.0.1...v5.0.2) (2019-11-08)
 
 
