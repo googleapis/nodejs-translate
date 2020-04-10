@@ -1,6 +1,12 @@
 {
-  "updateTime": "2020-04-03T12:20:41.545746Z",
   "sources": [
+    {
+      "git": {
+        "name": ".",
+        "remote": "https://github.com/googleapis/nodejs-translate.git",
+        "sha": "5793c2306f7c028be093465a08d41824e48ed492"
+      }
+    },
     {
       "git": {
         "name": "googleapis",
