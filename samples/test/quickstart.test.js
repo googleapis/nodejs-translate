@@ -27,6 +27,6 @@ const projectId = process.env.GCLOUD_PROJECT;
 describe('quickstart sample tests', () => {
   it('should translate a string', async () => {
     const stdout = execSync(`node quickstart ${projectId}`, {cwd});
-    assert.includes(stdout, 'Translation: Привет');
+    assert.include(stdout, 'Translation: Привет');
   });
 });
