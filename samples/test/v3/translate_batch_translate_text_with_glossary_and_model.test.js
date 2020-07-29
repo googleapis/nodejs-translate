@@ -14,14 +14,14 @@
 
 'use strict';
 
-const { assert } = require('chai');
-const { describe, it, before, after } = require('mocha');
-const { TranslationServiceClient } = require('@google-cloud/translate');
-const { Storage } = require('@google-cloud/storage');
+const {assert} = require('chai');
+const {describe, it, before, after} = require('mocha');
+const {TranslationServiceClient} = require('@google-cloud/translate');
+const {Storage} = require('@google-cloud/storage');
 const cp = require('child_process');
 const uuid = require('uuid');
 
-const execSync = cmd => cp.execSync(cmd, { encoding: 'utf-8' });
+const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
 
 const REGION_TAG = 'translate_batch_translate_text_with_glossary_and_model';
 
