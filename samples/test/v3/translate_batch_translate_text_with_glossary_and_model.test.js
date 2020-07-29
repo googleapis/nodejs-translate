@@ -86,7 +86,6 @@ describe(REGION_TAG, () => {
 
     // batch translate fluctuates between 2 to 4 minutes.
     this.timeout(300000);
-    this.timeout(150000);
   });
 
   // Delete the folder from GCS for cleanup
