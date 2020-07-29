@@ -14,14 +14,14 @@
 
 'use strict';
 
-const {assert} = require('chai');
-const {describe, it, before, after} = require('mocha');
-const {TranslationServiceClient} = require('@google-cloud/translate');
-const {Storage} = require('@google-cloud/storage');
+const { assert } = require('chai');
+const { describe, it, before, after } = require('mocha');
+const { TranslationServiceClient } = require('@google-cloud/translate');
+const { Storage } = require('@google-cloud/storage');
 const cp = require('child_process');
 const uuid = require('uuid');
 
-const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
+const execSync = cmd => cp.execSync(cmd, { encoding: 'utf-8' });
 
 const REGION_TAG = 'translate_batch_translate_text_with_glossary_and_model';
 
@@ -85,7 +85,8 @@ describe(REGION_TAG, () => {
     assert.match(output, /Translated Characters: 25/);
 
     // batch translate fluctuates between 2 to 4 minutes.
-    this.timeout(30000);
+    this.timeout(300000);
+    this.timeout(150000);
   });
 
   // Delete the folder from GCS for cleanup
