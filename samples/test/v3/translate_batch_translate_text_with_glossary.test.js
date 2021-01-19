@@ -71,7 +71,6 @@ describe(REGION_TAG, () => {
     await operation.promise();
   });
 
-  // eslint-disable-next-line prefer-arrow-callback
   it('should batch translate the input text with a glossary', async function () {
     this.retries(3);
     const projectId = await translationClient.getProjectId();
