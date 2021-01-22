@@ -77,7 +77,7 @@
     "proxyquire": "^2.0.1",
     "sinon": "^9.0.1",
     "typescript": "^3.8.3",
-    "@microsoft/api-documenter": "^7.8.10",
-    "@microsoft/api-extractor": "^7.8.10"
+    "@microsoft/api-documenter": "7.11.0",
+    "@microsoft/api-extractor": "7.8.2-pr1796.0"
   }
 }
