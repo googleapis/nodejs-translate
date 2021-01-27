@@ -23,51 +23,52 @@ const cp = require('child_process');
 const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
 
 const REGION_TAG = 'translate_hybrid_glossaries';
+for (let i = 0; i < 100; i++) {
+  describe(REGION_TAG, () => {
+    const translationClient = new TranslationServiceClient();
+    const location = 'us-central1';
+    const glossaryId = 'bistro-glossary';
+    const outputFile = 'resources/example.mp3';
 
-describe(REGION_TAG, () => {
-  const translationClient = new TranslationServiceClient();
-  const location = 'us-central1';
-  const glossaryId = 'bistro-glossary';
-  const outputFile = 'resources/example.mp3';
+    before(() => {
+      try {
+        fs.unlinkSync(outputFile);
+      } catch (e) {
+        // don't throw an exception
+      }
+    });
 
-  before(() => {
-    try {
+    it('should create a glossary', async () => {
+      const projectId = await translationClient.getProjectId();
+      const output = execSync(`node hybridGlossaries.js ${projectId}`);
+      assert(output.includes(glossaryId));
+      assert(
+        output.includes('Audio content written to file resources/example.mp3')
+      );
+      assert.strictEqual(fs.existsSync(outputFile), true);
+    });
+
+    after(async () => {
       fs.unlinkSync(outputFile);
-    } catch (e) {
-      // don't throw an exception
-    }
+      assert.strictEqual(fs.existsSync(outputFile), false);
+      // get projectId
+      const projectId = await translationClient.getProjectId();
+      const name = translationClient.glossaryPath(
+        projectId,
+        location,
+        glossaryId
+      );
+      const request = {
+        parent: translationClient.locationPath(projectId, location),
+        name: name,
+      };
+
+      // Delete glossary using a long-running operation.
+      // You can wait for now, or get results later.
+      const [operation] = await translationClient.deleteGlossary(request);
+
+      // Wait for operation to complete.
+      await operation.promise();
+    });
   });
-
-  it('should create a glossary', async () => {
-    const projectId = await translationClient.getProjectId();
-    const output = execSync(`node hybridGlossaries.js ${projectId}`);
-    assert(output.includes(glossaryId));
-    assert(
-      output.includes('Audio content written to file resources/example.mp3')
-    );
-    assert.strictEqual(fs.existsSync(outputFile), true);
-  });
-
-  after(async () => {
-    fs.unlinkSync(outputFile);
-    assert.strictEqual(fs.existsSync(outputFile), false);
-    // get projectId
-    const projectId = await translationClient.getProjectId();
-    const name = translationClient.glossaryPath(
-      projectId,
-      location,
-      glossaryId
-    );
-    const request = {
-      parent: translationClient.locationPath(projectId, location),
-      name: name,
-    };
-
-    // Delete glossary using a long-running operation.
-    // You can wait for now, or get results later.
-    const [operation] = await translationClient.deleteGlossary(request);
-
-    // Wait for operation to complete.
-    await operation.promise();
-  });
-});
+}

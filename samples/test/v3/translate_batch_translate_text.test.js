@@ -25,32 +25,38 @@ const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
 
 const REGION_TAG = 'translate_batch_translate_text';
 
-describe(REGION_TAG, function () {
-  this.retries(3);
+
+describe( REGION_TAG, function ()
+{
   const translationClient = new TranslationServiceClient();
   const location = 'us-central1';
   const bucketUuid = uuid.v4();
   const bucketName = `translation-${bucketUuid}/BATCH_TRANSLATION_OUTPUT/`;
   const storage = new Storage();
 
-  before(async () => {
+  before( async function ()
+  {
     const projectId = await translationClient.getProjectId();
 
     //Create bucket if needed
     await storage
-      .createBucket(projectId, {
+      .createBucket( projectId, {
         location: 'US',
         storageClass: 'COLDLINE',
-      })
-      .catch(error => {
-        if (error.code !== 409) {
+      } )
+      .catch( error =>
+      {
+        if ( error.code !== 409 )
+        {
           //if it's not a duplicate bucket error, let the user know
-          console.error(error);
+          console.error( error );
         }
-      });
-  });
+      } );
+  } ),
 
-  it('should batch translate the input text', async () => {
+  it( 'should batch translate the input text', async function ()
+  {
+    this.retries(3);
     const projectId = await translationClient.getProjectId();
     const inputUri = 'gs://cloud-samples-data/translation/text.txt';
 
@@ -58,22 +64,24 @@ describe(REGION_TAG, function () {
     const output = execSync(
       `node v3/${REGION_TAG}.js ${projectId} ${location} ${inputUri} ${outputUri}`
     );
-    assert.match(output, /Total Characters: 13/);
-    assert.match(output, /Translated Characters: 13/);
-  });
+    assert.match( output, /Total Characters: 13/ );
+    assert.match( output, /Translated Characters: 13/ );
+  } ),
 
-  // Delete the folder from GCS for cleanup
-  after(async () => {
-    const projectId = await translationClient.getProjectId();
-    const options = {
-      prefix: `translation-${bucketUuid}`,
-    };
+    // Delete the folder from GCS for cleanup
+    after( async function ()
+    {
+      const projectId = await translationClient.getProjectId();
+      const options = {
+        prefix: `translation-${bucketUuid}`,
+      };
 
-    const bucket = await storage.bucket(projectId);
-    const [files] = await bucket.getFiles(options);
-    const length = files.length;
-    if (length > 0) {
-      await Promise.all(files.map(file => file.delete()));
-    }
-  });
-});
+      const bucket = await storage.bucket( projectId );
+      const [ files ] = await bucket.getFiles( options );
+      const length = files.length;
+      if ( length > 0 )
+      {
+        await Promise.all( files.map( file => file.delete() ) );
+      }
+    } )
+}
