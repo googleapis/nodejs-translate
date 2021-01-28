@@ -23,12 +23,6 @@ npm install
 npm run api-extractor
 npm run api-documenter
 
-NAME=$(ls temp | sed s/.api.json*//)
-
-mkdir ./_devsite
-mkdir ./_devsite/$NAME
-cp ./yaml/$NAME/* ./_devsite/$NAME
-
 # Clean up TOC
 # Delete SharePoint item, see https://github.com/microsoft/rushstack/issues/1229
 sed -i -e '1,3d' ./yaml/toc.yml
@@ -37,14 +31,35 @@ sed -i -e 's/^    //' ./yaml/toc.yml
 sed -i -e '/name: I[A-Z]/{N;d;}' ./yaml/toc.yml
 sed -i -e '/^ *\@google-cloud.*:interface/d' ./yaml/toc.yml
 
-sed -i -e '4i\
-\ \ \ \ summary: Dialogflow.
+## Add "items:" to short toc for overview file
+if [[ $(wc -l <./yaml/toc.yml) -le 3 ]] ; then
+  sed -i -e '3a\
+ \ \ \ items:
+' ./yaml/toc.yml
+fi
+
+# Add overview section
+sed -i -e '4a\
+ \ \ \ \ \ - name: Overview
+' ./yaml/toc.yml
+sed -i -e '5a\
+ \ \ \ \ \ \ \ homepage: index.md
 ' ./yaml/toc.yml
 
-sed -i -e '5i\
-\ \ \ \ description: Client library for Dialogflow.
-' ./yaml/toc.yml
 
+NAME=$(ls temp | sed s/.api.json*//)
+
+## Delete the default overvew page,
+## otherwise anchors are added and they break left nav
+rm ./yaml/$NAME.yml
+
+## Copy everything to devsite
+mkdir ./_devsite
+mkdir ./_devsite/$NAME
+
+cp ./yaml/$NAME/* ./_devsite/$NAME || :
 cp ./yaml/toc.yml ./_devsite/toc.yml
-# cp ./quickstart.yml ./_devsite/index.yml
-cp ./yaml/$NAME.yml ./_devsite/$NAME.yml
+
+## readme is not allowed as filename
+cp ./README.md ./_devsite/index.md
+
