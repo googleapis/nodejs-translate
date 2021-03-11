@@ -19,17 +19,7 @@ import synthtool.gcp as gcp
 import synthtool.languages.node as node
 import logging
 
-# Run the gapic generator
-gapic = gcp.GAPICBazel()
-versions = ['v3beta1', 'v3']
-name = 'translation'
-for version in versions:
-  library = gapic.node_library(name, version, proto_path=f'google/cloud/translate/{version}')
-  s.copy(library, excludes=['README.md', 'package.json', 'src/index.ts'])
-
 logging.basicConfig(level=logging.DEBUG)
-
-AUTOSYNTH_MULTIPLE_COMMITS = True
 
 common_templates = gcp.CommonTemplates()
 templates = common_templates.node_library(source_location='build/src')
