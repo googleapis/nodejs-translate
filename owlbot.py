@@ -25,7 +25,6 @@ import shutil
 
 staging = Path('owl-bot-staging')
 if staging.is_dir():
-  _tracked_paths.add(staging)
   # Load the default version defined in .repo-metadata.json.
   default_version = json.load(open('.repo-metadata.json', 'rt'))['default_version']
   # Collect the subdirectories of the staging directory.
@@ -35,6 +34,7 @@ if staging.is_dir():
 
   for version in versions:
     library = staging / version
+    _tracked_paths.add(library)
     s.copy(library, excludes=['README.md', 'package.json', 'src/index.ts'])
   shutil.rmtree(staging)
 
