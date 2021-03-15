@@ -17,6 +17,7 @@
 import synthtool as s
 import synthtool.gcp as gcp
 import synthtool.languages.node as node
+from synthtool import _tracked_paths
 import logging
 from pathlib import Path
 import json
@@ -24,15 +25,16 @@ import shutil
 
 staging = Path('owl-bot-staging')
 if staging.is_dir():
+  _tracked_paths.add(staging)
   # Load the default version defined in .repo-metadata.json.
   default_version = json.load(open('.repo-metadata.json', 'rt'))['default_version']
   # Collect the subdirectories of the staging directory.
-  versions = [v for v in staging.iterdir() if (staging / v).is_dir()]
+  versions = [v.name for v in staging.iterdir() if v.is_dir()]
   # Reorder the versions so the default version always comes last.
   versions = [v for v in versions if v != default_version] + [default_version]
 
   for version in versions:
-    library = f'owl-bot-staging/${version}'
+    library = staging / version
     s.copy(library, excludes=['README.md', 'package.json', 'src/index.ts'])
   shutil.rmtree(staging)
 
