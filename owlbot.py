@@ -17,22 +17,31 @@
 import synthtool as s
 import synthtool.gcp as gcp
 import synthtool.languages.node as node
+from synthtool import _tracked_paths
 import logging
+from pathlib import Path
+import json
+import shutil
 
-# Run the gapic generator
-gapic = gcp.GAPICBazel()
-versions = ['v3beta1', 'v3']
-name = 'translation'
-for version in versions:
-  library = gapic.node_library(name, version, proto_path=f'google/cloud/translate/{version}')
-  s.copy(library, excludes=['README.md', 'package.json', 'src/index.ts'])
+staging = Path('owl-bot-staging')
+if staging.is_dir():
+  # Load the default version defined in .repo-metadata.json.
+  default_version = json.load(open('.repo-metadata.json', 'rt'))['default_version']
+  # Collect the subdirectories of the staging directory.
+  versions = [v.name for v in staging.iterdir() if v.is_dir()]
+  # Reorder the versions so the default version always comes last.
+  versions = [v for v in versions if v != default_version] + [default_version]
+
+  for version in versions:
+    library = staging / version
+    _tracked_paths.add(library)
+    s.copy(library, excludes=['README.md', 'package.json', 'src/index.ts'])
+  shutil.rmtree(staging)
 
 logging.basicConfig(level=logging.DEBUG)
-
-AUTOSYNTH_MULTIPLE_COMMITS = True
 
 common_templates = gcp.CommonTemplates()
 templates = common_templates.node_library(source_location='build/src')
 s.copy(templates, excludes=[])
 
-node.postprocess_gapic_library()
+node.postprocess_gapic_library_hermetic()
