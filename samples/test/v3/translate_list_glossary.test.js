@@ -37,9 +37,6 @@ describe(REGION_TAG, () => {
       output,
       /gs:\/\/cloud-samples-data\/translation\/glossary.csv/
     );
-    assert.match(
-      output,
-      GLOSSARY_ID
-    );
+    assert.match(output, GLOSSARY_ID);
   });
 });
