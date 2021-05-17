@@ -30,10 +30,10 @@ describe(REGION_TAG, () => {
 
   it('should translate text with a glossary in project', async () => {
     const projectId = await translationClient.getProjectId();
-    const input = 'directions';
+    const input = 'account';
     const output = execSync(
       `node v3/${REGION_TAG}.js ${projectId} ${location} ${GLOSSARY_ID} ${input}`
     );
-    assert.match(output, /indicaciones/);
+    assert.match(output, /アカウント/);
   });
 });
