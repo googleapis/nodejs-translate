@@ -21,7 +21,7 @@ const cp = require('child_process');
 
 const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
 
-const GLOSSARY_ID = 'DO_NOT_DELETE_TEST_GLOSSARY';
+const GLOSSARY_ID = 'DO_NET_DELETE_TEST_GLOSSARY_ES';
 const REGION_TAG = 'translate_translate_text_with_glossary';
 
 describe(REGION_TAG, () => {
@@ -30,10 +30,10 @@ describe(REGION_TAG, () => {
 
   it('should translate text with a glossary in project', async () => {
     const projectId = await translationClient.getProjectId();
-    const input = 'account';
+    const input = 'directions';
     const output = execSync(
       `node v3/${REGION_TAG}.js ${projectId} ${location} ${GLOSSARY_ID} ${input}`
     );
-    assert.match(output, /アカウント/);
+    assert.match(output, /indicaciones/);
   });
 });

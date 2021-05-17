@@ -23,7 +23,7 @@ const uuid = require('uuid');
 
 const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
 
-const GLOSSARY_ID = 'DO_NOT_DELETE_TEST_GLOSSARY';
+const GLOSSARY_ID = 'DO_NET_DELETE_TEST_GLOSSARY_ES';
 const REGION_TAG = 'translate_batch_translate_text_with_glossary';
 
 async function clearBucket(projectId, storage, bucketUuid) {
