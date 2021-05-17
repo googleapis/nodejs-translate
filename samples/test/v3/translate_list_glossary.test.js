@@ -21,7 +21,6 @@ const cp = require('child_process');
 
 const execSync = cmd => cp.execSync(cmd, {encoding: 'utf-8'});
 
-const GLOSSARY_ID = 'DO_NOT_DELETE_TEST_GLOSSARY';
 const REGION_TAG = 'translate_list_glossary';
 
 describe(REGION_TAG, () => {
@@ -37,6 +36,6 @@ describe(REGION_TAG, () => {
       output,
       /gs:\/\/cloud-samples-data\/translation\/glossary.csv/
     );
-    assert.match(output, GLOSSARY_ID);
+    assert.match(output, /DO_NOT_DELETE_TEST_GLOSSARY/);
   });
 });

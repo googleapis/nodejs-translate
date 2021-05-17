@@ -34,6 +34,6 @@ describe(REGION_TAG, () => {
     const output = execSync(
       `node v3/${REGION_TAG}.js ${projectId} ${location} ${GLOSSARY_ID}`
     );
-    assert.match(output, GLOSSARY_ID);
+    assert.match(output, /DO_NOT_DELETE_TEST_GLOSSARY/);
   });
 });
