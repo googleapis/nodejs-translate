@@ -41,7 +41,7 @@ function main(
     const request = {
       parent: `projects/${projectId}/locations/${location}`,
       sourceLanguageCode: 'en',
-      targetLanguageCodes: ['es'],
+      targetLanguageCodes: ['ja'],
       inputConfigs: [
         {
           mimeType: 'text/plain', // mime types: text/plain, text/html
