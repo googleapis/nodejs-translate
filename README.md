@@ -58,13 +58,8 @@ Google APIs Client Libraries, in [Client Libraries Explained][explained].
 npm install @google-cloud/translate
 ```
 
-### Choosing between Advanced and Basic
 
-Basic supports language detection and text translation [Cloud Translation - Basic v2](https://cloud.google.com/translate/docs/editions#basic).
-
-The advanced edition of [Cloud Translation - V3](https://cloud.google.com/translate/docs/editions#advanced) is optimized for customization and long form content use cases including glossary, batch, and model selection.
-
-### Using the client library basic v2
+### Using the client library
 
 ```javascript
 /**
@@ -92,39 +87,6 @@ async function quickStart() {
 }
 
 quickStart();
-
-```
-
-
-### Using the client library advanced v3
-
-```javascript
-  const {TranslationServiceClient} = require('@google-cloud/translate');
-
-  // Instantiates a client
-  const translationClient = new TranslationServiceClient();
-  async function translateText() {
-    // The text to translate
-    const text = 'Hello, world!';
-
-    // Construct request
-    const request = {
-      parent: `projects/${projectId}/locations/${location}`,
-      contents: [text],
-      mimeType: 'text/plain', // mime types: text/plain, text/html
-      sourceLanguageCode: 'en',
-      targetLanguageCode: 'sr-Latn',
-    };
-
-    // Run request
-    const [response] = await translationClient.translateText(request);
-
-    for (const translation of response.translations) {
-      console.log(`Translation: ${translation.translatedText}`);
-    }
-  }
-
-  translateText();
 
 ```
 
