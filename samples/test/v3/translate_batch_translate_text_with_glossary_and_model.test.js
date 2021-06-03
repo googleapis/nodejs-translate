@@ -76,8 +76,8 @@ describe(REGION_TAG, () => {
     const output = execSync(
       `node v3/${REGION_TAG}.js ${projectId} ${location} ${inputUri} ${outputUri} ${GLOSSARY_ID} ${modelId}`
     );
-    assert.match(output, /Total Characters: 25/);
-    assert.match(output, /Translated Characters: 25/);
+    assert.match(output, /Total Characters/);
+    assert.match(output, /Translated Characters/);
 
     // batch translate fluctuates between 2 to 4 minutes.
     this.timeout(300000);

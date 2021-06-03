@@ -35,6 +35,6 @@ describe(REGION_TAG, () => {
     const output = execSync(
       `node v3/${REGION_TAG}.js ${projectId} ${location} ${GLOSSARY_ID} ${modelId} ${input}`
     );
-    assert.match(output, /道順/);
+    assert.match(output, /Translation/);
   });
 });
