@@ -42,7 +42,7 @@ async function clearBucket(projectId, storage, bucketUuid) {
 describe(REGION_TAG, () => {
   const translationClient = new TranslationServiceClient();
   const location = 'us-central1';
-  const modelId = 'TRL1218052175389786112';
+  const modelId = 'TRL8567014172607381504';
   const bucketUuid = uuid.v4();
   const bucketName = `translation-${bucketUuid}/BATCH_TRANSLATE_WITH_MODEL_OUTPUT/`;
   const storage = new Storage();
