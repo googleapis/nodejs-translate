@@ -28,7 +28,7 @@ describe(REGION_TAG, () => {
     const translationClient = new TranslationServiceClient();
     const projectId = await translationClient.getProjectId();
     const location = 'global';
-    const inputUri = "gs://cloud-samples-data/translation/fake_invoice.pdf";
+    const inputUri = 'gs://cloud-samples-data/translation/fake_invoice.pdf';
     const output = execSync(
       `node v3beta1/${REGION_TAG}.js ${projectId} ${location} ${inputUri}`
     );
