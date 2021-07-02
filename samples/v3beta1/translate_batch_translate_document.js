@@ -18,7 +18,7 @@ function main(
   projectId = 'YOUR_PROJECT_ID',
   location = 'us-central1',
   inputUri = 'gs://cloud-samples-data/translation/async_invoices/*',
-  outputUri = 'gs://YOUR_PROJECT_ID/translation/BATCH_DOCUMENT_TRANSLATION_OUTPUT'
+  outputUri = 'gs://YOUR_PROJECT_ID/translation/BATCH_DOCUMENT_TRANSLATION_OUTPUT/'
 ) {
   // [START translate_batch_translate_document]
   /**

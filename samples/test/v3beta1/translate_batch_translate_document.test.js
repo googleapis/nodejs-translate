@@ -29,7 +29,7 @@ describe(REGION_TAG, () => {
   const translationClient = new TranslationServiceClient();
   const location = 'us-central1';
   const bucketUuid = uuid.v4();
-  const bucketName = `translation-${bucketUuid}/BATCH_DOCUMENT_TRANSLATION_OUTPUT/`;
+  const bucketName = `translation-${bucketUuid}/BATCH_OUTPUT/`;
   const storage = new Storage();
 
   before(async () => {
@@ -60,7 +60,7 @@ describe(REGION_TAG, () => {
     );
     assert.match(output, /Total Pages: /);
 
-    this.timeout(300000);
+    this.timeout(500000);
   });
 
   // Delete the folder from GCS for cleanup
