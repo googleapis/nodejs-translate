@@ -52,10 +52,6 @@ function main(
         const [response] = await translationClient.translateDocument(request);
 
         console.log(`Response: Mime Type - ${response.documentTranslation.mimeType}`);
-
-        // for (const translation of response.translations) {
-        //     console.log(`Translation: ${translation.translatedText}`);
-        // }
     }
 
     translateDocument();
