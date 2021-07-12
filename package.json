@@ -1,7 +1,7 @@
 {
   "name": "@google-cloud/translate",
   "description": "Cloud Translation API Client Library for Node.js",
-  "version": "6.2.4",
+  "version": "6.2.5",
   "license": "Apache-2.0",
   "author": "Google Inc.",
   "engines": {
@@ -51,7 +51,7 @@
     "@google-cloud/promisify": "^2.0.0",
     "arrify": "^2.0.0",
     "extend": "^3.0.2",
-    "google-gax": "^2.17.0",
+    "google-gax": "^2.17.1",
     "is-html": "^2.0.0",
     "protobufjs": "^6.8.8"
   },
