@@ -76,4 +76,8 @@ function main(
   // [END translate_batch_translate_document]
 }
 
+process.on('unhandledRejection', err => {
+  console.error(err.message);
+  process.exitCode = 1;
+});
 main(...process.argv.slice(2));
