@@ -37,18 +37,17 @@ describe(REGION_TAG, () => {
 
     //Create bucket if needed
     try {
-      await storage
-      .createBucket(projectId, {
+      await storage.createBucket(projectId, {
         location: 'US',
         storageClass: 'COLDLINE',
       });
-    } catch(error) {
-        if (error.code !== 409) {
-          //if it's not a duplicate bucket error, let the user know
-          console.error(error);
-          throw error;
-        }
-    };
+    } catch (error) {
+      if (error.code !== 409) {
+        //if it's not a duplicate bucket error, let the user know
+        console.error(error);
+        throw error;
+      }
+    }
   });
 
   it('should batch translate the input documents', async function () {
