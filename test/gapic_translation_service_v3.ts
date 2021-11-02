@@ -28,10 +28,9 @@ import {PassThrough} from 'stream';
 import {protobuf, LROperation, operationsProtos} from 'google-gax';
 
 function generateSampleMessage<T extends object>(instance: T) {
-  const filledObject = (instance.constructor as typeof protobuf.Message).toObject(
-    instance as protobuf.Message<T>,
-    {defaults: true}
-  );
+  const filledObject = (
+    instance.constructor as typeof protobuf.Message
+  ).toObject(instance as protobuf.Message<T>, {defaults: true});
   return (instance.constructor as typeof protobuf.Message).fromObject(
     filledObject
   ) as T;
@@ -281,9 +280,8 @@ describe('v3.TranslationServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.translation.v3.TranslateTextResponse()
       );
-      client.innerApiCalls.translateText = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.translateText =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.translateText(
           request,
@@ -393,9 +391,8 @@ describe('v3.TranslationServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.translation.v3.DetectLanguageResponse()
       );
-      client.innerApiCalls.detectLanguage = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.detectLanguage =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.detectLanguage(
           request,
@@ -474,9 +471,8 @@ describe('v3.TranslationServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.translation.v3.SupportedLanguages()
       );
-      client.innerApiCalls.getSupportedLanguages = stubSimpleCall(
-        expectedResponse
-      );
+      client.innerApiCalls.getSupportedLanguages =
+        stubSimpleCall(expectedResponse);
       const [response] = await client.getSupportedLanguages(request);
       assert.deepStrictEqual(response, expectedResponse);
       assert(
@@ -507,9 +503,8 @@ describe('v3.TranslationServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.translation.v3.SupportedLanguages()
       );
-      client.innerApiCalls.getSupportedLanguages = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.getSupportedLanguages =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.getSupportedLanguages(
           request,
@@ -622,9 +617,8 @@ describe('v3.TranslationServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.translation.v3.TranslateDocumentResponse()
       );
-      client.innerApiCalls.translateDocument = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.translateDocument =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.translateDocument(
           request,
@@ -734,9 +728,8 @@ describe('v3.TranslationServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.cloud.translation.v3.Glossary()
       );
-      client.innerApiCalls.getGlossary = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.getGlossary =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.getGlossary(
           request,
@@ -815,9 +808,8 @@ describe('v3.TranslationServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.longrunning.Operation()
       );
-      client.innerApiCalls.batchTranslateText = stubLongRunningCall(
-        expectedResponse
-      );
+      client.innerApiCalls.batchTranslateText =
+        stubLongRunningCall(expectedResponse);
       const [operation] = await client.batchTranslateText(request);
       const [response] = await operation.promise();
       assert.deepStrictEqual(response, expectedResponse);
@@ -849,9 +841,8 @@ describe('v3.TranslationServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.longrunning.Operation()
       );
-      client.innerApiCalls.batchTranslateText = stubLongRunningCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.batchTranslateText =
+        stubLongRunningCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.batchTranslateText(
           request,
@@ -1011,9 +1002,8 @@ describe('v3.TranslationServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.longrunning.Operation()
       );
-      client.innerApiCalls.batchTranslateDocument = stubLongRunningCall(
-        expectedResponse
-      );
+      client.innerApiCalls.batchTranslateDocument =
+        stubLongRunningCall(expectedResponse);
       const [operation] = await client.batchTranslateDocument(request);
       const [response] = await operation.promise();
       assert.deepStrictEqual(response, expectedResponse);
@@ -1045,9 +1035,8 @@ describe('v3.TranslationServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.longrunning.Operation()
       );
-      client.innerApiCalls.batchTranslateDocument = stubLongRunningCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.batchTranslateDocument =
+        stubLongRunningCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.batchTranslateDocument(
           request,
@@ -1210,9 +1199,8 @@ describe('v3.TranslationServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.longrunning.Operation()
       );
-      client.innerApiCalls.createGlossary = stubLongRunningCall(
-        expectedResponse
-      );
+      client.innerApiCalls.createGlossary =
+        stubLongRunningCall(expectedResponse);
       const [operation] = await client.createGlossary(request);
       const [response] = await operation.promise();
       assert.deepStrictEqual(response, expectedResponse);
@@ -1244,9 +1232,8 @@ describe('v3.TranslationServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.longrunning.Operation()
       );
-      client.innerApiCalls.createGlossary = stubLongRunningCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.createGlossary =
+        stubLongRunningCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.createGlossary(
           request,
@@ -1406,9 +1393,8 @@ describe('v3.TranslationServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.longrunning.Operation()
       );
-      client.innerApiCalls.deleteGlossary = stubLongRunningCall(
-        expectedResponse
-      );
+      client.innerApiCalls.deleteGlossary =
+        stubLongRunningCall(expectedResponse);
       const [operation] = await client.deleteGlossary(request);
       const [response] = await operation.promise();
       assert.deepStrictEqual(response, expectedResponse);
@@ -1440,9 +1426,8 @@ describe('v3.TranslationServiceClient', () => {
       const expectedResponse = generateSampleMessage(
         new protos.google.longrunning.Operation()
       );
-      client.innerApiCalls.deleteGlossary = stubLongRunningCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.deleteGlossary =
+        stubLongRunningCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.deleteGlossary(
           request,
@@ -1649,9 +1634,8 @@ describe('v3.TranslationServiceClient', () => {
           new protos.google.cloud.translation.v3.Glossary()
         ),
       ];
-      client.innerApiCalls.listGlossaries = stubSimpleCallWithCallback(
-        expectedResponse
-      );
+      client.innerApiCalls.listGlossaries =
+        stubSimpleCallWithCallback(expectedResponse);
       const promise = new Promise((resolve, reject) => {
         client.listGlossaries(
           request,
@@ -1729,9 +1713,8 @@ describe('v3.TranslationServiceClient', () => {
           new protos.google.cloud.translation.v3.Glossary()
         ),
       ];
-      client.descriptors.page.listGlossaries.createStream = stubPageStreamingCall(
-        expectedResponse
-      );
+      client.descriptors.page.listGlossaries.createStream =
+        stubPageStreamingCall(expectedResponse);
       const stream = client.listGlossariesStream(request);
       const promise = new Promise((resolve, reject) => {
         const responses: protos.google.cloud.translation.v3.Glossary[] = [];
@@ -1756,10 +1739,9 @@ describe('v3.TranslationServiceClient', () => {
           .calledWith(client.innerApiCalls.listGlossaries, request)
       );
       assert.strictEqual(
-        (client.descriptors.page.listGlossaries
-          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listGlossaries.createStream as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -1776,10 +1758,8 @@ describe('v3.TranslationServiceClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listGlossaries.createStream = stubPageStreamingCall(
-        undefined,
-        expectedError
-      );
+      client.descriptors.page.listGlossaries.createStream =
+        stubPageStreamingCall(undefined, expectedError);
       const stream = client.listGlossariesStream(request);
       const promise = new Promise((resolve, reject) => {
         const responses: protos.google.cloud.translation.v3.Glossary[] = [];
@@ -1803,10 +1783,9 @@ describe('v3.TranslationServiceClient', () => {
           .calledWith(client.innerApiCalls.listGlossaries, request)
       );
       assert.strictEqual(
-        (client.descriptors.page.listGlossaries
-          .createStream as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listGlossaries.createStream as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -1833,9 +1812,8 @@ describe('v3.TranslationServiceClient', () => {
           new protos.google.cloud.translation.v3.Glossary()
         ),
       ];
-      client.descriptors.page.listGlossaries.asyncIterate = stubAsyncIterationCall(
-        expectedResponse
-      );
+      client.descriptors.page.listGlossaries.asyncIterate =
+        stubAsyncIterationCall(expectedResponse);
       const responses: protos.google.cloud.translation.v3.IGlossary[] = [];
       const iterable = client.listGlossariesAsync(request);
       for await (const resource of iterable) {
@@ -1843,15 +1821,15 @@ describe('v3.TranslationServiceClient', () => {
       }
       assert.deepStrictEqual(responses, expectedResponse);
       assert.deepStrictEqual(
-        (client.descriptors.page.listGlossaries
-          .asyncIterate as SinonStub).getCall(0).args[1],
+        (
+          client.descriptors.page.listGlossaries.asyncIterate as SinonStub
+        ).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (client.descriptors.page.listGlossaries
-          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listGlossaries.asyncIterate as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
@@ -1868,10 +1846,8 @@ describe('v3.TranslationServiceClient', () => {
       request.parent = '';
       const expectedHeaderRequestParams = 'parent=';
       const expectedError = new Error('expected');
-      client.descriptors.page.listGlossaries.asyncIterate = stubAsyncIterationCall(
-        undefined,
-        expectedError
-      );
+      client.descriptors.page.listGlossaries.asyncIterate =
+        stubAsyncIterationCall(undefined, expectedError);
       const iterable = client.listGlossariesAsync(request);
       await assert.rejects(async () => {
         const responses: protos.google.cloud.translation.v3.IGlossary[] = [];
@@ -1880,15 +1856,15 @@ describe('v3.TranslationServiceClient', () => {
         }
       });
       assert.deepStrictEqual(
-        (client.descriptors.page.listGlossaries
-          .asyncIterate as SinonStub).getCall(0).args[1],
+        (
+          client.descriptors.page.listGlossaries.asyncIterate as SinonStub
+        ).getCall(0).args[1],
         request
       );
       assert.strictEqual(
-        (client.descriptors.page.listGlossaries
-          .asyncIterate as SinonStub).getCall(0).args[2].otherArgs.headers[
-          'x-goog-request-params'
-        ],
+        (
+          client.descriptors.page.listGlossaries.asyncIterate as SinonStub
+        ).getCall(0).args[2].otherArgs.headers['x-goog-request-params'],
         expectedHeaderRequestParams
       );
     });
