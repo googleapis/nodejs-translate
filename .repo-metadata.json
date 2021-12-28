@@ -13,5 +13,5 @@
   "api_id": "translate.googleapis.com",
   "codeowner_team": "@googleapis/ml-apis",
   "api_shortname": "translate",
-  "library_type": ""
+  "library_type": "GAPIC_AUTO"
 }
