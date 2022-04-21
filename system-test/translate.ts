@@ -34,7 +34,7 @@ describe('translate', () => {
       },
     ];
 
-    it('should detect a langauge', async () => {
+    it('should detect a language', async () => {
       const projectId = await translate.getProjectId();
       for (const input of INPUT) {
         const [result] = await translate.detectLanguage({
