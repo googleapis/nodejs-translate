@@ -29,7 +29,7 @@ describe('translate', () => {
         expectedLanguage: 'en',
       },
       {
-        content: '¡Hola!',
+        content: 'Esto es una prueba.',
         expectedLanguage: 'es',
       },
     ];
