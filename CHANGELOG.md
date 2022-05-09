@@ -4,6 +4,13 @@
 
 [1]: https://www.npmjs.com/package/nodejs-translate?activeTab=versions
 
+### [6.3.2](https://github.com/googleapis/nodejs-translate/compare/v6.3.1...v6.3.2) (2022-05-09)
+
+
+### Bug Fixes
+
+* **test:** fix language detection test ([#779](https://github.com/googleapis/nodejs-translate/issues/779)) ([b6df5e2](https://github.com/googleapis/nodejs-translate/commit/b6df5e27ce37bab53f654bcfdfabf40b8db3e8a0))
+
 ### [6.3.1](https://www.github.com/googleapis/nodejs-translate/compare/v6.3.0...v6.3.1) (2021-10-18)
 
 
