@@ -190,70 +190,70 @@ export namespace google {
                 namespace TranslationService {
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3.TranslationService|translateText}.
+                     * Callback as used by {@link google.cloud.translation.v3.TranslationService#translateText}.
                      * @param error Error, if any
                      * @param [response] TranslateTextResponse
                      */
                     type TranslateTextCallback = (error: (Error|null), response?: google.cloud.translation.v3.TranslateTextResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3.TranslationService|detectLanguage}.
+                     * Callback as used by {@link google.cloud.translation.v3.TranslationService#detectLanguage}.
                      * @param error Error, if any
                      * @param [response] DetectLanguageResponse
                      */
                     type DetectLanguageCallback = (error: (Error|null), response?: google.cloud.translation.v3.DetectLanguageResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3.TranslationService|getSupportedLanguages}.
+                     * Callback as used by {@link google.cloud.translation.v3.TranslationService#getSupportedLanguages}.
                      * @param error Error, if any
                      * @param [response] SupportedLanguages
                      */
                     type GetSupportedLanguagesCallback = (error: (Error|null), response?: google.cloud.translation.v3.SupportedLanguages) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3.TranslationService|translateDocument}.
+                     * Callback as used by {@link google.cloud.translation.v3.TranslationService#translateDocument}.
                      * @param error Error, if any
                      * @param [response] TranslateDocumentResponse
                      */
                     type TranslateDocumentCallback = (error: (Error|null), response?: google.cloud.translation.v3.TranslateDocumentResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3.TranslationService|batchTranslateText}.
+                     * Callback as used by {@link google.cloud.translation.v3.TranslationService#batchTranslateText}.
                      * @param error Error, if any
                      * @param [response] Operation
                      */
                     type BatchTranslateTextCallback = (error: (Error|null), response?: google.longrunning.Operation) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3.TranslationService|batchTranslateDocument}.
+                     * Callback as used by {@link google.cloud.translation.v3.TranslationService#batchTranslateDocument}.
                      * @param error Error, if any
                      * @param [response] Operation
                      */
                     type BatchTranslateDocumentCallback = (error: (Error|null), response?: google.longrunning.Operation) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3.TranslationService|createGlossary}.
+                     * Callback as used by {@link google.cloud.translation.v3.TranslationService#createGlossary}.
                      * @param error Error, if any
                      * @param [response] Operation
                      */
                     type CreateGlossaryCallback = (error: (Error|null), response?: google.longrunning.Operation) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3.TranslationService|listGlossaries}.
+                     * Callback as used by {@link google.cloud.translation.v3.TranslationService#listGlossaries}.
                      * @param error Error, if any
                      * @param [response] ListGlossariesResponse
                      */
                     type ListGlossariesCallback = (error: (Error|null), response?: google.cloud.translation.v3.ListGlossariesResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3.TranslationService|getGlossary}.
+                     * Callback as used by {@link google.cloud.translation.v3.TranslationService#getGlossary}.
                      * @param error Error, if any
                      * @param [response] Glossary
                      */
                     type GetGlossaryCallback = (error: (Error|null), response?: google.cloud.translation.v3.Glossary) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3.TranslationService|deleteGlossary}.
+                     * Callback as used by {@link google.cloud.translation.v3.TranslationService#deleteGlossary}.
                      * @param error Error, if any
                      * @param [response] Operation
                      */
@@ -4596,70 +4596,70 @@ export namespace google {
                 namespace TranslationService {
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService|translateText}.
+                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService#translateText}.
                      * @param error Error, if any
                      * @param [response] TranslateTextResponse
                      */
                     type TranslateTextCallback = (error: (Error|null), response?: google.cloud.translation.v3beta1.TranslateTextResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService|detectLanguage}.
+                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService#detectLanguage}.
                      * @param error Error, if any
                      * @param [response] DetectLanguageResponse
                      */
                     type DetectLanguageCallback = (error: (Error|null), response?: google.cloud.translation.v3beta1.DetectLanguageResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService|getSupportedLanguages}.
+                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService#getSupportedLanguages}.
                      * @param error Error, if any
                      * @param [response] SupportedLanguages
                      */
                     type GetSupportedLanguagesCallback = (error: (Error|null), response?: google.cloud.translation.v3beta1.SupportedLanguages) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService|translateDocument}.
+                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService#translateDocument}.
                      * @param error Error, if any
                      * @param [response] TranslateDocumentResponse
                      */
                     type TranslateDocumentCallback = (error: (Error|null), response?: google.cloud.translation.v3beta1.TranslateDocumentResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService|batchTranslateText}.
+                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService#batchTranslateText}.
                      * @param error Error, if any
                      * @param [response] Operation
                      */
                     type BatchTranslateTextCallback = (error: (Error|null), response?: google.longrunning.Operation) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService|batchTranslateDocument}.
+                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService#batchTranslateDocument}.
                      * @param error Error, if any
                      * @param [response] Operation
                      */
                     type BatchTranslateDocumentCallback = (error: (Error|null), response?: google.longrunning.Operation) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService|createGlossary}.
+                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService#createGlossary}.
                      * @param error Error, if any
                      * @param [response] Operation
                      */
                     type CreateGlossaryCallback = (error: (Error|null), response?: google.longrunning.Operation) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService|listGlossaries}.
+                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService#listGlossaries}.
                      * @param error Error, if any
                      * @param [response] ListGlossariesResponse
                      */
                     type ListGlossariesCallback = (error: (Error|null), response?: google.cloud.translation.v3beta1.ListGlossariesResponse) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService|getGlossary}.
+                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService#getGlossary}.
                      * @param error Error, if any
                      * @param [response] Glossary
                      */
                     type GetGlossaryCallback = (error: (Error|null), response?: google.cloud.translation.v3beta1.Glossary) => void;
 
                     /**
-                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService|deleteGlossary}.
+                     * Callback as used by {@link google.cloud.translation.v3beta1.TranslationService#deleteGlossary}.
                      * @param error Error, if any
                      * @param [response] Operation
                      */
@@ -11284,9 +11284,6 @@ export namespace google {
             /** FieldOptions lazy */
             lazy?: (boolean|null);
 
-            /** FieldOptions unverifiedLazy */
-            unverifiedLazy?: (boolean|null);
-
             /** FieldOptions deprecated */
             deprecated?: (boolean|null);
 
@@ -11323,9 +11320,6 @@ export namespace google {
 
             /** FieldOptions lazy. */
             public lazy: boolean;
-
-            /** FieldOptions unverifiedLazy. */
-            public unverifiedLazy: boolean;
 
             /** FieldOptions deprecated. */
             public deprecated: boolean;
@@ -13038,35 +13032,35 @@ export namespace google {
         namespace Operations {
 
             /**
-             * Callback as used by {@link google.longrunning.Operations|listOperations}.
+             * Callback as used by {@link google.longrunning.Operations#listOperations}.
              * @param error Error, if any
              * @param [response] ListOperationsResponse
              */
             type ListOperationsCallback = (error: (Error|null), response?: google.longrunning.ListOperationsResponse) => void;
 
             /**
-             * Callback as used by {@link google.longrunning.Operations|getOperation}.
+             * Callback as used by {@link google.longrunning.Operations#getOperation}.
              * @param error Error, if any
              * @param [response] Operation
              */
             type GetOperationCallback = (error: (Error|null), response?: google.longrunning.Operation) => void;
 
             /**
-             * Callback as used by {@link google.longrunning.Operations|deleteOperation}.
+             * Callback as used by {@link google.longrunning.Operations#deleteOperation}.
              * @param error Error, if any
              * @param [response] Empty
              */
             type DeleteOperationCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
             /**
-             * Callback as used by {@link google.longrunning.Operations|cancelOperation}.
+             * Callback as used by {@link google.longrunning.Operations#cancelOperation}.
              * @param error Error, if any
              * @param [response] Empty
              */
             type CancelOperationCallback = (error: (Error|null), response?: google.protobuf.Empty) => void;
 
             /**
-             * Callback as used by {@link google.longrunning.Operations|waitOperation}.
+             * Callback as used by {@link google.longrunning.Operations#waitOperation}.
              * @param error Error, if any
              * @param [response] Operation
              */
