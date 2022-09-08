@@ -148,12 +148,10 @@ describe('translate', () => {
           }
         ),
       });
-      const {TranslationServiceClient} = http2spy.require(
-        require.resolve('../src')
-      );
+      const gax = http2spy.require(require.resolve('google-gax'));
       const translate = new TranslationServiceClient({
         auth,
-      });
+      }, gax);
 
       // We run the same test as "list of supported languages", but with an
       // alternate "quota_project_id" set; Given that GCLOUD_PROJECT
@@ -184,12 +182,10 @@ describe('translate', () => {
           }
         ),
       });
-      const {TranslationServiceClient} = http2spy.require(
-        require.resolve('../src')
-      );
+      const gax = http2spy.require(require.resolve('google-gax'));
       const translate = new TranslationServiceClient({
         auth,
-      });
+      }, gax);
 
       // We set a quota project "my-fake-billing-project" that does not exist,
       // this should result in an error.
