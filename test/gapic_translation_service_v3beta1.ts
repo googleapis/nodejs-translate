@@ -278,9 +278,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.TranslateTextRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('TranslateTextRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.TranslateTextRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -309,9 +310,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.TranslateTextRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('TranslateTextRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.TranslateTextRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -356,9 +358,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.TranslateTextRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('TranslateTextRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.TranslateTextRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -387,9 +390,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.TranslateTextRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('TranslateTextRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.TranslateTextRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedError = new Error('The client has already been closed.');
       client.close();
@@ -408,9 +412,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.DetectLanguageRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('DetectLanguageRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.DetectLanguageRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -439,9 +444,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.DetectLanguageRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('DetectLanguageRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.DetectLanguageRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -486,9 +492,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.DetectLanguageRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('DetectLanguageRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.DetectLanguageRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -517,9 +524,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.DetectLanguageRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('DetectLanguageRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.DetectLanguageRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedError = new Error('The client has already been closed.');
       client.close();
@@ -539,7 +547,7 @@ describe('v3beta1.TranslationServiceClient', () => {
         new protos.google.cloud.translation.v3beta1.GetSupportedLanguagesRequest()
       );
       const defaultValue1 = getTypeDefaultValue(
-        'GetSupportedLanguagesRequest',
+        '.google.cloud.translation.v3beta1.GetSupportedLanguagesRequest',
         ['parent']
       );
       request.parent = defaultValue1;
@@ -572,7 +580,7 @@ describe('v3beta1.TranslationServiceClient', () => {
         new protos.google.cloud.translation.v3beta1.GetSupportedLanguagesRequest()
       );
       const defaultValue1 = getTypeDefaultValue(
-        'GetSupportedLanguagesRequest',
+        '.google.cloud.translation.v3beta1.GetSupportedLanguagesRequest',
         ['parent']
       );
       request.parent = defaultValue1;
@@ -620,7 +628,7 @@ describe('v3beta1.TranslationServiceClient', () => {
         new protos.google.cloud.translation.v3beta1.GetSupportedLanguagesRequest()
       );
       const defaultValue1 = getTypeDefaultValue(
-        'GetSupportedLanguagesRequest',
+        '.google.cloud.translation.v3beta1.GetSupportedLanguagesRequest',
         ['parent']
       );
       request.parent = defaultValue1;
@@ -655,7 +663,7 @@ describe('v3beta1.TranslationServiceClient', () => {
         new protos.google.cloud.translation.v3beta1.GetSupportedLanguagesRequest()
       );
       const defaultValue1 = getTypeDefaultValue(
-        'GetSupportedLanguagesRequest',
+        '.google.cloud.translation.v3beta1.GetSupportedLanguagesRequest',
         ['parent']
       );
       request.parent = defaultValue1;
@@ -679,9 +687,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.TranslateDocumentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('TranslateDocumentRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.TranslateDocumentRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -710,9 +719,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.TranslateDocumentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('TranslateDocumentRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.TranslateDocumentRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -757,9 +767,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.TranslateDocumentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('TranslateDocumentRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.TranslateDocumentRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -788,9 +799,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.TranslateDocumentRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('TranslateDocumentRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.TranslateDocumentRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedError = new Error('The client has already been closed.');
       client.close();
@@ -809,7 +821,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.GetGlossaryRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('GetGlossaryRequest', ['name']);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.GetGlossaryRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -838,7 +853,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.GetGlossaryRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('GetGlossaryRequest', ['name']);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.GetGlossaryRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -883,7 +901,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.GetGlossaryRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('GetGlossaryRequest', ['name']);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.GetGlossaryRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -912,7 +933,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.GetGlossaryRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('GetGlossaryRequest', ['name']);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.GetGlossaryRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedError = new Error('The client has already been closed.');
       client.close();
@@ -931,9 +955,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.BatchTranslateTextRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('BatchTranslateTextRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.BatchTranslateTextRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -964,9 +989,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.BatchTranslateTextRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('BatchTranslateTextRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.BatchTranslateTextRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -1018,9 +1044,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.BatchTranslateTextRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('BatchTranslateTextRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.BatchTranslateTextRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -1049,9 +1076,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.BatchTranslateTextRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('BatchTranslateTextRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.BatchTranslateTextRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -1128,7 +1156,7 @@ describe('v3beta1.TranslationServiceClient', () => {
         new protos.google.cloud.translation.v3beta1.BatchTranslateDocumentRequest()
       );
       const defaultValue1 = getTypeDefaultValue(
-        'BatchTranslateDocumentRequest',
+        '.google.cloud.translation.v3beta1.BatchTranslateDocumentRequest',
         ['parent']
       );
       request.parent = defaultValue1;
@@ -1162,7 +1190,7 @@ describe('v3beta1.TranslationServiceClient', () => {
         new protos.google.cloud.translation.v3beta1.BatchTranslateDocumentRequest()
       );
       const defaultValue1 = getTypeDefaultValue(
-        'BatchTranslateDocumentRequest',
+        '.google.cloud.translation.v3beta1.BatchTranslateDocumentRequest',
         ['parent']
       );
       request.parent = defaultValue1;
@@ -1217,7 +1245,7 @@ describe('v3beta1.TranslationServiceClient', () => {
         new protos.google.cloud.translation.v3beta1.BatchTranslateDocumentRequest()
       );
       const defaultValue1 = getTypeDefaultValue(
-        'BatchTranslateDocumentRequest',
+        '.google.cloud.translation.v3beta1.BatchTranslateDocumentRequest',
         ['parent']
       );
       request.parent = defaultValue1;
@@ -1252,7 +1280,7 @@ describe('v3beta1.TranslationServiceClient', () => {
         new protos.google.cloud.translation.v3beta1.BatchTranslateDocumentRequest()
       );
       const defaultValue1 = getTypeDefaultValue(
-        'BatchTranslateDocumentRequest',
+        '.google.cloud.translation.v3beta1.BatchTranslateDocumentRequest',
         ['parent']
       );
       request.parent = defaultValue1;
@@ -1330,9 +1358,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.CreateGlossaryRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('CreateGlossaryRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.CreateGlossaryRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -1363,9 +1392,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.CreateGlossaryRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('CreateGlossaryRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.CreateGlossaryRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -1417,9 +1447,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.CreateGlossaryRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('CreateGlossaryRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.CreateGlossaryRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -1448,9 +1479,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.CreateGlossaryRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('CreateGlossaryRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.CreateGlossaryRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -1526,9 +1558,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.DeleteGlossaryRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('DeleteGlossaryRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.DeleteGlossaryRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -1559,9 +1592,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.DeleteGlossaryRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('DeleteGlossaryRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.DeleteGlossaryRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedResponse = generateSampleMessage(
@@ -1613,9 +1647,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.DeleteGlossaryRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('DeleteGlossaryRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.DeleteGlossaryRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -1644,9 +1679,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.DeleteGlossaryRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('DeleteGlossaryRequest', [
-        'name',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.DeleteGlossaryRequest',
+        ['name']
+      );
       request.name = defaultValue1;
       const expectedHeaderRequestParams = `name=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -1722,9 +1758,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.ListGlossariesRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('ListGlossariesRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.ListGlossariesRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = [
@@ -1761,9 +1798,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.ListGlossariesRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('ListGlossariesRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.ListGlossariesRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = [
@@ -1816,9 +1854,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.ListGlossariesRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('ListGlossariesRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.ListGlossariesRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -1847,9 +1886,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.ListGlossariesRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('ListGlossariesRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.ListGlossariesRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = [
@@ -1908,9 +1948,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.ListGlossariesRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('ListGlossariesRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.ListGlossariesRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedError = new Error('expected');
@@ -1958,9 +1999,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.ListGlossariesRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('ListGlossariesRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.ListGlossariesRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedResponse = [
@@ -2007,9 +2049,10 @@ describe('v3beta1.TranslationServiceClient', () => {
       const request = generateSampleMessage(
         new protos.google.cloud.translation.v3beta1.ListGlossariesRequest()
       );
-      const defaultValue1 = getTypeDefaultValue('ListGlossariesRequest', [
-        'parent',
-      ]);
+      const defaultValue1 = getTypeDefaultValue(
+        '.google.cloud.translation.v3beta1.ListGlossariesRequest',
+        ['parent']
+      );
       request.parent = defaultValue1;
       const expectedHeaderRequestParams = `parent=${defaultValue1}`;
       const expectedError = new Error('expected');
