@@ -264,7 +264,7 @@ export class Translate extends Service {
       },
       (err, resp) => {
         if (err) {
-          (callback as Function)(err, null, resp);
+          callback?.(err, null, resp);
           return;
         }
 
@@ -286,7 +286,7 @@ export class Translate extends Service {
           results = results[0];
         }
 
-        (callback as Function)(null, results, resp);
+        callback?.(null, results, resp);
       }
     );
   }
@@ -355,7 +355,7 @@ export class Translate extends Service {
 
     this.request(reqOpts, (err, resp) => {
       if (err) {
-        callback!(err, null, resp);
+        callback?.(err, null, resp);
         return;
       }
 
@@ -368,7 +368,7 @@ export class Translate extends Service {
         }
       );
 
-      callback!(null, languages, resp);
+      callback?.(null, languages, resp);
     });
   }
 
@@ -553,7 +553,7 @@ export class Translate extends Service {
       },
       (err, resp) => {
         if (err) {
-          (callback as Function)(err, null, resp);
+          callback?.(err, null, resp);
           return;
         }
 
@@ -565,7 +565,7 @@ export class Translate extends Service {
           translations = translations[0];
         }
 
-        (callback as Function)(err, translations, resp);
+        callback?.(err, translations, resp);
       }
     );
   }
